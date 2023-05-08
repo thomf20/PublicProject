@@ -9,5 +9,7 @@ namespace PublicProject.Data
             : base(options)
         {
         }
+
+        public DbSet<Models.Blogg> Blog { get; set; }
     }
 }
