@@ -1,6 +1,6 @@
 ﻿namespace PublicProject.Models
 {
-    public class Blogg
+    public class Blog
     {
         public int Id { get; set; }
         public string Header { get; set; }

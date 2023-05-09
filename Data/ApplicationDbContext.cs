@@ -10,6 +10,6 @@ namespace PublicProject.Data
         {
         }
 
-        public DbSet<Models.Blogg> Blog { get; set; }
+        public DbSet<Models.Blog> Blog { get; set; }
     }
 }

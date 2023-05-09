@@ -14,10 +14,10 @@ namespace PublicProject.Pages
         {
             _context = context;
         }
-        public  List<Models.Blogg> Blogs { get; set; }
+        public  List<Models.Blog> Blogs { get; set; }
 
         [BindProperty]
-        public Models.Blogg Blog { get; set; }
+        public Models.Blog Blog { get; set; }
 
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
@@ -25,7 +25,7 @@ namespace PublicProject.Pages
         {
             if (deleteid != 0)
             {
-                Models.Blogg blog = await _context.Blog.FindAsync(deleteid);
+                Models.Blog blog = await _context.Blog.FindAsync(deleteid);
 
                 if (blog != null)
                 {
@@ -78,9 +78,9 @@ namespace PublicProject.Pages
             return RedirectToPage("./Index");
         }
 
-        public static List<Models.Blogg> GetAllBloggs()
+        public static List<Models.Blog> GetAllBloggs()
         {
-            List<Models.Blogg> blogs = new List<Models.Blogg>();
+            List<Models.Blog> blogs = new List<Models.Blog>();
 
             return null;
         }

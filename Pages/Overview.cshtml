@@ -1,5 +1,5 @@
 ﻿@page
-@model OverviewModel
+@model IndexModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -9,60 +9,36 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <p>Du är inloggad som @User.Identity.Name</p>
+
+    
+
+    <p>Du är inloggad som @User.Identity.Name</p>   
+
     <input type="button" class="alert alert-success" value="Create blog">
 
-    @if (Model.Blogsunique != null)
+    @if (Model.Blogs != null)
     {
-        @foreach (var b in Model.Blogsunique)
+        @foreach (var b in Model.Blogs)
         {
-            <div class="card m-2" style="width: 10rem">
-                <img class="card-img-top" src="~/img/@b.Image">
-                <div class="card-body">
-                    <h5 class="card-title">@b.Header</h5>
-                    <p class="card-text">@b.Text</p>
+            if (b.UserId == user.Id)
+            {
+                <div class="card m-2" style="width: 10rem">
+                    <img class="card-img-top" src="~/img/@b.Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@b.Header</h5>
+                        <p class="card-text">@b.Text</p>
+                    </div>
+                    <p class="card-footer">@b.Date</p>
                 </div>
-                <p class="card-footer">@b.Date</p>
-            </div>
+            }
+        
 
         }
     }
-    
-   @* <form method="post" enctype="multipart/form-data">
 
-        <label asp-for="Blog.Header" class="form-label"></label>
-        <input asp-for="Blog.Header" class="form-control">
 
-        <label asp-for="Blog.Text" class="form-label"></label>
-        <textarea asp-for="Blog.Text" class="form-control" cols="40" rows="5"></textarea>
-
-        <label asp-for="Blog.Image" class="form-label"></label>
-        <input type="file" class="form-control" name="Uploadedimage">
-
-        <input type="submit" class="btn btn-success" value="Spara inlägg">
-
-    </form>*@
   
 
-@*    @IndexModel.Blogs.Where(b => b.UserId == User.Identity)*@
-    @*Model.PersonModel person = Data.PersonManager.GetPersons().Where(p => p.id == id).FirstOrDefault();*@
 
-
-
-@*    <form method="post" enctype="multipart/form-data">
-
-        <label asp-for="Blog.Header" class="form-label"></label>
-        <input asp-for="Blog.Header" class="form-control">
-
-        <label asp-for="Blog.Text" class="form-label"></label>
-        <textarea asp-for="Blog.Text" class="form-control" cols="40" rows="5"></textarea>
-
-        <label asp-for="Blog.Image" class="form-label"></label>
-        <input type="file" class="form-control" name="Uploadedimage">
-
-        <input type="submit" class="btn btn-success" value="Spara inlägg">
-
-    </form>
-*@
 
 }
