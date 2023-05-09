@@ -43,7 +43,7 @@
 {
     <p>Du är inloggad som @User.Identity.Name</p>
 
-    <form method="post" enctype="multipart/form-data">
+        @*form method="post" enctype="multipart/form-data">
 
         <label asp-for="Blog.Header" class="form-label"></label>
         <input asp-for="Blog.Header" class="form-control">
@@ -56,11 +56,11 @@
 
         <input type="submit" class="btn btn-success" value="Spara inlägg">
 
-    </form>
+    </form>*@
 
 
 }
-else
+@*else*@
 {
     <div class="frontpage-text">
         <span> Welcome to <strong>Public Project!</strong></span>
@@ -77,12 +77,21 @@ else
                     <h5 class="card-title">@Model.Blogs[0].Header</h5>
                     <p class="card-text">@Model.Blogs[0].Text</p>
                 </div>
-            <p class="card-footer">@Model.Blogs[0].Date</p>
+                <p class="card-footer">@Model.Blogs[0].Date</p>
                 </div>
-
+                
             }
         </p>
-        <button type="submit">Click here to start</button>
+
+        @*<button type="submit">Click here to start</button>*@
+   @*     <form method="post" action="~/overview">
+            <button type="submit">Click here to get started</button>
+        </form>*@
+        @if(user.Id != null)
+        {
+              <a asp-page="/overview" asp-route-id="@user.Id">View User Profile</a>
+        }
+      
 
     </div>
 }

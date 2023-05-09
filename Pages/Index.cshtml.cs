@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using PublicProject.Models;
 using System.Security.Claims;
 
 namespace PublicProject.Pages
@@ -8,11 +9,12 @@ namespace PublicProject.Pages
     public class IndexModel : PageModel
     {
         private readonly Data.ApplicationDbContext _context;
+        public static readonly Data.ApplicationDbContext _contexts;
         public IndexModel(Data.ApplicationDbContext context)
         {
             _context = context;
         }
-        public List<Models.Blogg> Blogs { get; set; }
+        public  List<Models.Blogg> Blogs { get; set; }
 
         [BindProperty]
         public Models.Blogg Blog { get; set; }
@@ -74,6 +76,13 @@ namespace PublicProject.Pages
 
 
             return RedirectToPage("./Index");
+        }
+
+        public static List<Models.Blogg> GetAllBloggs()
+        {
+            List<Models.Blogg> blogs = new List<Models.Blogg>();
+
+            return null;
         }
     }
 }
