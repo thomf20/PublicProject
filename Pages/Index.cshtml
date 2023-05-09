@@ -60,7 +60,7 @@
 
 
 }
-@*else*@
+
 {
     <div class="frontpage-text">
         <span> Welcome to <strong>Public Project!</strong></span>
@@ -83,14 +83,17 @@
             }
         </p>
 
-        @*<button type="submit">Click here to start</button>*@
-   @*     <form method="post" action="~/overview">
+  
+     @*  <form method="post" action="~/overview">
             <button type="submit">Click here to get started</button>
         </form>*@
-        @if(user.Id != null)
+
+
+    @if (SignInManager.IsSignedIn(User))
         {
               <a asp-page="/overview" asp-route-id="@user.Id">View User Profile</a>
         }
+
       
 
     </div>

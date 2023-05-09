@@ -6,20 +6,41 @@ namespace PublicProject.Pages
 {
     public class OverviewModel : PageModel
     {
-        private readonly Data.ApplicationDbContext _context;
         IndexModel _indexmodel = new IndexModel(IndexModel._contexts);   
         public int MyProperty { get; set; }
-        public async Task<IActionResult> OnGetAsync()
+
+        [BindProperty]
+        public Models.Blogg Blog { get; set; }
+
+        public List<Models.Blogg> Blogsunique { get; set; }
+
+
+
+        public void Onget(string id )
         {
-            var findid = IndexModel.Blogs.Where(b => b.UserId == user.Id).All();
+            if (_indexmodel.Blog != null)
+            {
+                var findid = _indexmodel.Blogs.Where(b => b.UserId == id);
 
-            return null;
+                foreach (var x in findid)
+                    Blogsunique.Add(x);
+
+            }
         }
-        //public static FindBlogId()
+
+        //public async Task<IActionResult> OnGetAsync(string id)
         //{
-        //    var findid = IndexModel.Blogs.Where(b => b.UserId == user.Id)
+
+          
 
 
-        //}
-    }
+            //    return RedirectToPage("./Index");
+            //}
+            //public static FindBlogId()
+            //{
+            //    var findid = IndexModel.Blogs.Where(b => b.UserId == user.Id)
+
+
+            //}
+        }
 }

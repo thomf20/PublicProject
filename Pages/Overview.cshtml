@@ -1,5 +1,5 @@
 ﻿@page
-@model IndexModel
+@model OverviewModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
@@ -11,19 +11,24 @@
 {
     <p>Du är inloggad som @User.Identity.Name</p>
     <input type="button" class="alert alert-success" value="Create blog">
-    @foreach(var b in Model.Blogs)
-    {
-        <div class="card m-2" style="width: 10rem">
-            <img class="card-img-top" src="~/img/@b.Image">
-            <div class="card-body">
-                <h5 class="card-title">@b.Header</h5>
-                <p class="card-text">@b.Text</p>
-            </div>
-            <p class="card-footer">@b.Date</p>
-        </div>
 
+    @if (Model.Blogsunique != null)
+    {
+        @foreach (var b in Model.Blogsunique)
+        {
+            <div class="card m-2" style="width: 10rem">
+                <img class="card-img-top" src="~/img/@b.Image">
+                <div class="card-body">
+                    <h5 class="card-title">@b.Header</h5>
+                    <p class="card-text">@b.Text</p>
+                </div>
+                <p class="card-footer">@b.Date</p>
+            </div>
+
+        }
     }
-    <form method="post" enctype="multipart/form-data">
+    
+   @* <form method="post" enctype="multipart/form-data">
 
         <label asp-for="Blog.Header" class="form-label"></label>
         <input asp-for="Blog.Header" class="form-control">
@@ -36,7 +41,7 @@
 
         <input type="submit" class="btn btn-success" value="Spara inlägg">
 
-    </form>
+    </form>*@
   
 
 @*    @IndexModel.Blogs.Where(b => b.UserId == User.Identity)*@
