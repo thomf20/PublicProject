@@ -1,0 +1,27 @@
+﻿@page
+@model PublicProject.Pages.IndexModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+   
+    var user = await UserManager.GetUserAsync(User);
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>Du är inloggad som @User.Identity.Name</p>
+
+    <form method="post" enctype="multipart/form-data">
+        <label asp-for="Blog.Header" class="form-label"></label>
+        <input asp-for="Blog.Header" class="form-control"/>
+
+        <label asp-for="Blog.Text" class="form-label"></label>
+        <textarea asp-for="Blog.Text" class="form-control" cols="40" rows="5"></textarea>
+
+        <label asp-for="Blog.Image" class="form-label"></label>
+        <input type="file" class="form-control" name="UploadedImage">
+
+        <input type="submit" class="btn btn-success" value="Spara inlägg">
+    </form>
+}
+

@@ -14,7 +14,11 @@
 
     <p>Du är inloggad som @User.Identity.Name</p>   
 
-    <input type="button" class="alert alert-success" value="Create blog">
+
+    <a asp-page="/CreateBlog" asp-route-id="@user.Id">Create Blog</a>
+
+
+   @* <input type="button" class="alert alert-success" value="Create blog">*@
 
     @if (Model.Blogs != null)
     {
