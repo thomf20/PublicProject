@@ -33,7 +33,7 @@
                         <p class="card-text">@b.Text</p>
                     </div>
                     <p class="card-footer">@b.Date</p>
-                    <a asp-route-id="@b.Id">Viewblog</a>
+                    <a asp-page="/ViewBlog" asp-route-id="@b.Id" onclick="ShowBlog(@user.Id)">Viewblog </a>
                 </div>
             }
         
@@ -45,5 +45,6 @@
   
 
 
+    //<a asp-page="/overview" asp-route-id="@user.Id">View User Profile</a>
 
 }

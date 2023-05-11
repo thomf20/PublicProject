@@ -84,5 +84,9 @@ namespace PublicProject.Pages
 
             return null;
         }
+        public static void ShowBlog(int userid)
+        {
+
+        }
     }
 }
