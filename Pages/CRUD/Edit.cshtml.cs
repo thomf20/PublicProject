@@ -66,7 +66,7 @@ namespace PublicProject.Pages.CRUD
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Overview", new { id = Blog.UserId });
         }
 
         private bool BlogExists(int id)

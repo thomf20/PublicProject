@@ -57,7 +57,7 @@ namespace PublicProject.Pages.CRUD
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Overview", new { id = Blog.UserId });
         }
     }
 }

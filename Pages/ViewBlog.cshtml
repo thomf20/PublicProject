@@ -4,3 +4,10 @@
 }
 <h1>@Model.BlogPost.Header</h1>
 <p>@Model.BlogPost.Text</p>
+<img class="img-fluid" src="~/img/@Model.BlogPost.Image" />
+<div class="text-center">
+    <a class="btn btn-primary" asp-page="/CRUD/Edit" asp-route-id="@Model.BlogPost.Id">Edit Blog</a>
+</div>
+<div class="text-center">
+    <a class="btn btn-primary" asp-page="/CRUD/Delete" asp-route-id="@Model.BlogPost.Id">Delete blog</a>
+</div>

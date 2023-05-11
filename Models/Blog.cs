@@ -8,6 +8,8 @@
         public string Image { get; set; }
         public DateTime Date { get; set; }
         public string UserId { get; set; }
+        public int? Popularity { get; set; } 
+        public string? Footer { get; set; }
     }
     
 }
