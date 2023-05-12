@@ -11,37 +11,19 @@
 <link rel="stylesheet" href="~/css/site.css" />
 
 
-@*<div class="text-center">
-    <h1 class="display-4">Bloggen</h1>
-</div>*@
-@*
-<div class="row">
-    @if (Model.Blogs != null)
-    {
-        @foreach (var blog in Model.Blogs)
-        {
-            <div class="card m-2" style="width: 18rem">
-                <img class="card-img-top" src="~/img/@blog.Image">
-                <div class="card-body">
-                    <h5 class="card-title">@blog.Header</h5>
-                    <p class="card-text">@blog.Text</p>
-                    @if (user != null && user.Id == blog.UserId)
-                    {
-                        <a asp-route-deleteid="@blog.Id" class="btn btn-primary">Ta bort</a>
-                    }
-                </div>
-                <p class="card-footer">@blog.Date</p>
-
-            </div>
-        }
-    }
 
 
-</div>*@
 
 @if (SignInManager.IsSignedIn(User))
 {
     <p>Du är inloggad som @User.Identity.Name</p>
+
+    var inMemberRole = User.IsInRole("Member");
+    var inAdminRole = User.IsInRole("Admin");
+
+
+    <p> Is Admin:@inAdminRole</p>
+    <p> Is Member:@inMemberRole </p>
 
 }
 

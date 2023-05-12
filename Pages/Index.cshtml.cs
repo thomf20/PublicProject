@@ -9,7 +9,7 @@ namespace PublicProject.Pages
     public class IndexModel : PageModel
     {
         private readonly Data.ApplicationDbContext _context;
-        public static readonly Data.ApplicationDbContext _contexts;
+        
         public IndexModel(Data.ApplicationDbContext context)
         {
             _context = context;
@@ -78,15 +78,8 @@ namespace PublicProject.Pages
             return RedirectToPage("./Index");
         }
 
-        public static List<Models.Blog> GetAllBloggs()
-        {
-            List<Models.Blog> blogs = new List<Models.Blog>();
 
-            return null;
-        }
-        public static void ShowBlog(int userid)
-        {
 
-        }
+      
     }
 }
