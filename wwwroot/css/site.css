@@ -24,6 +24,7 @@ body {
     background-image: url('/img/backgroundpic.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 }
 .mycontainer {
     background-color: white;
@@ -31,4 +32,36 @@ body {
 .frontpage-text{
     font-size: 50px;
     text-align: center;
+}
+/*.blog-content{
+    background-color: red;
+}
+.blog-header{
+    text-align: center;
+    font-family: 
+}*/
+
+.frontpage-text{
+    border: solid;
+    background-color: white;
+    font-style: italic;
+}
+.example-blog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.secondfrontpage-text {
+    border: solid;
+    background-color: lightblue;
+    font-style: oblique;
+}
+.container .secondfrontpage-text{
+    padding: 5px;
+    font-size:50px;
+    text-align: center;
+}
+.viewbutton{
+    text-align: center;
+    padding: 5px;
 }

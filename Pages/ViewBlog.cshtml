@@ -9,25 +9,27 @@
 @{
 }
 
+<div class="blog-content">
+    <div class="blog-header">
+        <h1>@Model.BlogPost.Header</h1>
+    </div>
+    <div class="blog-text">
+        <p>@Model.BlogPost.Text</p>
+    </div>
+    <div class="blog-pop">
+        <p>Här har vi countern: @Model.BlogPost.Popularity</p>
+    </div>
+</div>
 
-<h1>@Model.BlogPost.Header</h1>
-<p>@Model.BlogPost.Text</p>
-<p>@Model.BlogPost.Popularity</p>
-
-<span> Här har vi countern: @Model.BlogPost.Popularity</span>
-<br />
 
 <img class="img-fluid" src="~/img/@Model.BlogPost.Image" />
 
 
 @if (user.Id == Model.BlogPost.UserId)
 {
-    <div class="text-center">
 
         <a class="btn btn-primary" asp-page="/CRUD/Edit" asp-route-id="@Model.BlogPost.Id">Edit Blog</a>
-    </div>
-    <div class="text-center">
         <a class="btn btn-primary" asp-page="/CRUD/Delete" asp-route-id="@Model.BlogPost.Id">Delete blog</a>
-    </div>
+
 }
 

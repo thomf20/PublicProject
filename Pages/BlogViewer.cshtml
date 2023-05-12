@@ -10,12 +10,8 @@
 @if (Model.Blogs != null)
 {
     <div class="row">
-
-
         @foreach (var b in Model.Blogs)
         {
-           
-            
                 <div class="col-md-4">
                     <div class="card m-2">
                         <img class="card-img-top" src="~/img/@b.Image">
@@ -29,9 +25,6 @@
                         </div>
                     </div>
                 </div>
-            
-
-
         }
     </div>
 }
