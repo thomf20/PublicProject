@@ -1,0 +1,37 @@
+﻿@page
+@model PublicProject.Pages.IndexModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+
+    
+}
+
+@if (Model.Blogs != null)
+{
+    <div class="row">
+
+
+        @foreach (var b in Model.Blogs)
+        {
+           
+            
+                <div class="col-md-4">
+                    <div class="card m-2">
+                        <img class="card-img-top" src="~/img/@b.Image">
+                        <div class="card-body">
+                            <h5 class="card-title">@b.Header</h5>
+                            <p class="card-text">@b.Text</p>
+                        </div>
+                        <p class="card-footer">@b.Date</p>
+                        <div class="text-center">
+                            <a class="btn btn-primary" asp-page="/ViewBlog" asp-route-id="@b.Id">View Blog</a>
+                        </div>
+                    </div>
+                </div>
+            
+
+
+        }
+    </div>
+}

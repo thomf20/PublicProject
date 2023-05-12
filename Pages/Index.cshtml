@@ -43,23 +43,10 @@
 {
     <p>Du är inloggad som @User.Identity.Name</p>
 
-        @*form method="post" enctype="multipart/form-data">
-
-        <label asp-for="Blog.Header" class="form-label"></label>
-        <input asp-for="Blog.Header" class="form-control">
-
-        <label asp-for="Blog.Text" class="form-label"></label>
-        <textarea asp-for="Blog.Text" class="form-control" cols="40" rows="5"></textarea>
-
-        <label asp-for="Blog.Image" class="form-label"></label>
-        <input type="file" class="form-control" name="Uploadedimage">
-
-        <input type="submit" class="btn btn-success" value="Spara inlägg">
-
-    </form>*@
-
-
 }
+
+<a class="btn btn-primary" asp-page="/BlogViewer" >View all Blogs</a>
+
 
 {
     <div class="frontpage-text">
@@ -82,12 +69,6 @@
                 
             }
         </p>
-
-  
-     @*  <form method="post" action="~/overview">
-            <button type="submit">Click here to get started</button>
-        </form>*@
-
 
     @if (SignInManager.IsSignedIn(User))
         {
