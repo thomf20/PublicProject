@@ -1,4 +1,6 @@
-﻿namespace PublicProject.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PublicProject.Models
 {
     public class Blog
     {
@@ -10,17 +12,17 @@
         public string UserId { get; set; }
         public int? Popularity { get; set; } 
         public string? Footer { get; set; }
-        public SocialMedia[] socialMedias { get; set; }
-}
-    
-
-
-    public class SocialMedia
-    {
         public string? Facebook { get; set; }
         public string? Instagram { get; set; }
         public string? YouTube { get; set; }
-        public string? Twitter { get; set;}
-
+        public string? Twitter { get; set; }
     }
+
+
+
+    //public class SocialMedia
+    //{
+    //   
+
+    //}
 }

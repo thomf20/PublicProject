@@ -26,6 +26,26 @@
         <label asp-for="Blog.Footer" class="form-label"></label>
         <textarea asp-for="Blog.Footer" class="form-control" cols="40" rows="5"></textarea>
 
+        <div class="form-group">
+            <label asp-for="Blog.Facebook" class="control-label"></label>
+            <input asp-for="Blog.Facebook" class="form-control" />
+            <span asp-validation-for="Blog.Facebook" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Blog.Instagram" class="control-label"></label>
+            <input asp-for="Blog.Instagram" class="form-control" />
+            <span asp-validation-for="Blog.Instagram" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Blog.YouTube" class="control-label"></label>
+            <input asp-for="Blog.YouTube" class="form-control" />
+            <span asp-validation-for="Blog.YouTube" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Blog.Twitter" class="control-label"></label>
+            <input asp-for="Blog.Twitter" class="form-control" />
+            <span asp-validation-for="Blog.Twitter" class="text-danger"></span>
+
         <input type="submit" class="btn btn-success" value="Spara inlägg">
     </form>
 }
