@@ -12,23 +12,23 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
+/*html {
   position: relative;
   min-height: 100%;
-}
+}*/
 
-body {
+/*body {
   margin-bottom: 60px;
 }
-body {
+body {*/
   /*  background-image: url('/img/backgroundpic.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;*/
 }
-.mycontainer {
+/*.mycontainer {
     background-color: white;
-}
+}*/
 .frontpage-text{
     font-size: 50px;
     text-align: center;
@@ -56,11 +56,11 @@ body {
     background-color: lightblue;
     font-style: oblique;
 }
-.container .secondfrontpage-text{
+/*.container .secondfrontpage-text{
     padding: 5px;
     font-size:50px;
     text-align: center;
-}
+}*/
 .viewbutton{
     text-align: center;
     padding: 5px;
