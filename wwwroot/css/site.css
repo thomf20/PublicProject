@@ -20,12 +20,12 @@ html {
 body {
   margin-bottom: 60px;
 }
-body {
+/*body {
     background-image: url('/img/backgroundpic.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-}
+}*/
 .mycontainer {
     background-color: white;
 }
