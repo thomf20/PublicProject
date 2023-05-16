@@ -21,10 +21,10 @@ body {
   margin-bottom: 60px;
 }
 body {
-    background-image: url('/img/backgroundpic.jpg');
+  /*  background-image: url('/img/backgroundpic.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center;*/
 }
 .mycontainer {
     background-color: white;
