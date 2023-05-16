@@ -808,6 +808,9 @@ a img.alignleft {
 .post-image:hover, .flexslider:hover {
   position: relative;
 }
+.post-image img {
+    max-height: 250px;
+}
 
 /* Text meant only for screen readers. */
 .screen-reader-text {

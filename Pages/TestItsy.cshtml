@@ -1,5 +1,5 @@
 ﻿@page
-@model PublicProject.Pages.TestItsyModel
+@model PublicProject.Pages.IndexModel
 @{
 }
 
@@ -32,7 +32,7 @@
 </head>
 <body class="home sticky-menu sidebar-off" id="top">
 
-    <header class="header">
+@*    <header class="header">
 
         <div class="header-wrap">
 
@@ -109,15 +109,15 @@
 
         </div>
 
-    </header>
+    </header>*@
 
 
     <div class="hero" style="background-image: url('images/lead.jpg'); text-align:right;">
         <div class="hero-inner">
             <div class="inner">
-                <h1><span class="border border-top border-bottom">itsy</span></h1>
+                <h1><span class="border border-top border-bottom">Public project</span></h1>
                 <div class="hero-line-one"></div>
-                <div class="hero-line-two"><span class="border border-bottom"><a href="https://freehtml5.co" style="color:#FFF;">by FreeHTML5</a></span></div>
+                <div class="hero-line-two"><span class="border border-bottom"><a href="https://freehtml5.co" style="color:#FFF;">by Elias, Thom & Mohammed</a></span></div>
             </div>
 
             <a class="more-arrow" href="#content"><i class="fa fa-chevron-down"></i><span>Scroll Down</span></a>
@@ -126,7 +126,7 @@
     </div>
     <div class="home-sticky" id="content">
 
-        <h2 class="home-sticky-title">my fave moments</h2>
+        <h2 class="home-sticky-title">Blogginlägg</h2>
 
 
         <div class="sticky-inner">
@@ -135,20 +135,20 @@
 
                 <span class="post-image">
                     <a href="#">
-                        <img width="502" height="502" src="images/Lollipop-502x502.jpg"
+                        <img width="502" height="502" src="~/img/@Model.Blogs[0].Image"
                              class="attachment-sticky size-sticky" alt="" />
                     </a>
                 </span>
 
                 <div class="inner">
                     <h3 class="entry-title">
-                        <a href="#">The Lollipop</a>
+                        <a href="#">@Model.Blogs[0].Header</a>
                     </h3>
 
                     <ul class="meta top">
                         <li class="time">
                             <a href="#">
-                                <time class="post-date updated" datetime="2015-02-02">February 2, 2015</time>
+                                <time class="post-date updated">@Model.Blogs[0].Date</time>
                             </a>
                         </li>
                     </ul>
@@ -160,21 +160,21 @@
 
                 <span class="post-image">
                     <a href="#">
-                        <img width="502" height="502" src="images/Apothecary.jpg"
+                        <img width="502" height="502" src="~/img/@Model.Blogs[5].Image"
                              class="attachment-sticky size-sticky" alt="" />
                     </a>
                 </span>
 
                 <div class="inner">
                     <h3 class="entry-title">
-                        <a href="#">The Apothecary</a>
+                        <a href="#">@Model.Blogs[5].Header</a>
                     </h3>
 
                     <ul class="meta top">
                         <li class="time">
                             <a href="#"
                                title="The Apothecary">
-                                <time class="post-date updated" datetime="2015-01-31">January 31, 2015</time>
+                                <time class="post-date updated">@Model.Blogs[5].Date</time>
                             </a>
                         </li>
                     </ul>
@@ -186,20 +186,20 @@
 
                 <span class="post-image">
                     <a href="#">
-                        <img width="502" height="502" src="images/Flowers.jpg"
+                        <img width="502" height="502" src="~/img/@Model.Blogs[4].Image"
                              class="attachment-sticky size-sticky" alt="" />
                     </a>
                 </span>
 
                 <div class="inner">
                     <h3 class="entry-title">
-                        <a href="#">The Flowers</a>
+                        <a href="#">@Model.Blogs[4].Header</a>
                     </h3>
 
                     <ul class="meta top">
                         <li class="time">
                             <a href="#">
-                                <time class="post-date updated" datetime="2015-01-25">January 25, 2015</time>
+                                <time class="post-date updated">@Model.Blogs[4].Date</time>
                             </a>
                         </li>
                     </ul>
@@ -207,7 +207,7 @@
 
             </aside>
 
-            <aside class="home-sticky-post post has-post-thumbnail sticky ">
+            @*<aside class="home-sticky-post post has-post-thumbnail sticky ">
 
                 <span class="post-image">
                     <a href="#">
@@ -283,7 +283,7 @@
                     </ul>
                 </div>
 
-            </aside>
+            </aside>*@
 
         </div>
 
