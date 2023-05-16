@@ -7,11 +7,11 @@ namespace PublicProject.Pages
 {
     public class ViewBlogModel : PageModel
     {
-        private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
+        private readonly Data.ApplicationDbContext DBContext; 
 
         public Blog BlogPost { get; set; }
 
-        public ViewBlogModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
+        public ViewBlogModel(Data.ApplicationDbContext dbContext) 
         {
             DBContext = dbContext;
         }

@@ -19,10 +19,19 @@
     <div class="blog-pop">
         <p>Här har vi countern: @Model.BlogPost.Popularity</p>
     </div>
+    <div class="blog-footer">
+        <p>@Model.BlogPost.Footer</p>
+    </div>
+    <img class="img-fluid" src="~/img/@Model.BlogPost.Image" />
+    <div class="social-media-icons">
+        <a href="@Model.BlogPost.Facebook" target="_blank"><img src="~/img/FBpic.png" alt="Facebook" width="30px"></a>
+        <a href="@Model.BlogPost.Twitter" target="_blank"><img src="~/img/twitterpic.png" alt="Twitter" width="30px"></a>
+        <a href="@Model.BlogPost.Instagram" target="_blank"><img src="~/img/instagrampic.png" alt="Instagram" width="30px"></a>
+        <a href="@Model.BlogPost.YouTube" target="_blank"><img src="~/img/youtubepic.png" alt="YouTube" width="30px"></a>
+    </div>
 </div>
 
 
-<img class="img-fluid" src="~/img/@Model.BlogPost.Image" />
 
 
 @if (SignInManager.IsSignedIn(User))
