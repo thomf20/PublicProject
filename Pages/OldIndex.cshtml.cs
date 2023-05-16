@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PublicProject.Models;
@@ -6,15 +6,15 @@ using System.Security.Claims;
 
 namespace PublicProject.Pages
 {
-    public class IndexModel : PageModel
+    public class OldIndexModel : PageModel
     {
         private readonly Data.ApplicationDbContext _context;
-
-        public IndexModel(Data.ApplicationDbContext context)
+        
+        public OldIndexModel(Data.ApplicationDbContext context)
         {
             _context = context;
         }
-        public List<Models.Blog> Blogs { get; set; }
+        public  List<Models.Blog> Blogs { get; set; }
 
         [BindProperty]
         public Models.Blog Blog { get; set; }
@@ -54,7 +54,7 @@ namespace PublicProject.Pages
         {
             string fileName = string.Empty;
 
-            // Generarar ett relativt unikt fil namn s� att det inte finns 100 filer med samma namn.
+            // Generarar ett relativt unikt fil namn så att det inte finns 100 filer med samma namn.
             if (UploadedImage != null)
             {
                 Random rnd = new Random();
@@ -80,6 +80,6 @@ namespace PublicProject.Pages
 
 
 
-
+      
     }
 }
