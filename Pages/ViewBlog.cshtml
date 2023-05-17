@@ -29,28 +29,23 @@
 </head>
 <body id="page-top">
 
-    <img class="img-fluid" src="~/img/@Model.BlogPost.Image" />
-
-    <!-- Masthead-->
-    <header class="masthead">
-        <div class="container">
-            
-            <div class="masthead-heading text-uppercase">@Model.BlogPost.Header</div>
-            <div class="masthead-subheading"> @Model.BlogPost.Text</div>
-        </div>
-    </header>
-
-
     <div class="blog-content">
         <div class="blog-pop">
-            <p>Här har vi countern: @Model.BlogPost.Popularity</p>
+            <div class="container">
+                <strong><img class="test" width="30px" height="30px" src="~/img/viewcount.png" /> @Model.BlogPost.Popularity</strong>
+            </div>
         </div>
     </div>
 
 
-
-   
-
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <img class="img-fluid" src="~/img/@Model.BlogPost.Image" />
+            <div class="masthead-heading text-uppercase">@Model.BlogPost.Header</div>
+            <div class="masthead-subheading"> @Model.BlogPost.Text</div>
+        </div>
+    </header>
 
     <!-- About-->
     <section class="page-section" id="about">
@@ -61,8 +56,15 @@
             </div>
         </div>
     </section>
-   
-  
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        @if (user.Id == Model.BlogPost.UserId)
+        {
+            <a class="btn btn-primary" asp-page="/CRUD/Edit" asp-route-id="@Model.BlogPost.Id">Edit Blog</a>
+            <a class="btn btn-primary" asp-page="/CRUD/Delete" asp-route-id="@Model.BlogPost.Id">Delete blog</a>
+        }
+    }
   
     <!-- Footer-->
     <footer class="footer py-4">
@@ -100,7 +102,7 @@
   
 
 
-    @if (SignInManager.IsSignedIn(User))
+@*    @if (SignInManager.IsSignedIn(User))
     {
         @if (user.Id == Model.BlogPost.UserId)
         {
@@ -108,7 +110,7 @@
             <a class="btn btn-primary" asp-page="/CRUD/Delete" asp-route-id="@Model.BlogPost.Id">Delete blog</a>
 
         }
-    }
+    }*@
    
 
 
