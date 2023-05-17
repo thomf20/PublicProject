@@ -66,6 +66,11 @@ namespace PublicProject.Pages
                     await UploadedImage.CopyToAsync(fileStream);
                 }
             }
+            else
+            {
+                fileName = UploadedImage + "ingenbildbild.jpg";
+                var file = "./wwwroot/img/" + fileName;
+            }
             Blog.Date = DateTime.Now;
             Blog.Image = fileName;
             Blog.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
