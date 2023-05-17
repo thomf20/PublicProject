@@ -17,7 +17,7 @@
                         <img class="card-img-top" src="~/img/@b.Image">
                         <div class="card-body">
                             <h5 class="card-title">@b.Header</h5>
-                            <p class="card-text">@b.Text</p>
+                            <p class="card-text">@b.Text.LimitLength(200)...</p>
                         </div>
                         <p class="card-footer">@b.Date</p>
                         <div class="text-center">
