@@ -16,6 +16,7 @@ namespace PublicProject.Models
         public string? Instagram { get; set; }
         public string? YouTube { get; set; }
         public string? Twitter { get; set; }
+        public int Style { get; set; }
     }
 
 

@@ -37,11 +37,25 @@
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
                     <div>
-                        <p>
-                            <input type="text" id="textToCopy" value="@PublicProject.API.PasswordGeneratorAPI.GetRandomPassword().Result[0].Passwords" readonly>
-                            <button type="button" onclick="copyToClipboard()">Copy</button>
-                            <button id="refreshButton" onclick="refreshPage()">Refresh</button>                          
-                        </p>
+
+                        @try{
+                            <p>
+                                <input type="text" id="textToCopy" value="@PublicProject.API.PasswordGeneratorAPI.GetRandomPassword().Result[0].Passwords" readonly>
+                                <button type="button" onclick="copyToClipboard()">Copy</button>
+                                <button id="refreshButton" onclick="refreshPage()">Refresh</button>
+                            </p>
+                        }
+                        catch (AggregateException AE)
+                        {
+                            <br />
+                            <p>We have problem</p>
+                          
+                        }
+                        catch (HttpRequestException HRE)
+                        {
+                            <br />
+                            <p>Site is not work</p>
+                        }
                     </div>
                 }
                 else
