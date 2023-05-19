@@ -21,26 +21,24 @@ namespace PublicProject.Pages.CRUD
         }
 
         [BindProperty]
-        public Blog Blog { get; set; } = default!;
+        public Blog Blog { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Blog == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var blog =  await _context.Blog.FirstOrDefaultAsync(m => m.Id == id);
-            if (blog == null)
+            Blog = await _context.Blog.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Blog == null)
             {
                 return NotFound();
             }
-            Blog = blog;
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -66,12 +64,12 @@ namespace PublicProject.Pages.CRUD
                 }
             }
 
-            return RedirectToPage("/Overview", new { id = Blog.UserId });
+            return RedirectToPage("./Index");
         }
 
         private bool BlogExists(int id)
         {
-          return (_context.Blog?.Any(e => e.Id == id)).GetValueOrDefault();
+            return _context.Blog.Any(e => e.Id == id);
         }
     }
 }

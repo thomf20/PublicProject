@@ -25,13 +25,12 @@ namespace PublicProject.Pages.CRUD
         }
 
         [BindProperty]
-        public Blog Blog { get; set; } = default!;
-        
+        public Blog Blog { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Blog == null || Blog == null)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }

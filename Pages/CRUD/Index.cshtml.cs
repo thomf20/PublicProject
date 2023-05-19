@@ -19,14 +19,11 @@ namespace PublicProject.Pages.CRUD
             _context = context;
         }
 
-        public IList<Blog> Blog { get;set; } = default!;
+        public IList<Blog> Blog { get;set; }
 
         public async Task OnGetAsync()
         {
-            if (_context.Blog != null)
-            {
-                Blog = await _context.Blog.ToListAsync();
-            }
+            Blog = await _context.Blog.ToListAsync();
         }
     }
 }

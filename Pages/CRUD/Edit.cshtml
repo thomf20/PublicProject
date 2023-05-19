@@ -5,7 +5,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h2>Edit</h2>
 
 <h4>Blog</h4>
 <hr />
@@ -14,14 +14,6 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Blog.Id" />
-
-
-            <div class="form-group">
-                <label asp-for="Blog.Style" class="control-label"></label>
-                <input asp-for="Blog.Style" class="form-control" />
-                <span asp-validation-for="Blog.Style" class="text-danger"></span>
-
-            </div>
             <div class="form-group">
                 <label asp-for="Blog.Header" class="control-label"></label>
                 <input asp-for="Blog.Header" class="form-control" />
@@ -37,25 +29,21 @@
                 <input asp-for="Blog.Image" class="form-control" />
                 <span asp-validation-for="Blog.Image" class="text-danger"></span>
             </div>
-
-
-
-
-      @*      <div class="form-group">
+            <div class="form-group">
                 <label asp-for="Blog.Date" class="control-label"></label>
                 <input asp-for="Blog.Date" class="form-control" />
                 <span asp-validation-for="Blog.Date" class="text-danger"></span>
-            </div>*@
-        @*    <div class="form-group">
+            </div>
+            <div class="form-group">
                 <label asp-for="Blog.UserId" class="control-label"></label>
                 <input asp-for="Blog.UserId" class="form-control" />
                 <span asp-validation-for="Blog.UserId" class="text-danger"></span>
-            </div>*@
-       @*     <div class="form-group">
+            </div>
+            <div class="form-group">
                 <label asp-for="Blog.Popularity" class="control-label"></label>
                 <input asp-for="Blog.Popularity" class="form-control" />
                 <span asp-validation-for="Blog.Popularity" class="text-danger"></span>
-            </div>*@
+            </div>
             <div class="form-group">
                 <label asp-for="Blog.Footer" class="control-label"></label>
                 <input asp-for="Blog.Footer" class="form-control" />
@@ -82,7 +70,12 @@
                 <span asp-validation-for="Blog.Twitter" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="Blog.Style" class="control-label"></label>
+                <input asp-for="Blog.Style" class="form-control" />
+                <span asp-validation-for="Blog.Style" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
     </div>

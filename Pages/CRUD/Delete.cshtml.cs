@@ -20,44 +20,40 @@ namespace PublicProject.Pages.CRUD
         }
 
         [BindProperty]
-      public Blog Blog { get; set; } = default!;
+        public Blog Blog { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Blog == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var blog = await _context.Blog.FirstOrDefaultAsync(m => m.Id == id);
+            Blog = await _context.Blog.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (blog == null)
+            if (Blog == null)
             {
                 return NotFound();
-            }
-            else 
-            {
-                Blog = blog;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Blog == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            var blog = await _context.Blog.FindAsync(id);
 
-            if (blog != null)
+            Blog = await _context.Blog.FindAsync(id);
+
+            if (Blog != null)
             {
-                Blog = blog;
                 _context.Blog.Remove(Blog);
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Overview", new { id = Blog.UserId });
+            return RedirectToPage("./Index");
         }
     }
 }

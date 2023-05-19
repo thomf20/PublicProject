@@ -19,23 +19,20 @@ namespace PublicProject.Pages.CRUD
             _context = context;
         }
 
-      public Blog Blog { get; set; } = default!; 
+        public Blog Blog { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Blog == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var blog = await _context.Blog.FirstOrDefaultAsync(m => m.Id == id);
-            if (blog == null)
+            Blog = await _context.Blog.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Blog == null)
             {
                 return NotFound();
-            }
-            else 
-            {
-                Blog = blog;
             }
             return Page();
         }
