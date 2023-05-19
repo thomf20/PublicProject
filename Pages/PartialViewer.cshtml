@@ -1,13 +1,13 @@
 ﻿@page
-@model PrivacyModel
+@model ViewBlogModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 @{
     var user = await UserManager.GetUserAsync(User);
+
 }
 
-
 <div>
-    @await Html.PartialAsync("Privacy")
+    @await Html.PartialAsync("https://localhost:44394/Neuron?id=22")
 </div>

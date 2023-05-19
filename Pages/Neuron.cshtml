@@ -1,16 +1,18 @@
 ﻿@page
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@model PublicProject.Pages.ViewBlogModel
 @{
 
     var user = await UserManager.GetUserAsync(User);
 }
-@model PublicProject.Pages.Neuron
+
 @{
 }
 
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
