@@ -20,7 +20,6 @@ namespace PublicProject.API
                 if (response.IsSuccessStatusCode)
                 {
                     string responsestring = await response.Content.ReadAsStringAsync();
-                    //RandomGeneratedPassword = JsonSerializer.Deserialize<string>(responsestring);
                     RandomGeneratedPassword = JsonSerializer.Deserialize<List<Models.Password>>(responsestring);
                 }
             }
