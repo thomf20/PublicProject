@@ -1,0 +1,13 @@
+﻿@page
+@model PrivacyModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+
+<div>
+    @await Html.PartialAsync("Privacy")
+</div>
