@@ -12,6 +12,12 @@
     <p>Du är inloggad som @User.Identity.Name</p>
 
     <form method="post" enctype="multipart/form-data">
+
+        <label asp-for="Blog.Style" class="form-label"></label>
+        <input asp-for="Blog.Style" class="form-control" />
+
+
+
         <label asp-for="Blog.Header" class="form-label"></label>
         <input asp-for="Blog.Header" class="form-control"/>
 
