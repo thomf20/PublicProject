@@ -248,7 +248,7 @@ else
 {
     @if (user.Id == Model.BlogPost.UserId)
     {
-        <a class="btn btn-primary" asp-page="/CRUD/Edit" asp-route-id="@Model.BlogPost.Id">Edit Blog</a>
+        <a class="btn btn-primary" asp-page="/Edit" asp-route-id="@Model.BlogPost.Id">Edit Blog</a>
         <a class="btn btn-primary" asp-page="/CRUD/Delete" asp-route-id="@Model.BlogPost.Id">Delete blog</a>
     }
 }

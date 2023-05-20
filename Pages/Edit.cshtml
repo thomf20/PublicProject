@@ -1,0 +1,244 @@
+﻿@page
+@model PublicProject.Pages.CRUD.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit page</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+      @*  <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Blog.Id" />
+            <div class="form-group">
+                <label asp-for="Blog.Header" class="control-label"></label>
+                <input asp-for="Blog.Header" class="form-control" />
+                <span asp-validation-for="Blog.Header" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Text" class="control-label"></label>
+                <input asp-for="Blog.Text" class="form-control" />
+                <span asp-validation-for="Blog.Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Image" class="control-label"></label>
+                <input asp-for="Blog.Image" class="form-control" />
+                <span asp-validation-for="Blog.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Date" class="control-label"></label>
+                <input asp-for="Blog.Date" class="form-control" readonly/>
+                <span asp-validation-for="Blog.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.UserId" class="control-label"></label>
+                <input asp-for="Blog.UserId" class="form-control " readonly />
+                <span asp-validation-for="Blog.UserId" class="text-danger"></span>
+            </div>
+           <div class="form-group">
+                <label asp-for="Blog.Popularity" class="control-label"></label>
+                <input asp-for="Blog.Popularity" class="form-control" readonly />
+                <span asp-validation-for="Blog.Popularity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Footer" class="control-label"></label>
+                <input asp-for="Blog.Footer" class="form-control" />
+                <span asp-validation-for="Blog.Footer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Facebook" class="control-label"></label>
+                <input asp-for="Blog.Facebook" class="form-control" />
+                <span asp-validation-for="Blog.Facebook" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Instagram" class="control-label"></label>
+                <input asp-for="Blog.Instagram" class="form-control" />
+                <span asp-validation-for="Blog.Instagram" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.YouTube" class="control-label"></label>
+                <input asp-for="Blog.YouTube" class="form-control" />
+                <span asp-validation-for="Blog.YouTube" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Twitter" class="control-label"></label>
+                <input asp-for="Blog.Twitter" class="form-control" />
+                <span asp-validation-for="Blog.Twitter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Blog.Style" class="control-label"></label>
+                <input asp-for="Blog.Style" class="form-control" />
+                <span asp-validation-for="Blog.Style" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>*@
+    </div>
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Agency - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    @* <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />*@
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/black/styles.css" rel="stylesheet" />
+</head>
+<body id="page-top">
+     <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Blog.Id" />
+    <div class="blog-content">
+        <div class="blog-pop">
+            <div class="container">
+                <strong>
+                        <div class="form-group">
+                            <label asp-for="Blog.Date" class="control-label"></label>
+                            <input asp-for="Blog.Date" class="form-control" readonly />
+                            <span asp-validation-for="Blog.Date" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Blog.Style" class="control-label"></label>
+                            <input asp-for="Blog.Style" class="form-control" />
+                            <span asp-validation-for="Blog.Style" class="text-danger"></span>
+                        </div>
+                    <img class="test" width="30px" height="30px" src="~/img/viewcount.png" />  <label asp-for="Blog.Popularity" class="control-label"></label>
+                    <input asp-for="Blog.Popularity" class="form-control" readonly />
+                    <span asp-validation-for="Blog.Popularity" class="text-danger"></span>
+
+                        <label asp-for="Blog.UserId" class="control-label"></label>
+                        <input asp-for="Blog.UserId" class="form-control " readonly />
+                        <span asp-validation-for="Blog.UserId" class="text-danger"></span>
+                </strong>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-heading text-uppercase">
+
+               @* <label asp-for="Blog.Header" class="control-label"></label>*@
+                <input asp-for="Blog.Header" class="form-control" />
+                <span asp-validation-for="Blog.Header" class="text-danger"></span>
+
+                <div class="masthead-heading text-uppercase">@Model.Blog.Header</div>
+
+               @* <label asp-for="Blog.Image" class="control-label"></label>*@
+                <input asp-for="Blog.Image" class="form-control" />
+                <span asp-validation-for="Blog.Image" class="text-danger"></span>
+                <img class="img-fluid" src="~/img/@Model.Blog.Image" />
+
+
+                <input asp-for="Blog.Text" class="form-control" />
+                <span asp-validation-for="Blog.Text" class="text-danger"></span>
+                <div class="masthead-subheading"> @Model.Blog.Text</div>
+              @*  <label asp-for="Blog.Text" class="control-label"></label>*@
+          
+
+              
+            </div>
+        </div>
+    </header>
+
+    <!-- About-->
+    <section class="page-section" id="about">
+        <div class="container">
+            <div class="text-center">
+
+               @* <label asp-for="Blog.Footer" class="control-label"></label>*@
+                <h2 class="section-heading text-uppercase">Om skrivaren</h2>
+
+                <input asp-for="Blog.Footer" class="form-control" />
+                <span asp-validation-for="Blog.Footer" class="text-danger"></span>
+                
+                <h3 class="section-subheading text-muted">@Model.Blog.Footer</h3>
+
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 text-lg-start">Copyright &copy; Public Project 2023</div>
+                <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" href="@Model.Blog.Twitter" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="@Model.Blog.Facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="@Model.Blog.YouTube" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="@Model.Blog.Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <div class="form-group">
+                        <label asp-for="Blog.Facebook" class="control-label"></label>
+                        <input asp-for="Blog.Facebook" class="form-control" />
+                        <span asp-validation-for="Blog.Facebook" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Blog.Instagram" class="control-label"></label>
+                        <input asp-for="Blog.Instagram" class="form-control" />
+                        <span asp-validation-for="Blog.Instagram" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Blog.YouTube" class="control-label"></label>
+                        <input asp-for="Blog.YouTube" class="form-control" />
+                        <span asp-validation-for="Blog.YouTube" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Blog.Twitter" class="control-label"></label>
+                        <input asp-for="Blog.Twitter" class="form-control" />
+                        <span asp-validation-for="Blog.Twitter" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                    <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
