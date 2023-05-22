@@ -20,20 +20,20 @@ namespace PublicProject.Pages
         public IActionResult OnGet(int id)
         {
 
-            BlogPost = DBContext.Blog.Find(id);
+            //BlogPost = DBContext.Blog.Find(id);
 
 
-            if( BlogPost.Popularity == null)
-            {
-                BlogPost.Popularity = 0;
-            }
+            //if( BlogPost.Popularity == null)
+            //{
+            //    BlogPost.Popularity = 0;
+            //}
 
-            BlogPost.Popularity++;
+            //BlogPost.Popularity++;
 
-            if (BlogPost == null)
-            {
-                return NotFound();
-            }
+            //if (BlogPost == null)
+            //{
+            //    return NotFound();
+            //}
 
             DBContext.SaveChanges();
             return Page();

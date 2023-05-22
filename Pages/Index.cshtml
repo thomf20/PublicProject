@@ -70,20 +70,20 @@
 
                 <span class="post-image">
                     <a href="#">
-                        <img width="502" height="502" src="~/img/@Model.Blogs[0].Image"
-                             class="attachment-sticky size-sticky" alt="" />
+                       @* <img width="502" height="502" src="~/img/@Model.Blogs[0].Image"
+                             class="attachment-sticky size-sticky" alt="" />*@
                     </a>
                 </span>
 
                 <div class="inner">
                     <h3 class="entry-title">
-                        <a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[0].Id">@Model.Blogs[0].Header</a>
+                        @*<a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[0].Id">@Model.Blogs[0].Header</a>*@
                     </h3>
 
                     <ul class="meta top">
                         <li class="time">
                             <p href="#">
-                                <time class="post-date updated">@Model.Blogs[0].Date</time>
+@*                                <time class="post-date updated">@Model.Blogs[0].Date</time>*@
                             </p>
                         </li>
                     </ul>
@@ -95,21 +95,21 @@
 
                 <span class="post-image">
                     <a href="#">
-                        <img width="502" height="502" src="~/img/@Model.Blogs[5].Image"
+                        @*<img width="502" height="502" src="~/img/@Model.Blogs[5].Image"*@
                              class="attachment-sticky size-sticky" alt="" />
                     </a>
                 </span>
 
                 <div class="inner">
                     <h3 class="entry-title">
-                        <a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[5].Id">@Model.Blogs[5].Header</a>
+                        @*<a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[5].Id">@Model.Blogs[5].Header</a>*@
                     </h3>
 
                     <ul class="meta top">
                         <li class="time">
                             <p href="#"
                                title="The Apothecary">
-                                <time class="post-date updated">@Model.Blogs[5].Date</time>
+                              @*  <time class="post-date updated">@Model.Blogs[5].Date</time>*@
                             </p>
                         </li>
                     </ul>
@@ -121,20 +121,20 @@
 
                 <span class="post-image">
                     <a href="#">
-                        <img width="502" height="502" src="~/img/@Model.Blogs[4].Image"
+                      @*  <img width="502" height="502" src="~/img/@Model.Blogs[4].Image"*@
                              class="attachment-sticky size-sticky" alt="" />
                     </a>
                 </span>
 
                 <div class="inner">
                     <h3 class="entry-title">
-                        <a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[4].Id">@Model.Blogs[4].Header</a>
+                    @*    <a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[4].Id">@Model.Blogs[4].Header</a>*@
                     </h3>
 
                     <ul class="meta top">
                         <li class="time">
                             <p href="#">
-                                <time class="post-date updated">@Model.Blogs[4].Date</time>
+                               @* <time class="post-date updated">@Model.Blogs[4].Date</time>*@
                             </p>
                         </li>
                     </ul>
@@ -151,7 +151,7 @@
                     @for (int i = 0; i < 5; i++)
                     {
                         <li>
-                            <a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Header</a>
+                            @*<a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Header</a>*@
                         </li>
 
                     }

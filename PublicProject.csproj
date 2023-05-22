@@ -24,4 +24,27 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Pages\Admin\BlogAdmin\Create.cshtml" />
+    <None Include="Pages\Admin\BlogAdmin\Delete.cshtml" />
+    <None Include="Pages\Admin\BlogAdmin\Details.cshtml" />
+    <None Include="Pages\Admin\BlogAdmin\Edit.cshtml" />
+    <None Include="Pages\Admin\BlogAdmin\Index.cshtml" />
+    <None Include="Pages\Admin\CategoryAdmin\Create.cshtml" />
+    <None Include="Pages\Admin\CategoryAdmin\Delete.cshtml" />
+    <None Include="Pages\Admin\CategoryAdmin\Details.cshtml" />
+    <None Include="Pages\Admin\CategoryAdmin\Edit.cshtml" />
+    <None Include="Pages\Admin\CategoryAdmin\Index.cshtml" />
+    <None Include="Pages\Admin\CommentAdmin\Create.cshtml" />
+    <None Include="Pages\Admin\CommentAdmin\Delete.cshtml" />
+    <None Include="Pages\Admin\CommentAdmin\Details.cshtml" />
+    <None Include="Pages\Admin\CommentAdmin\Edit.cshtml" />
+    <None Include="Pages\Admin\CommentAdmin\Index.cshtml" />
+    <None Include="Pages\Admin\SubCategory\Create.cshtml" />
+    <None Include="Pages\Admin\SubCategory\Delete.cshtml" />
+    <None Include="Pages\Admin\SubCategory\Details.cshtml" />
+    <None Include="Pages\Admin\SubCategory\Edit.cshtml" />
+    <None Include="Pages\Admin\SubCategory\Index.cshtml" />
+  </ItemGroup>
+
 </Project>

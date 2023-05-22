@@ -11,7 +11,7 @@
 
 
 
-
+@*
 @if (Model.BlogPost.Style == 1)
 {
 
@@ -26,12 +26,12 @@
         <!-- Favicon-->
         @* <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />*@
         <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        @*<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>*@
         <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+   @*     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />*@
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/black/styles.css" rel="stylesheet" />
+    @*    <link href="css/black/styles.css" rel="stylesheet" />
     </head>
     <body id="page-top">
 
@@ -91,11 +91,11 @@
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
-    </html>
+    </html>*@
 }
 
 
-@if (Model.BlogPost.Style == 2)
+@*@if (Model.BlogPost.Style == 2)
 {
     
   
@@ -156,14 +156,14 @@
             @* <div class="col-md-12 col-sm-12">
             <h1>Single Post</h1>
             </div>*@
-
+@*
         </div>
     </div>
-</section>
+</section>*@
 
 <!-- Blog Single Post Section -->
 
-<section id="blog-single-post">
+@*<section id="blog-single-post">
     <div class="container">
         <div class="row">
 
@@ -183,7 +183,7 @@
         </div>
     </div>
 </section>
-
+*@
 
 
 
@@ -191,7 +191,7 @@
 
 <!-- Footer Section -->
 
-<footer>
+@*<footer>
     <div class="container">
         <div class="row">
 
@@ -218,10 +218,10 @@
 
         </div>
     </div>
-</footer>
+</footer>*@
 
 <!-- Back top -->
-<a href="#back-top" class="go-top"><i class="fa fa-angle-up"></i></a>
+@*<a href="#back-top" class="go-top"><i class="fa fa-angle-up"></i></a>*@
 
 <!-- SCRIPTS -->
 <!--<script src="js/jquery.js"></script>
@@ -235,7 +235,7 @@
 }
 
 
-else
+@*else
 {
     <h1> Sidan har ingen style ännu, rip </h1>
 }
@@ -249,3 +249,4 @@ else
         <a class="btn btn-primary" asp-page="/CRUD/Delete" asp-route-id="@Model.BlogPost.Id">Delete blog</a>
     }
 }
+*@

@@ -25,22 +25,22 @@ namespace PublicProject.Pages
         {
             if (deleteid != 0)
             {
-                Models.Category blog = await _context.Blog.FindAsync(deleteid);
+                //Models.Category blog = await _context.Blog.FindAsync(deleteid);
 
-                if (blog != null)
+                //if (blog != null)
                 {
-                    if (System.IO.File.Exists("./wwwroot/img/" + blog.Image))
-                    {
-                        System.IO.File.Delete("./wwwroot/img/" + blog.Image);
-                    }
-                    _context.Blog.Remove(blog);
+                    //if (System.IO.File.Exists("./wwwroot/img/" + blog.Image))
+                    //{
+                    //    System.IO.File.Delete("./wwwroot/img/" + blog.Image);
+                    //}
+                    //_context.Blog.Remove(blog);
                     await _context.SaveChangesAsync();
 
                     return RedirectToPage("./Index");
                 }
             }
 
-            Blogs = await _context.Blog.ToListAsync();
+            //Blogs = await _context.Blog.ToListAsync();
 
 
             return Page();
@@ -71,9 +71,9 @@ namespace PublicProject.Pages
                 fileName = UploadedImage + "ingenbildbild.jpg";
                 var file = "./wwwroot/img/" + fileName;
             }
-            Blog.Date = DateTime.Now;
-            Blog.Image = fileName;
-            Blog.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //Blog.Date = DateTime.Now;
+            //Blog.Image = fileName;
+            //Blog.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             _context.Add(Blog);
 

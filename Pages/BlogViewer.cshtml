@@ -94,7 +94,7 @@
         *@
 
         <div class="sticky-inner">
-            @foreach(var b in Model.Blogs)
+         @*   @foreach(var b in Model.Blogs)
             {
                  <aside class="home-sticky-post post has-post-thumbnail sticky">
 
@@ -116,7 +116,7 @@
                                 <time class="post-date updated">@b.Date</time>
                             </p>
                         </li>
-                    </ul>
+                    </ul>*@
                 </div>
 
             </aside>
@@ -135,7 +135,7 @@
                     @for (int i = 0; i < 5; i++)
                     {
                         <li>
-                            <a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Header</a>
+                           @* <a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Header</a>*@
                         </li>
 
                     }
