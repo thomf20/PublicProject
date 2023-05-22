@@ -14,10 +14,10 @@ namespace PublicProject.Pages
         {
             _context = context;
         }
-        public List<Models.Blog> Blogs { get; set; }
+        public List<Models.Category> Blogs { get; set; }
 
         [BindProperty]
-        public Models.Blog Blog { get; set; }
+        public Models.Category Blog { get; set; }
 
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
@@ -25,7 +25,7 @@ namespace PublicProject.Pages
         {
             if (deleteid != 0)
             {
-                Models.Blog blog = await _context.Blog.FindAsync(deleteid);
+                Models.Category blog = await _context.Blog.FindAsync(deleteid);
 
                 if (blog != null)
                 {

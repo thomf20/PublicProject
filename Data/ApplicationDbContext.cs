@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PublicProject.Models;
 
 namespace PublicProject.Data
 {
@@ -10,6 +11,11 @@ namespace PublicProject.Data
         {
         }
 
-        public DbSet<Models.Blog> Blog { get; set; }
+     
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
     }
 }

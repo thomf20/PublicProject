@@ -21,7 +21,7 @@ namespace PublicProject.Pages.CRUD
         }
 
         [BindProperty]
-        public Blog Blog { get; set; }
+        public Category Blog { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
