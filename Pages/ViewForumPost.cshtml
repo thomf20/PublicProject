@@ -1,0 +1,93 @@
+﻿@page
+@model PublicProject.Pages.ViewForumPostModel
+@{
+}
+
+@*<div class="blog-content">
+    <div class="blog-pop">
+        <div class="container">
+            <strong><img class="test" width="30px" height="30px" src="~/img/viewcount.png" /> @Model.BlogPost.Popularity</strong>
+        </div>
+    </div>
+</div>
+
+<img class="" src="~/img/@Model.BlogPost.Image">
+<h1>@Model.BlogPost.Title</h1>
+<p>@Model.BlogPost.Text</p>*@
+
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Agency - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+       <link href="css/black/styles.css" rel="stylesheet" />
+    </head>
+    
+
+<div class="blog-content">
+    <div class="blog-pop">
+        <div class="container">
+            <strong><img class="test" width="30px" height="30px" src="~/img/viewcount.png" /> @Model.BlogPost.Popularity</strong>
+        </div>
+    </div>
+</div>
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-heading text-uppercase">@Model.BlogPost.Title</div>
+        <img class="img-fluid" src="~/img/@Model.BlogPost.Image" />
+        <div class="masthead-subheading"> @Model.BlogPost.Text</div>
+    </div>
+</header>
+
+<!-- About-->
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Om skrivaren</h2>
+            <h3 class="section-subheading text-muted">@Model.BlogPost.Date</h3>
+        </div>
+    </div>
+</section>
+<!--Comment section-->
+@foreach(var comment in Model.Comments)
+{
+    if(Model.BlogPost.Id == comment.BlogId)
+    {
+                 <p>@comment.Image | @comment.Author | @comment.Date | @comment.Text |</p>
+    }
+    <form>
+                <div class="form-group">
+            <label asp-for="Comments." class="control-label"></label>
+            <input asp-for="Blog.Facebook" class="form-control" />
+            <span asp-validation-for="Blog.Facebook" class="text-danger"></span>
+        </div>
+    </form>
+   
+}
+
+
+
+<!-- Footer-->
+<footer class="footer py-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 text-lg-start">Copyright &copy; Public Project 2023</div>
+            <div class="col-lg-4 text-lg-end">
+                <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
+                <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+            </div>
+        </div>
+    </div>
+</footer>
