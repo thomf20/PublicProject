@@ -9,7 +9,7 @@ namespace PublicProject.Pages
     {
         private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
 
-        public Category BlogPost { get; set; }
+        public Blog BlogPost { get; set; }
 
         public ViewBlogModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
         {
@@ -20,20 +20,22 @@ namespace PublicProject.Pages
         public IActionResult OnGet(int id)
         {
 
-            //BlogPost = DBContext.Blog.Find(id);
+            BlogPost = DBContext.Blogs.Find(id);
 
 
-            //if( BlogPost.Popularity == null)
-            //{
-            //    BlogPost.Popularity = 0;
-            //}
 
-            //BlogPost.Popularity++;
 
-            //if (BlogPost == null)
-            //{
-            //    return NotFound();
-            //}
+            if( BlogPost.Popularity == null)
+            {
+                BlogPost.Popularity = 0;
+            }
+
+            BlogPost.Popularity++;
+
+            if (BlogPost == null)
+            {
+                return NotFound();
+            }
 
             DBContext.SaveChanges();
             return Page();

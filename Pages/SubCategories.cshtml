@@ -30,12 +30,18 @@
 }*@
 
 @page
-@model PublicProject.Pages.IndexModel
+@model PublicProject.Pages.NewSubcategoriesModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Blogviewer";
     var user = await UserManager.GetUserAsync(User);
+
+
+    var collection = new List<Models.Blog>();
+
+    var filtereddata = collection.Where(b => b.Id == Model.Subcategory.Id);
+}
 }
 
 <html class="home blog no-js" lang="en-US">
@@ -65,28 +71,43 @@
     {
         <a asp-page="/overview" asp-route-id="@user.Id"><h3 class="home-sticky-title"> View User Profile</h3></a>
     }
+  
+ 
 
-    <div class="hero" style="background-image: url('images/lead.jpg'); text-align:right;">
-        <div class="hero-inner">
-            <div class="inner">
-                <h1><span class="border border-top border-bottom">Public project</span></h1>
-                <div class="hero-line-one"></div>
-                <div class="hero-line-two"><span class="border border-bottom"><a style="color:#FFF;">by Elias, Thom & Mohammed</a></span></div>
-            </div>
 
-            <a class="more-arrow" href="#content"><i class="fa fa-chevron-down"></i><span>Scroll Down</span></a>
 
-        </div>
-    </div>
+
+
+
+
+
+
+   
     <br />
     <div class="home-sticky" id="content">
 
-        <a asp-page="/BlogViewer"><h2 class="home-sticky-title">Blogginlägg</h2></a>
+        <<h2 class="home-sticky-title">Huvudkategorier</h2></a>
 
         @*        <h2 class="home-sticky-title" asp-page="/BlogViewer">Blogginlägg</h2>
         *@
 
         <div class="sticky-inner">
+
+
+            <section>
+
+                @foreach( var category in filtereddata)
+                {
+                    <a asp-page="/ViewBlog" asp-route-id="@category.Id"> @category.Id </a>
+                }
+
+                
+
+            </section>
+
+
+
+
          @*   @foreach(var b in Model.Blogs)
             {
                  <aside class="home-sticky-post post has-post-thumbnail sticky">
@@ -112,7 +133,7 @@
                     </ul>*@
                 </div>
 
-            </aside>
+        
             
            
 

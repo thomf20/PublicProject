@@ -1,16 +1,29 @@
 ﻿@page
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+
+@model PublicProject.Pages.ViewBlogModel
 @{
 
     var user = await UserManager.GetUserAsync(User);
+
+    var collection = new List<Models.Blog>();
+
+    var filtereddata = collection.Where(b => b.Id == Model.BlogPost.SubcategoryId);
+
+
 }
-@model PublicProject.Pages.ViewBlogModel
 @{
 }
 
 
 
+
+
+@foreach(var b in filtereddata)
+{
+    <h1> @b.Title</h1>
+}
 @*
 @if (Model.BlogPost.Style == 1)
 {

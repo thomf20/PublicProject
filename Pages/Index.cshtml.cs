@@ -14,10 +14,11 @@ namespace PublicProject.Pages
         {
             _context = context;
         }
-        public List<Models.Category> Blogs { get; set; }
+        public List<Models.Category> Categories { get; set; }
 
         [BindProperty]
-        public Models.Category Blog { get; set; }
+        public Models.Category Category { get; set; }
+
 
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
@@ -45,11 +46,7 @@ namespace PublicProject.Pages
 
             return Page();
         }
-        public async Task<IActionResult> OnGetAsync2()
-        {
-            return Page();
-        }
-
+     
         public async Task<IActionResult> OnPostAsync()
         {
             string fileName = string.Empty;
@@ -75,7 +72,7 @@ namespace PublicProject.Pages
             //Blog.Image = fileName;
             //Blog.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            _context.Add(Blog);
+            _context.Add(Category);
 
             await _context.SaveChangesAsync();
 
