@@ -68,8 +68,13 @@
     {
                  <p>@comment.Image | @comment.Author | @comment.Date | @comment.Text |</p>
     }
-  
-   
+}
+@{
+    int commentId = Model.Comments.Count() + 1;
+    //if(commentId == 10)
+    //{
+    //    commentId = 11;
+    //}
 }
 
 <div class="row">
@@ -78,7 +83,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Comment.Id" class="control-label"></label>
-                <input asp-for="Comment.Id" class="form-control" />
+                <input asp-for="Comment.Id" value="@commentId" class="form-control" readonly type="hidden" />
                 <span asp-validation-for="Comment.Id" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -98,12 +103,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Comment.Date" class="control-label"></label>
-                <input asp-for="Comment.Date" class="form-control"  />
+                <input asp-for="Comment.Date" value="@DateTime.Now" class="form-control" readonly type="hidden" />
                 <span asp-validation-for="Comment.Date" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Comment.BlogId" class="control-label"></label>
-                <input asp-for="Comment.BlogId " value ="@Model.BlogPost.Id" class="form-control" readonly />
+                <input asp-for="Comment.BlogId " value="@Model.BlogPost.Id" class="form-control" readonly type="hidden" />
                 <span asp-validation-for="Comment.BlogId" class="text-danger"></span>
             </div>
             <div class="form-group">
