@@ -10,6 +10,8 @@ namespace PublicProject.Pages
 
         private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
         public Models.SubCategory Subcategory { get; set; }
+        public List< Models.Blog> Blogs { get; set; }
+
 
         public NewSubcategoriesModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
         {
@@ -20,6 +22,7 @@ namespace PublicProject.Pages
         public IActionResult OnGet(int id)
         {
 
+            Blogs = DBContext.Blogs.ToList();
             Subcategory = DBContext.SubCategories.Find(id);
 
 

@@ -72,17 +72,6 @@
         <a asp-page="/overview" asp-route-id="@user.Id"><h3 class="home-sticky-title"> View User Profile</h3></a>
     }
   
- 
-
-
-
-
-
-
-
-
-
-   
     <br />
     <div class="home-sticky" id="content">
 
@@ -96,12 +85,22 @@
 
             <section>
 
-                @foreach( var category in filtereddata)
+            @*    @foreach( var category in filtereddata)
                 {
-                    <a asp-page="/ViewBlog" asp-route-id="@category.Id"> @category.Id </a>
-                }
 
-                
+
+                    <a asp-page="/ViewBlog" asp-route-id="@category.Id"> @category.Id </a>
+                }*@
+
+                @foreach (var blogs in Model.Blogs )
+                {
+
+                    if (blogs.SubcategoryId == Model.Subcategory.Id)
+                    {
+                        <h1>@blogs.Title </h1>
+                    }
+                   
+                }
 
             </section>
 
