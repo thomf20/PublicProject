@@ -80,7 +80,7 @@
     <br />
     <div class="home-sticky" id="content">
 
-        <<h2 class="home-sticky-title">Huvudkategorier</h2></a>
+        <h2 class="home-sticky-title">Huvudkategorier</h2></a>
 
         @*        <h2 class="home-sticky-title" asp-page="/BlogViewer">Blogginlägg</h2>
         *@
@@ -92,8 +92,8 @@
 
                 @foreach( var category in Model.Category)
                 {
-                    
-                    <a asp-page="/NewSubCategories" asp-route-id="@category.Id"> @category.Name </a>
+
+                    <a asp-page="/NewSubCategories" asp-route-id="@category.Id"><h3> @category.Name </h3></a>
                 }
 
                 
