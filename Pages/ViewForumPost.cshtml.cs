@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using PublicProject.Models;
 
 namespace PublicProject.Pages
@@ -14,10 +15,16 @@ namespace PublicProject.Pages
         public List<Models.SubCategory> Subcategories { get; set; }
         public List<Models.Comment> Comments { get; set; }
 
+        private readonly PublicProject.Data.ApplicationDbContext _context;
         public ViewForumPostModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
         {
             DBContext = dbContext;
+            _context = dbContext;
         }
+        [BindProperty]
+        public Comment Comment { get; set; } = default!;
+
+        
         public IActionResult OnGet(int id)
         {
 
@@ -28,8 +35,9 @@ namespace PublicProject.Pages
             {
                 BlogPost.Popularity = 0;
             }
-
+            
             BlogPost.Popularity++;
+
 
             if (BlogPost == null)
             {
@@ -39,5 +47,28 @@ namespace PublicProject.Pages
             DBContext.SaveChanges();
             return Page();
         }
+
+      
+
+      
+        
+
+
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid || _context.Comments == null || Comment == null)
+            {
+                return Page();
+            }
+
+
+            _context.Comments.Add(Comment);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
+        }
+
+
     }
 }

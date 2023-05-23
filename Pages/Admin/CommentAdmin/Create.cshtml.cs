@@ -26,6 +26,8 @@ namespace PublicProject.Pages.CommentAdmin
 
         [BindProperty]
         public Comment Comment { get; set; } = default!;
+
+
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
