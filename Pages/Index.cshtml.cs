@@ -18,6 +18,8 @@ namespace PublicProject.Pages
 
         [BindProperty]
         public Models.Category Category { get; set; }
+        public List<Blog> Blogs { get; set; }
+
 
 
         [BindProperty]
@@ -42,6 +44,7 @@ namespace PublicProject.Pages
             }
 
             //Blogs = await _context.Blog.ToListAsync();
+            Blogs = _context.Blogs.ToList();
 
 
             return Page();

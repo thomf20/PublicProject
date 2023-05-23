@@ -82,7 +82,6 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Comment.Id" class="control-label"></label>
                 <input asp-for="Comment.Id" value="@commentId" class="form-control" readonly type="hidden" />
                 <span asp-validation-for="Comment.Id" class="text-danger"></span>
             </div>
@@ -102,12 +101,10 @@
                 <span asp-validation-for="Comment.Image" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Comment.Date" class="control-label"></label>
                 <input asp-for="Comment.Date" value="@DateTime.Now" class="form-control" readonly type="hidden" />
                 <span asp-validation-for="Comment.Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Comment.BlogId" class="control-label"></label>
                 <input asp-for="Comment.BlogId " value="@Model.BlogPost.Id" class="form-control" readonly type="hidden" />
                 <span asp-validation-for="Comment.BlogId" class="text-danger"></span>
             </div>

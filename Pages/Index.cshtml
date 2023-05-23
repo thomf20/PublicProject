@@ -143,10 +143,10 @@
             <div class="widget footer">
                 <h4>Popular posts</h4>
                 <ul>
-                    @for (int i = 0; i < 5; i++)
+                    @for (int i = 0; i < 3; i++)
                     {
                         <li>
-                            @*<a asp-page="/ViewBlog" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Header</a>*@
+                            <a asp-page="/ViewForumPost" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Title</a>
                         </li>
 
                     }
