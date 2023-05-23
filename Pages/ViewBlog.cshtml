@@ -20,9 +20,14 @@
 
 
 
-@foreach(var b in filtereddata)
+@foreach (var blogs in Model.Blogs)
 {
-    <h1> @b.Title</h1>
+
+    if (blogs.SubcategoryId == Model.BlogPost.Id)
+    {
+        <h1>@blogs.Title </h1>
+    }
+
 }
 @*
 @if (Model.BlogPost.Style == 1)

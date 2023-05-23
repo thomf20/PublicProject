@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PublicProject.Models;
 
 namespace PublicProject.Pages
@@ -9,7 +10,8 @@ namespace PublicProject.Pages
     {
 
         private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
-        public Models.SubCategory Subcategory { get; set; }
+        public Models.Category Category { get; set; }
+        public List<Models.SubCategory> Subcategories { get; set; }
         public List< Models.Blog> Blogs { get; set; }
 
 
@@ -23,7 +25,8 @@ namespace PublicProject.Pages
         {
 
             Blogs = DBContext.Blogs.ToList();
-            Subcategory = DBContext.SubCategories.Find(id);
+            Subcategories = DBContext.SubCategories.ToList();
+            Category = DBContext.Categories.Find(id);
 
 
             DBContext.SaveChanges();

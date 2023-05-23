@@ -9,10 +9,12 @@
 
   <ItemGroup>
     <Compile Remove="Pages\OldIndex.cshtml.cs" />
+    <Compile Remove="Pages\SubCategories.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="Pages\OldIndex.cshtml" />
+    <Content Remove="Pages\SubCategories.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

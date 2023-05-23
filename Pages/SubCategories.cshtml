@@ -1,4 +1,4 @@
-﻿@*@page
+﻿@*@*@page
 @model PublicProject.Pages.IndexModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
@@ -38,9 +38,9 @@
     var user = await UserManager.GetUserAsync(User);
 
 
-    var collection = new List<Models.Blog>();
+    //var collection = new List<Models.Blog>();
 
-    var filtereddata = collection.Where(b => b.Id == Model.Subcategory.Id);
+    //var filtereddata = collection.Where(b => b.Id == Model.Subcategory.Id);
 }
 }
 
@@ -101,6 +101,8 @@
                     }
                    
                 }
+
+
 
             </section>
 
@@ -196,3 +198,4 @@
 </body>
 </html>
 
+*@
