@@ -1,6 +1,9 @@
 ﻿@page
 @model PublicProject.Pages.NewSubcategoriesModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
+    var user = await UserManager.GetUserAsync(User);
 }
 
 <h2 class="home-sticky-title">SubCategories</h2></a>

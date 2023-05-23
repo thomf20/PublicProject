@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PublicProject.Data;
 using PublicProject.Models;
 
-namespace PublicProject.Pages.CommentAdmin
+namespace PublicProject.Pages.Admin.CommentAdmin
 {
     public class IndexModel : PageModel
     {
@@ -19,14 +19,11 @@ namespace PublicProject.Pages.CommentAdmin
             _context = context;
         }
 
-        public IList<Comment> Comment { get;set; } = default!;
+        public IList<Comment> Comment { get;set; }
 
         public async Task OnGetAsync()
         {
-            if (_context.Comments != null)
-            {
-                Comment = await _context.Comments.ToListAsync();
-            }
+            Comment = await _context.Comments.ToListAsync();
         }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using PublicProject.Data;
 using PublicProject.Models;
 
-namespace PublicProject.Pages.CommentAdmin
+namespace PublicProject.Pages.Admin.CommentAdmin
 {
     public class CreateModel : PageModel
     {
@@ -25,15 +25,12 @@ namespace PublicProject.Pages.CommentAdmin
         }
 
         [BindProperty]
-        public Comment Comment { get; set; } = default!;
-
-
-        
+        public Comment Comment { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Comments == null || Comment == null)
+            if (!ModelState.IsValid)
             {
                 return Page();
             }

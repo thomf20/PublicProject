@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PublicProject.Data;
 using PublicProject.Models;
 
-namespace PublicProject.Pages.CommentAdmin
+namespace PublicProject.Pages.Admin.CommentAdmin
 {
     public class DeleteModel : PageModel
     {
@@ -20,39 +20,35 @@ namespace PublicProject.Pages.CommentAdmin
         }
 
         [BindProperty]
-      public Comment Comment { get; set; } = default!;
+        public Comment Comment { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
-            if (id == null || _context.Comments == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var comment = await _context.Comments.FirstOrDefaultAsync(m => m.Id == id);
+            Comment = await _context.Comments.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (comment == null)
+            if (Comment == null)
             {
                 return NotFound();
-            }
-            else 
-            {
-                Comment = comment;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string id)
         {
-            if (id == null || _context.Comments == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            var comment = await _context.Comments.FindAsync(id);
 
-            if (comment != null)
+            Comment = await _context.Comments.FindAsync(id);
+
+            if (Comment != null)
             {
-                Comment = comment;
                 _context.Comments.Remove(Comment);
                 await _context.SaveChangesAsync();
             }

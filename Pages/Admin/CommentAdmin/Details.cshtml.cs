@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PublicProject.Data;
 using PublicProject.Models;
 
-namespace PublicProject.Pages.CommentAdmin
+namespace PublicProject.Pages.Admin.CommentAdmin
 {
     public class DetailsModel : PageModel
     {
@@ -19,23 +19,20 @@ namespace PublicProject.Pages.CommentAdmin
             _context = context;
         }
 
-      public Comment Comment { get; set; } = default!; 
+        public Comment Comment { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
-            if (id == null || _context.Comments == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var comment = await _context.Comments.FirstOrDefaultAsync(m => m.Id == id);
-            if (comment == null)
+            Comment = await _context.Comments.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Comment == null)
             {
                 return NotFound();
-            }
-            else 
-            {
-                Comment = comment;
             }
             return Page();
         }

@@ -9,5 +9,6 @@
             public string Image { get; set; }
             public DateTime Date { get; set; }
             public int BlogId { get; set; }
-        }
+            public string? UserId { get; set; }
+    }
     }
