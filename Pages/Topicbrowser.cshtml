@@ -30,7 +30,7 @@
 }*@
 
 @page
-@model PublicProject.Pages.Admin.IndexModel
+@model PublicProject.Pages.Topicbrowser
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @{
@@ -90,7 +90,7 @@
 
             <section>
 
-                @foreach( var category in Model.Category)
+                @foreach( var category in Model.Categories)
                 {
 
                     <a asp-page="/NewSubCategories" asp-route-id="@category.Id"><h3> @category.Name </h3></a>
@@ -141,13 +141,13 @@
             <div class="widget footer">
                 <h4>Popular posts</h4>
                 <ul>
- @*                   @for (int i = 0; i < 3; i++)
+                    @for (int i = 0; i < 3; i++)
                     {
                         <li>
                             <a asp-page="/ViewForumPost" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Title</a>
                         </li>
 
-                    }*@
+                    }
 
                 </ul>
             </div>
