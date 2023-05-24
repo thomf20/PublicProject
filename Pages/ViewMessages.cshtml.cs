@@ -5,7 +5,7 @@ namespace PublicProject.Pages
 {
     public class MessagesModel : PageModel
     {
-        private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
+        private readonly Data.ApplicationDbContext DBContext;
         public List<Models.Category> Categories { get; set; }
         public List<Models.SubCategory> Subcategories { get; set; }
         public List<Models.Blog> Blogs { get; set; }
@@ -13,7 +13,7 @@ namespace PublicProject.Pages
         public List<Models.Message> Messages { get; set; }
 
 
-        public MessagesModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
+        public MessagesModel(Data.ApplicationDbContext dbContext)
         {
             DBContext = dbContext;
         }
