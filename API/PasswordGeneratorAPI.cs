@@ -8,7 +8,6 @@ namespace PublicProject.API
        
         public static async Task<List<Models.Password>> GetRandomPassword()
         {
-            //string RandomGeneratedPassword = "";
             List<Models.Password> RandomGeneratedPassword = null;
 
 
