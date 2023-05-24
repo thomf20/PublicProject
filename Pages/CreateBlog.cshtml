@@ -9,7 +9,7 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <p>Du är inloggad som @User.Identity.Name</p>
+    <h1>Here you can create you on blog post!</h1>
 
     <div class="row">
         <div class="col-md-4">
@@ -38,18 +38,15 @@
                     <span asp-validation-for="Blog.Date" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Blog.UserId" class="control-label"></label>
-                    <input asp-for="Blog.UserId" value="@user.Id" readonly class="form-control" />
+                    <input asp-for="Blog.UserId" value="@user.Id" readonly class="form-control" type="hidden" />
                     <span asp-validation-for="Blog.UserId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Blog.Popularity" class="control-label"></label>
-                    <input asp-for="Blog.Popularity" class="form-control" value="0" readonly />
+                    <input asp-for="Blog.Popularity" class="form-control" value="0" readonly type="hidden" />
                     <span asp-validation-for="Blog.Popularity" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Blog.SubcategoryId" class="control-label"></label>
-                    <input asp-for="Blog.SubcategoryId" value="@Model.Subcategory.Id" readonly class="form-control"  />
+                    <input asp-for="Blog.SubcategoryId" value="@Model.Subcategory.Id" readonly class="form-control" type="hidden" />
                     <span asp-validation-for="Blog.SubcategoryId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -68,5 +65,9 @@
     }
 
  
+}
+else
+{
+    <h3>For you to be able to post something on our website you need to <a href="~/Identity/Account/Login">Register/Login</a></h3>
 }
 

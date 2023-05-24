@@ -9,13 +9,13 @@ namespace PublicProject.Pages
     public class NewSubcategoriesModel : PageModel
     {
 
-        private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
+        private readonly Data.ApplicationDbContext DBContext;
         public Models.Category Category { get; set; }
         public List<Models.SubCategory> Subcategories { get; set; }
         public List< Models.Blog> Blogs { get; set; }
 
 
-        public NewSubcategoriesModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
+        public NewSubcategoriesModel(Data.ApplicationDbContext dbContext) 
         {
             DBContext = dbContext;
         }

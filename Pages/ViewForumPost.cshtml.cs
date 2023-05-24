@@ -8,7 +8,7 @@ namespace PublicProject.Pages
     public class ViewForumPostModel : PageModel
     {
 
-        private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
+        private readonly Data.ApplicationDbContext DBContext;
 
         public Blog BlogPost { get; set; }
         public Models.Category Category { get; set; }
@@ -17,7 +17,7 @@ namespace PublicProject.Pages
 
 
         private readonly PublicProject.Data.ApplicationDbContext _context;
-        public ViewForumPostModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
+        public ViewForumPostModel(Data.ApplicationDbContext dbContext) 
         {
             DBContext = dbContext;
             _context = dbContext;
@@ -48,8 +48,6 @@ namespace PublicProject.Pages
             DBContext.SaveChanges();
             return Page();
         }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid || _context.Comments == null || Comment == null)

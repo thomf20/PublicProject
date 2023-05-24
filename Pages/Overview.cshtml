@@ -9,54 +9,8 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-
-    
-
     <p>Du är inloggad som @User.Identity.Name</p>   
-
-
 
     <a asp-page="/CreateBlog" asp-route-id="@user.Id">Create Blog</a>
     <a asp-page="/ViewMessages" asp-route-id="@user.Id">View messages</a>
-
-
-
-
-   @* <input type="button" class="alert alert-success" value="Create blog">*@
-
-  @*  @if (Model.Blogs != null)
-    {
-        <div class="row">
-
-        
-        @foreach (var b in Model.Blogs)
-        {
-            if (b.UserId == user.Id)
-            {
-                <div class="col-md-4">
-                <div class="card m-2" >
-                    <img class="card-img-top" src="~/img/@b.Image">
-                    <div class="card-body">
-                        <h5 class="card-title">@b.Header</h5>
-                        <p class="card-text">@b.Text.LimitLength(200)...</p>
-                    </div>
-                    <p class="card-footer">@b.Date</p>
-                    <div class="text-center">
-                        <a class="btn btn-primary" asp-page="/ViewBlog" asp-route-id="@b.Id">View Blog</a>
-                    </div>
-                </div>
-                </div>
-            }
-       
-
-        }
-        </div>
-    }
-*@
-
-  
-
-
-    //<a asp-page="/overview" asp-route-id="@user.Id">View User Profile</a>
-
 }

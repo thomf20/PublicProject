@@ -17,7 +17,7 @@ namespace PublicProject.Pages
         public List<Models.Blog> Blogs { get; set; }
 
 
-        public Topicbrowser(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
+        public Topicbrowser(Data.ApplicationDbContext dbContext) 
         {
             DBContext = dbContext;
         }

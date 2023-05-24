@@ -28,20 +28,20 @@
     <![endif]-->
 </head>
 <body class="home sticky-menu sidebar-off" id="top">
-<div class="home-sticky" id="content">
-    <h2 class="home-sticky-title">Sub-Categories</h2></a>
-    <div class="sticky-inner">
-        <section>
-            @foreach (var sub in Model.Subcategories)
-            {
-                if (Model.Category.Id == sub.CategoryId)
+    <div class="home-sticky" id="content">
+        <h2 class="home-sticky-title">Huvudkategorier</h2></a>
+        <div class="sticky-inner">
+            <section>
+                @foreach (var sub in Model.Subcategories)
                 {
-                        <a asp-page="/ViewAllBlogs" asp-route-SubCategoryId="@sub.Id"> @sub.Name </a>
+                    if (Model.Category.Id == sub.CategoryId)
+                    {
+                        <a asp-page="/ViewAllBlogs" asp-route-SubCategoryId="@sub.Id"><h3> @sub.Name </h3> </a>
+                    }
                 }
-            }
-        </section>
+            </section>
+        </div>
     </div>
-</div>
     <script>var ie9 = false;</script>
     <script src="js/global-plugins.min.js"></script>
     <script src="js/main.js"></script>

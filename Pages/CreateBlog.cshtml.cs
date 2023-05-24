@@ -7,7 +7,7 @@ namespace PublicProject.Pages
 {
     public class CreateBlogModel : PageModel
     {
-        private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
+        private readonly Data.ApplicationDbContext DBContext;
         
         public Models.Category Category { get; set; }
         public Models.SubCategory Subcategory { get; set; }
@@ -18,7 +18,7 @@ namespace PublicProject.Pages
   
 
 
-        public CreateBlogModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
+        public CreateBlogModel(Data.ApplicationDbContext dbContext)
         {
             DBContext = dbContext;
             _context = dbContext;
