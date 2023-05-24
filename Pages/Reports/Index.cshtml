@@ -1,0 +1,48 @@
+﻿@page
+@model PublicProject.Pages.Reports.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportMessage[0].reporterId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportMessage[0].reportedId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportMessage[0].Text)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ReportMessage) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.reporterId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reportedId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -8,7 +8,7 @@ namespace PublicProject.Pages
     public class ViewForumPostModel : PageModel
     {
 
-        private readonly Data.ApplicationDbContext DBContext;
+        private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
 
         public Blog BlogPost { get; set; }
         public Models.Category Category { get; set; }
@@ -17,15 +17,20 @@ namespace PublicProject.Pages
 
 
         private readonly PublicProject.Data.ApplicationDbContext _context;
-        public ViewForumPostModel(Data.ApplicationDbContext dbContext) 
+        public ViewForumPostModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
         {
             DBContext = dbContext;
             _context = dbContext;
         }
+        
+
         [BindProperty]
         public Comment Comment { get; set; } = default!;
 
-        
+        [BindProperty]
+        public ReportMessage ReportMessage { get; set; } = default!;
+
+
         public IActionResult OnGet(int id)
         {
 
@@ -48,12 +53,14 @@ namespace PublicProject.Pages
             DBContext.SaveChanges();
             return Page();
         }
-        public async Task<IActionResult> OnPostAsync()
+
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        public async Task<IActionResult> OnPostSendCommentAsync()
         {
-            if (!ModelState.IsValid || _context.Comments == null || Comment == null)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid || _context.Comments == null || Comment == null)
+            //{
+            //    return Page();
+            //}
 
 
             _context.Comments.Add(Comment);
@@ -62,6 +69,18 @@ namespace PublicProject.Pages
             return RedirectToPage("./Index");
         }
 
+        public async Task<IActionResult> OnPostReportAsync()
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+
+            _context.ReportMessages.Add(ReportMessage);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
+        }
 
     }
 }

@@ -10,6 +10,5 @@
         public string UserId { get; set; }
         public int? Popularity { get; set; }
         public int SubcategoryId { get; set; }
-
     }
 }

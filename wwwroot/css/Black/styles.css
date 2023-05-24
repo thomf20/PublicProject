@@ -11,6 +11,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -91,6 +92,29 @@
     scroll-behavior: smooth;
   }
 }
+
+.form-container {
+    display: none;
+}
+
+    .form-container.show {
+        display: block;
+    }
+
+    .form-container form {
+        background-color: #fefefe;
+        padding: 20px;
+        border-radius: 5px;
+        max-width: 400px;
+    }
+
+    .form-container input[type="text"],
+    .form-container textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
 
 body {
   margin: 0;
