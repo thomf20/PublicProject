@@ -66,74 +66,17 @@
         <a asp-page="/overview" asp-route-id="@user.Id"><h3 class="home-sticky-title"> View User Profile</h3></a>
     }
   
- 
-
-
-
-
-
-
-
-
-
-   
     <br />
     <div class="home-sticky" id="content">
-
         <h2 class="home-sticky-title">Huvudkategorier</h2></a>
-
-        @*        <h2 class="home-sticky-title" asp-page="/BlogViewer">Blogginlägg</h2>
-        *@
-
         <div class="sticky-inner">
-
-
             <section>
-
                 @foreach( var category in Model.Categories)
                 {
 
-                    <a asp-page="/NewSubCategories" asp-route-id="@category.Id"><h3> @category.Name </h3></a>
+                    <a asp-page="/SubCategoryViewer" asp-route-id="@category.Id"><h3> @category.Name </h3></a>
                 }
-
-                
-
             </section>
-
-
-
-
-         @*   @foreach(var b in Model.Blogs)
-            {
-                 <aside class="home-sticky-post post has-post-thumbnail sticky">
-
-                <span class="post-image">
-                    <a href="#">
-                                      <img width="502" height="502" src="~/img/@b.Image"
-                                        class="attachment-sticky size-sticky" alt="" />
-                        </a>
-                </span>
-
-                <div class="inner">
-                    <h3 class="entry-title">
-                        <a asp-page="/ViewBlog" asp-route-id="@b.Id">@b.Header.LimitLength(30)...</a>
-                    </h3>
-                    <p>@b.Text.LimitLength(50)...</p>
-                    <ul class="meta top">
-                        <li class="time">
-                            <p href="#">
-                                <time class="post-date updated">@b.Date</time>
-                            </p>
-                        </li>
-                    </ul>*@
-                </div>
-
-        
-            
-           
-
-            
-
         </div>
     </div>
     <div class="footer-widgets widget-count-4">
@@ -146,17 +89,12 @@
                         <li>
                             <a asp-page="/ViewForumPost" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Title</a>
                         </li>
-
                     }
-
                 </ul>
             </div>
             <div class="mt-about-you-widget">
-
                 <div class="widget footer">
-
                     <h4>Public Project</h4>
-
                     <div class="mt-about-bio">
                         <p>
                             This site is created by Elias, Thom and Mohammed.
@@ -171,9 +109,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
     <footer class="footer">
         <div class="footer-wrap">
             <div id="footer-text">
