@@ -1,0 +1,23 @@
+﻿@page
+@model PublicProject.Pages.MessagesModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Messages";
+    var user = await UserManager.GetUserAsync(User);
+}
+
+
+@foreach( var message in Model.Messages)
+{
+
+    if (message.RecieverId == user.Id)
+    {
+
+        <h1>  @message.Text </h1>
+    }
+    <h1> </h1>
+}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js"></script>
