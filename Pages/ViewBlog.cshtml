@@ -33,21 +33,25 @@
         <link href="css/black/styles.css" rel="stylesheet" />
     </head>
 
-@foreach (var blogs in Model.Blogs)
-{
 
-    if (blogs.SubcategoryId == Model.BlogPost.Id)
+<a asp-page="/CreateBlog" asp-route-SubCategoryId="@Model.SubCategoryId">Create Blog</a>
+
+@foreach (var blog in Model.Blogs)
+{
+    
+
+    if (blog.SubcategoryId == Model.SubCategoryId)
     {
         <div class="col-md-4">
             <div class="card m-2">
                 @*<img class="card-img-top" src="~/img/@blogs.Image">*@
                 <div class="card-body">
-                    <h5 class="card-title">@blogs.Title</h5>
-                    <p class="card-text">@blogs.Text</p>
+                    <h5 class="card-title">@blog.Title</h5>
+                    <p class="card-text">@blog.Text</p>
                 </div>
-                <p class="card-footer">@blogs.Date</p>
+                <p class="card-footer">@blog.Date</p>
                 <div class="text-center">
-                    <a class="btn btn-primary" asp-page="/ViewForumPost" asp-route-id="@blogs.Id">View Blog</a>
+                    <a class="btn btn-primary" asp-page="/ViewForumPost" asp-route-id="@blog.Id">View Blog</a>
                 </div>
             </div>
         </div>

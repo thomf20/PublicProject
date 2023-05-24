@@ -9,7 +9,7 @@ namespace PublicProject.Pages
         private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
         
         public Models.Category Category { get; set; }
-        public List<Models.SubCategory> Subcategories { get; set; }
+        public Models.SubCategory Subcategory { get; set; }
         
         public List<Models.Blog> Blogs { get; set; }
         [BindProperty]
@@ -22,17 +22,30 @@ namespace PublicProject.Pages
         }
 
 
-        public IActionResult OnGet(int id)
+        public IActionResult OnGet(int SubCategoryId)
         {
 
             Blogs = DBContext.Blogs.ToList();
-            Subcategories = DBContext.SubCategories.ToList();
-            Category = DBContext.Categories.Find(id);
+            Subcategory = DBContext.SubCategories.Find(SubCategoryId);
+            Category = DBContext.Categories.Find(Subcategory.CategoryId);
 
 
             DBContext.SaveChanges();
             return Page();
 
+        }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid || DBContext.Blogs == null || Blogs == null)
+            {
+                return Page();
+            }
+
+
+            DBContext.Comments.Add(Blog);
+            await DBContext.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
         }
 
     }

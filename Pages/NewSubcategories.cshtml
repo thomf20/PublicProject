@@ -12,6 +12,6 @@
 {
     if(Model.Category.Id == sub.CategoryId)
     {
-        <a asp-page="/ViewBlog" asp-route-id="@sub.Id"> @sub.Name </a>
+        <a asp-page="/ViewBlog" asp-route-SubCategoryId="@sub.Id"> @sub.Name </a>
     }
 }
