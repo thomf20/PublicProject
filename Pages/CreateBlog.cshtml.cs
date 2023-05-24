@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using PublicProject.Models;
 
 namespace PublicProject.Pages
@@ -12,16 +13,18 @@ namespace PublicProject.Pages
         public Models.SubCategory Subcategory { get; set; }
         
         public List<Models.Blog> Blogs { get; set; }
-        [BindProperty]
-        public Blog Blog { get; set; } = default!;
+
+        private readonly PublicProject.Data.ApplicationDbContext _context;
+  
 
 
         public CreateBlogModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
         {
             DBContext = dbContext;
+            _context = dbContext;
         }
-
-
+        [BindProperty]
+        public Blog Blog { get; set; } = default!;
         public IActionResult OnGet(int SubCategoryId)
         {
 
@@ -36,17 +39,20 @@ namespace PublicProject.Pages
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || DBContext.Blogs == null || Blogs == null)
+            if (!ModelState.IsValid || _context.Blogs == null || Blog == null)
             {
                 return Page();
             }
 
 
-            DBContext.Comments.Add(Blog);
-            await DBContext.SaveChangesAsync();
+            _context.Blogs.Add(Blog);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
 
+
     }
+
 }
+

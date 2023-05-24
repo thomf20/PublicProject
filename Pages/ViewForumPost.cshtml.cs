@@ -15,6 +15,7 @@ namespace PublicProject.Pages
         public List<Models.SubCategory> Subcategories { get; set; }
         public List<Models.Comment> Comments { get; set; }
 
+
         private readonly PublicProject.Data.ApplicationDbContext _context;
         public ViewForumPostModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
         {

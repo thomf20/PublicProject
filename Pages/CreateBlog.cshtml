@@ -3,7 +3,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 @{
-   
+    ViewData["Title"] = "Createblog";
     var user = await UserManager.GetUserAsync(User);
 }
 
@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Blog.SubcategoryId" class="control-label"></label>
-                    <input asp-for="Blog.SubcategoryId" value="@Model.Subcategory.Id"  class="form-control" readonly />
+                    <input asp-for="Blog.SubcategoryId" value="@Model.Subcategory.Id" readonly class="form-control"  />
                     <span asp-validation-for="Blog.SubcategoryId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -58,5 +58,15 @@
             </form>
         </div>
     </div>
+
+
+
+    @section Scripts {
+    @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+ 
 }
 
