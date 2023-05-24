@@ -1,11 +1,18 @@
 ﻿@page
 @model PublicProject.Pages.BlogAdmin.CreateModel
 
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Create";
+    var user = await UserManager.GetUserAsync(User);
+
+
 }
 
 <h1>Create</h1>
+
+
 
 <h4>Blog</h4>
 <hr />
@@ -29,18 +36,20 @@
                 <span asp-validation-for="Blog.Image" class="text-danger"></span>
             </div>
             <div class="form-group">
+                
                 <label asp-for="Blog.Date" class="control-label"></label>
-                <input asp-for="Blog.Date" class="form-control" />
+               
+                <input asp-for="Blog.Date" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly class="form-control" />  @*vet ej varför detta inte funkar*@
                 <span asp-validation-for="Blog.Date" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Blog.UserId" class="control-label"></label>
-                <input asp-for="Blog.UserId" class="form-control" />
+                <input asp-for="Blog.UserId" value="@user.Id" readonly class="form-control"  />
                 <span asp-validation-for="Blog.UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Blog.Popularity" class="control-label"></label>
-                <input asp-for="Blog.Popularity" class="form-control" />
+                <input asp-for="Blog.Popularity" class="form-control" value="0" readonly />
                 <span asp-validation-for="Blog.Popularity" class="text-danger"></span>
             </div>
             <div class="form-group">
