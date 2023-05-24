@@ -83,10 +83,22 @@
                 </div>
             </div>
             <div class="widget footer">
-                <h4>Gallery</h4>
-                <div class="textwidget">
-                    <img src="images/gallery.png" alt="">
-                </div>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    var inAdminRole = User.IsInRole("Admin");
+                    if (inAdminRole == true)
+                    {
+                        <h4>Admin Stuff</h4>
+                        <div class="textwidget">
+                            <a href="">Reports</a>
+                            <a href="~/admin/categoryadmin">Create Category</a>
+                            <a href="~/admin/subcategory">Create Sub-Category</a>
+                            <a href=""></a>
+                        </div>
+                    }
+
+                }
+              
             </div>
         </div>
 
