@@ -10,25 +10,21 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <p>Du är inloggad som @User.Identity.Name</p>   
+    <p>Du är inloggad som @User.Identity.Name</p>
 
 
 
 
-    
-        var profilepicture = Model.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
-    
-  @*  foreach( var X in Model.UserProfiles)
+
+    var profilepicture = Model.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
+    @if(profilepicture != null)
     {
-        if(X.UserId == user.Id)
-        {*@
-            <h1>Profilbild  </h1>
+                    <h1>Profilbild  </h1>
             <img src="~/img/@profilepicture.Imglink">
- @*       }
-    }*@
-    
+    }
 
-    @*<a asp-page="/CreateUserProfile" asp-route-id="@user.Id">Create UserProfile</a>*@
+
+
     <a asp-page="/ViewMessages" asp-route-id="@user.Id">View messages</a>
 
 

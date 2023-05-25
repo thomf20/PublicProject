@@ -59,7 +59,8 @@ namespace PublicProject.Pages
                 UserProfile newProfile = new UserProfile
                 {
                     Imglink = fileName,
-                    UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)
+                    UserId = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                    UserName = UserProfile.UserName
                 };
                 _context.Add(newProfile);
             }
