@@ -6,18 +6,6 @@
     var user = await UserManager.GetUserAsync(User);
 }
 
-@*<div class="blog-content">
-    <div class="blog-pop">
-        <div class="container">
-            <strong><img class="test" width="30px" height="30px" src="~/img/viewcount.png" /> @Model.BlogPost.Popularity</strong>
-        </div>
-    </div>
-</div>
-
-<img class="" src="~/img/@Model.BlogPost.Image">
-<h1>@Model.BlogPost.Title</h1>
-<p>@Model.BlogPost.Text</p>*@
-
     <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -34,6 +22,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
        <link href="css/black/styles.css" rel="stylesheet" />
+    <link href="css/CommentStyle/Comment.css" rel="stylesheet" />
     </head>
     
 
@@ -68,45 +57,49 @@
 {
     if(Model.BlogPost.Id == comment.BlogId)
     {
-                 <p>@comment.Image | @comment.Author | @comment.Date | @comment.Text |</p>
-        <div class="row">
-            <div class="col-md-4">
-                <form method="post" asp-page-handler="Report">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <input asp-for="ReportMessage.reporterId" value="@user.Id" readonly class="form-control" type="hidden" />
-                        <span asp-validation-for="ReportMessage.reporterId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input asp-for="ReportMessage.reportedId" value="@comment.UserId" readonly class="form-control" type="hidden" />
-                        <span asp-validation-for="ReportMessage.reportedId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ReportMessage.Text" class="control-label">Anledning</label>
-                        <input asp-for="ReportMessage.Text" class="form-control" />
-                        <span asp-validation-for="ReportMessage.Text" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Report" class="btn btn-default" />
-                    </div>
-                </form>
+        <div class="comment">
+            <h2 class="comment-content">@comment.Text</h2>
+            <p class="comment-footer">@comment.Image | @comment.Author | @comment.Date </p>
+            <div class="row">
+                <div class="col-md-4">
+                    <form method="post" asp-page-handler="Report">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <input asp-for="ReportMessage.reporterId" value="@user.Id" readonly class="form-control" type="hidden" />
+                            <span asp-validation-for="ReportMessage.reporterId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="ReportMessage.reportedId" value="@comment.UserId" readonly class="form-control" type="hidden" />
+                            <span asp-validation-for="ReportMessage.reportedId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label asp-for="ReportMessage.Text" class="control-label">Anledning</label>
+                                    <input asp-for="ReportMessage.Text" class="form-control" />
+                                    <span asp-validation-for="ReportMessage.Text" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>&nbsp;</label>
+                                    <input type="submit" value="Report" class="btn btn-danger" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     }
 }
 @{
     int commentId = Model.Comments.Count() + 1;
-    //if(commentId == 10)
-    //{
-    //    commentId = 11;
-    //}
 }
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <div class="row">
-    <div class="col-md-4">
-            <form method="post" asp-page-handler="SendComment">
+    <div class="comment-form">
+        <h2>Kommentera foruminlägg</h2>
+        <form method="post" asp-page-handler="SendComment">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input asp-for="Comment.Id" value="@commentId" class="form-control" readonly type="hidden" />
@@ -134,50 +127,17 @@
             <div class="form-group">
                 <input asp-for="Comment.BlogId " value="@Model.BlogPost.Id" class="form-control" readonly type="hidden" />
                 <span asp-validation-for="Comment.BlogId" class="text-danger"></span>
-         
+
 
                 <div class="form-group">
                     <input asp-for="Comment.UserId" value=@user.Id readonly type="hidden" class="form-control" />
                     <span asp-validation-for="Comment.UserId" class="text-danger"></span>
                 </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
         </form>
     </div>
-</div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <form method="post" asp-page-handler="SendMessage">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Message.SenderId" class="control-label"></label>
-                    <input asp-for="Message.SenderId" value="@user.Id" class="form-control" />
-                    <span asp-validation-for="Message.SenderId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Message.RecieverId" class="control-label"></label>
-                    <input asp-for="Message.RecieverId" value="@Model.BlogPost.UserId" class="form-control" />
-                    <span asp-validation-for="Message.RecieverId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Message.Text" class="control-label"></label>
-                    <input asp-for="Message.Text" class="form-control" />
-                    <span asp-validation-for="Message.Text" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Message.Date" class="control-label"></label>
-                    <input asp-for="Message.Date" value="@DateTime.Now" class="form-control" />
-                    <span asp-validation-for="Message.Date" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </form>
-        </div>
-    </div>
-
 }
 
 
