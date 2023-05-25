@@ -16,9 +16,8 @@ namespace PublicProject.Data
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Comment> Comments { get; set; }
-
         public DbSet<Message> Messages { get; set; }
         public DbSet<ReportMessage> ReportMessages { get; set; }
-        public DbSet<Profilepicture> Profilepictures { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
     }
 }
