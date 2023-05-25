@@ -12,16 +12,20 @@
 {
     <p>Du är inloggad som @User.Identity.Name</p>   
 
-    
 
-    foreach( var X in Model.UserProfiles)
+
+
+    
+        var profilepicture = Model.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
+    
+  @*  foreach( var X in Model.UserProfiles)
     {
         if(X.UserId == user.Id)
-        {
+        {*@
             <h1>Profilbild  </h1>
-            <img src="~/img/@X.Imglink">
-        }
-    }
+            <img src="~/img/@profilepicture.Imglink">
+ @*       }
+    }*@
     
 
     @*<a asp-page="/CreateUserProfile" asp-route-id="@user.Id">Create UserProfile</a>*@
