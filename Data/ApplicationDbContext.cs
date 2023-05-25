@@ -19,5 +19,6 @@ namespace PublicProject.Data
 
         public DbSet<Message> Messages { get; set; }
         public DbSet<ReportMessage> ReportMessages { get; set; }
+        public DbSet<Profilepicture> Profilepictures { get; set; }
     }
 }
