@@ -8,16 +8,29 @@
 }
 
 
+
+<ul>
 @foreach( var message in Model.Messages)
 {
-
+    
     if (message.RecieverId == user.Id)
     {
-
-        <h1>  @message.Text </h1>
+        <li>
+            <p>@message.Text</p>
+        </li>
+            <li>
+                <p>@message.Date</p>
+            </li>
+            <li>
+                <p>@message.RecieverId</p>
+            </li>
+            <li>
+                <p>@message.SenderId</p>
+            </li>
+        @*<h1>  @message.Text </h1>*@
     }
     <h1> </h1>
 }
-
+</ul>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js"></script>

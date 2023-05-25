@@ -11,6 +11,6 @@
 {
     <p>Du är inloggad som @User.Identity.Name</p>   
 
-    <a asp-page="/CreateBlog" asp-route-id="@user.Id">Create Blog</a>
+    @*<a asp-page="/CreateBlog" asp-route-id="@user.Id">Create Blog</a>*@
     <a asp-page="/ViewMessages" asp-route-id="@user.Id">View messages</a>
 }

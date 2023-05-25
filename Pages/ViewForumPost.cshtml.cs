@@ -28,6 +28,9 @@ namespace PublicProject.Pages
         public Comment Comment { get; set; } = default!;
 
         [BindProperty]
+        public Message Message { get; set; } = default!;
+
+        [BindProperty]
         public ReportMessage ReportMessage { get; set; } = default!;
 
 
@@ -82,5 +85,17 @@ namespace PublicProject.Pages
             return RedirectToPage("./Index");
         }
 
+        public async Task<IActionResult> OnPostSendMessageAsync()
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+
+            _context.Messages.Add(Message);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
+        }
     }
 }

@@ -74,17 +74,15 @@
                 <form method="post" asp-page-handler="Report">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <label asp-for="ReportMessage.reporterId" class="control-label"></label>
-                        <input asp-for="ReportMessage.reporterId" value="@user.Id" readonly class="form-control" />
+                        <input asp-for="ReportMessage.reporterId" value="@user.Id" readonly class="form-control" type="hidden" />
                         <span asp-validation-for="ReportMessage.reporterId" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="ReportMessage.reportedId" class="control-label"></label>
-                        <input asp-for="ReportMessage.reportedId" value="@comment.UserId" readonly class="form-control" />
+                        <input asp-for="ReportMessage.reportedId" value="@comment.UserId" readonly class="form-control" type="hidden" />
                         <span asp-validation-for="ReportMessage.reportedId" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="ReportMessage.Text" class="control-label"></label>
+                        <label asp-for="ReportMessage.Text" class="control-label">Anledning</label>
                         <input asp-for="ReportMessage.Text" class="form-control" />
                         <span asp-validation-for="ReportMessage.Text" class="text-danger"></span>
                     </div>
@@ -148,6 +146,38 @@
         </form>
     </div>
 </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" asp-page-handler="SendMessage">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Message.SenderId" class="control-label"></label>
+                    <input asp-for="Message.SenderId" value="@user.Id" class="form-control" />
+                    <span asp-validation-for="Message.SenderId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message.RecieverId" class="control-label"></label>
+                    <input asp-for="Message.RecieverId" value="@Model.BlogPost.UserId" class="form-control" />
+                    <span asp-validation-for="Message.RecieverId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message.Text" class="control-label"></label>
+                    <input asp-for="Message.Text" class="form-control" />
+                    <span asp-validation-for="Message.Text" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message.Date" class="control-label"></label>
+                    <input asp-for="Message.Date" value="@DateTime.Now" class="form-control" />
+                    <span asp-validation-for="Message.Date" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
 }
 
 
