@@ -14,6 +14,7 @@ namespace PublicProject.Pages
         public Models.Category Category { get; set; }
         public List<Models.SubCategory> Subcategories { get; set; }
         public List<Models.Comment> Comments { get; set; }
+        public List<Models.UserProfile> UserProfiles { get; set; }
 
 
         private readonly PublicProject.Data.ApplicationDbContext _context;
@@ -39,6 +40,9 @@ namespace PublicProject.Pages
 
             BlogPost = DBContext.Blogs.Find(id);
             Comments = DBContext.Comments.ToList();
+            UserProfiles = DBContext.UserProfiles.ToList();
+
+
 
             if (BlogPost.Popularity == null)
             {

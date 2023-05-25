@@ -93,6 +93,14 @@
 }
 @{
     int commentId = Model.Comments.Count() + 1;
+
+    foreach (var X in Model.UserProfiles)
+    {
+        if (X.UserId == user.Id)
+        {
+            var comment = X;
+        }
+    }
 }
 
 @if (SignInManager.IsSignedIn(User))
@@ -107,7 +115,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Comment.Author" class="control-label"></label>
-                <input asp-for="Comment.Author" class="form-control" />
+                <input asp-for="Comment.Author" value="" class="form-control" />
                 <span asp-validation-for="Comment.Author" class="text-danger"></span>
             </div>
             <div class="form-group">
