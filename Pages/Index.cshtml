@@ -85,6 +85,7 @@
             <div class="widget footer">
                 @if (SignInManager.IsSignedIn(User))
                 {
+
                     var inAdminRole = User.IsInRole("Admin");
                     if (inAdminRole == true)
                     {
@@ -107,37 +108,38 @@
                             </ul>
                         </div>
                     }
-                    <h4>Gallery</h4>
-                    <div class="textwidget">
-                        <ul>
-                            <li>
-                                <p>Bomba1 </p>
-                            </li>
-                            <li>
-                                <p>Bomba2 </p>
-                            </li>
-                            <li>
-                                <p>Bomba3 </p>
-                            </li>
-
-                        </ul>
-                    </div>
+                    else
+                    {
+                        <h4>Made by us</h4>
+                        <div class="textwidget">
+                            <ul>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/mohammed-karimi-40b7551a9/">Mohammed</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/thom-flodqvist-025256262/">Thom</a>
+                                </li>
+                                <li>
+                                    <a href="">Elias</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <h4>Gallery</h4>
+                    <h4>Made by us</h4>
                     <div class="textwidget">
                         <ul>
                             <li>
-                                <p>Bomba1 </p>
+                                <a href="https://www.linkedin.com/in/mohammed-karimi-40b7551a9/">Mohammed</a>
                             </li>
                             <li>
-                                <p>Bomba2 </p>
+                                <a href="https://www.linkedin.com/in/thom-flodqvist-025256262/">Thom</a>
                             </li>
                             <li>
-                                <p>Bomba3 </p>
+                                <a href="">Elias</a>
                             </li>
-
                         </ul>
                     </div>
 
