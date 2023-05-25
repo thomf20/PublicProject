@@ -1,16 +1,42 @@
 ﻿@page
-@model IndexModel
+@model OverviewModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 @{
     var user = await UserManager.GetUserAsync(User);
+    
 }
 
 @if (SignInManager.IsSignedIn(User))
 {
     <p>Du är inloggad som @User.Identity.Name</p>   
 
-    @*<a asp-page="/CreateBlog" asp-route-id="@user.Id">Create Blog</a>*@
+    
+
+    foreach( var X in Model.UserProfiles)
+    {
+        if(X.UserId == user.Id)
+        {
+            <h1>Profilbild  </h1>
+            <img src="~/img/@X.Imglink">
+        }
+    }
+    
+
+    @*<a asp-page="/CreateUserProfile" asp-route-id="@user.Id">Create UserProfile</a>*@
     <a asp-page="/ViewMessages" asp-route-id="@user.Id">View messages</a>
+
+
+    <form method="post" enctype="multipart/form-data">
+     
+
+        <label asp-for="UserProfile.UserName" class="form-label"></label>
+        <input asp-for="UserProfile.UserName" class="form-control" cols="40" rows="5">
+
+        <label asp-for="UserProfile.Imglink" class="form-label"></label>
+        <input type="file" class="form-control" name="UploadedImage">
+
+        <input type="submit" class="btn btn-success" value="Spara profil">
+    </form>
 }
