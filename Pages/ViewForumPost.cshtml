@@ -50,7 +50,11 @@
             @{
                 var skribent = Model.UserProfiles.FirstOrDefault(x => x.UserId == Model.BlogPost.UserId);
             }
-            <h3 class="section-heading text-uppercase">Skriven av @skribent.UserName </h3>
+            @if(skribent != null)
+            {
+                <h3 class="section-heading text-uppercase">Skriven av @skribent.UserName </h3>
+            }
+            
             <h3 class="section-subheading text-muted">@Model.BlogPost.Date</h3>
         </div>
     </div>

@@ -30,7 +30,7 @@ namespace PublicProject.Pages.Comments
                 return NotFound();
             }
 
-            Comment = await _context.Comments.FirstOrDefaultAsync(m => m.Id == id);
+            Comment = await _context.Comments.FirstOrDefaultAsync(m => m.Id.ToString() == id);
 
             if (Comment == null)
             {
@@ -54,7 +54,7 @@ namespace PublicProject.Pages.Comments
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CommentExists(Comment.Id))
+                if (!CommentExists(Comment.Id.ToString()))
                 {
                     return NotFound();
                 }
@@ -69,7 +69,7 @@ namespace PublicProject.Pages.Comments
 
         private bool CommentExists(string id)
         {
-            return _context.Comments.Any(e => e.Id == id);
+            return _context.Comments.Any(e => e.Id.ToString() == id);
         }
     }
 }

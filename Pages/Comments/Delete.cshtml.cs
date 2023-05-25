@@ -29,7 +29,7 @@ namespace PublicProject.Pages.Comments
                 return NotFound();
             }
 
-            Comment = await _context.Comments.FirstOrDefaultAsync(m => m.Id == id);
+            Comment = await _context.Comments.FirstOrDefaultAsync(m => m.Id.ToString() == id);
 
             if (Comment == null)
             {
