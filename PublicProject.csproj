@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Admin\CommentAdmin\**" />
+    <Content Remove="Pages\Admin\CommentAdmin\**" />
+    <EmbeddedResource Remove="Pages\Admin\CommentAdmin\**" />
+    <None Remove="Pages\Admin\CommentAdmin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Pages\OldIndex.cshtml.cs" />
     <Compile Remove="Pages\SubCategories.cshtml.cs" />
   </ItemGroup>
@@ -42,10 +49,6 @@
     <None Include="Pages\Admin\SubCategory\Details.cshtml" />
     <None Include="Pages\Admin\SubCategory\Edit.cshtml" />
     <None Include="Pages\Admin\SubCategory\Index.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pages\Admin\CommentAdmin\" />
   </ItemGroup>
 
 </Project>

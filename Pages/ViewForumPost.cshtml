@@ -53,13 +53,25 @@
     </div>
 </section>
 <!--Comment section-->
-@foreach(var comment in Model.Comments)
+@{
+    var comments = Model.Comments.Where(x => x.BlogId == Model.BlogPost.Id);
+}
+
+
+
+
+@foreach(var sortedcomment in comments)
 {
-    if(Model.BlogPost.Id == comment.BlogId)
-    {
-        <div class="comment">
-            <h2 class="comment-content">@comment.Text</h2>
-            <p class="comment-footer">| @comment.Author | @comment.Date </p>
+    <div class="comment">
+        @{
+            var image = Model.UserProfiles.FirstOrDefault(x => x.UserId == sortedcomment.UserId);
+        }
+        <div class="thumbnail">
+            <img src="~/img/@image.Imglink" >
+        </div>
+
+            <h2 class="comment-content">@sortedcomment.Text</h2>
+            <p class="comment-footer">| @sortedcomment.Author | @sortedcomment.Date  </p>
             <div class="row">
                 <div class="col-md-4">
                     <form method="post" asp-page-handler="Report">
@@ -69,7 +81,7 @@
                             <span asp-validation-for="ReportMessage.reporterId" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input asp-for="ReportMessage.reportedId" value="@comment.UserId" readonly class="form-control" type="hidden" />
+                            <input asp-for="ReportMessage.reportedId" value="@sortedcomment.UserId" readonly class="form-control" type="hidden" />
                             <span asp-validation-for="ReportMessage.reportedId" class="text-danger"></span>
                         </div>
                         <div class="form-group">
@@ -90,13 +102,10 @@
             </div>
         </div>
     }
-}
-@{
-   
-    int commentId = Model.Comments.Count() + 1;
 
- 
-    
+
+@{
+    int commentId = Model.Comments.Count() + 1;    
 }
 
 @if (SignInManager.IsSignedIn(User))

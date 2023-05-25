@@ -12,10 +12,6 @@
 {
     <p>Du är inloggad som @User.Identity.Name</p>
 
-
-
-
-
     var profilepicture = Model.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
     @if(profilepicture != null)
     {
@@ -24,19 +20,14 @@
             <img src="~/img/@profilepicture.Imglink">
     }
 
-
     <a asp-page="/ViewMessages" asp-route-id="@user.Id">View messages</a>
-
 
     <form method="post" enctype="multipart/form-data">
      
-
         <label asp-for="UserProfile.UserName" class="form-label"></label>
         <input asp-for="UserProfile.UserName" class="form-control" cols="40" rows="5">
-
         <label asp-for="UserProfile.Imglink" class="form-label"></label>
         <input type="file" class="form-control" name="UploadedImage">
-
         <input type="submit" class="btn btn-success" value="Spara profil">
     </form>
 }
