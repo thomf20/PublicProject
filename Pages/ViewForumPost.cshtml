@@ -59,7 +59,7 @@
     {
         <div class="comment">
             <h2 class="comment-content">@comment.Text</h2>
-            <p class="comment-footer">@comment.Image | @comment.Author | @comment.Date </p>
+            <p class="comment-footer">| @comment.Author | @comment.Date </p>
             <div class="row">
                 <div class="col-md-4">
                     <form method="post" asp-page-handler="Report">
@@ -124,6 +124,7 @@
                 <input asp-for="Comment.Text" class="form-control" />
                 <span asp-validation-for="Comment.Text" class="text-danger"></span>
             </div>
+<<<<<<< Updated upstream
             <div class="form-group">
                 @{
                 var commenterImage = Model.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
@@ -132,6 +133,9 @@
                 }
 
             </div>
+=======
+          
+>>>>>>> Stashed changes
             <div class="form-group">
                 <input asp-for="Comment.Date" value="@DateTime.Now" class="form-control" readonly type="hidden" />
                 <span asp-validation-for="Comment.Date" class="text-danger"></span>
