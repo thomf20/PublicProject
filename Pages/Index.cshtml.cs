@@ -24,6 +24,21 @@ namespace PublicProject.Pages
 
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
+
+        public static string LimitLength(string source, int maxLength)
+        {
+            if (source != null)
+            {
+                if (source.Length <= maxLength)
+                {
+                    return source;
+                }
+
+                return source.Substring(0, maxLength);
+            }
+            return source;
+        }
+
         public async Task<IActionResult> OnGetAsync(int deleteid)
         {
             if (deleteid != 0)
@@ -45,6 +60,7 @@ namespace PublicProject.Pages
 
             //Blogs = await _context.Blog.ToListAsync();
             Blogs = _context.Blogs.ToList();
+
 
 
             return Page();
