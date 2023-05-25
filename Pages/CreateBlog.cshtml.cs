@@ -15,8 +15,9 @@ namespace PublicProject.Pages
         public List<Models.Blog> Blogs { get; set; }
 
         private readonly PublicProject.Data.ApplicationDbContext _context;
-  
 
+        [BindProperty]
+        public IFormFile UploadedImage { get; set; }
 
         public CreateBlogModel(Data.ApplicationDbContext dbContext)
         {
@@ -39,10 +40,24 @@ namespace PublicProject.Pages
         }
         public async Task<IActionResult> OnPostAsync()
         {
+            string fileName = string.Empty;
             if (!ModelState.IsValid || _context.Blogs == null || Blog == null)
             {
                 return Page();
             }
+
+            if (UploadedImage != null)
+            {
+                Random rnd = new();
+                fileName = rnd.Next(0, 100000).ToString() + UploadedImage.FileName;
+                var file = "./wwwroot/img/" + fileName;
+                using (var fileStream = new FileStream(file, FileMode.Create))
+                {
+                    await UploadedImage.CopyToAsync(fileStream);
+                }
+            }
+
+            Blog.Image = fileName;
 
 
             _context.Blogs.Add(Blog);

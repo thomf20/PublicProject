@@ -47,7 +47,10 @@
 <section class="page-section" id="about">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Om skrivaren</h2>
+            @{
+                var skribent = Model.UserProfiles.FirstOrDefault(x => x.UserId == Model.BlogPost.UserId);
+            }
+            <h3 class="section-heading text-uppercase">Skriven av @skribent.UserName </h3>
             <h3 class="section-subheading text-muted">@Model.BlogPost.Date</h3>
         </div>
     </div>
