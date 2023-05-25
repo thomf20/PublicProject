@@ -114,7 +114,7 @@
                     var commenter = Model.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
                     if(commenter.UserName != null)
                     {
-                                            <input asp-for="Comment.Author" value="@commenter.UserName" class="form-control" readonly type="hidden"/>
+                            <input asp-for="Comment.Author" value="@commenter.UserName" class="form-control" readonly type="hidden"/>
                             <span asp-validation-for="Comment.Author" class="text-danger"></span>
                     }
                   }
@@ -124,18 +124,8 @@
                 <input asp-for="Comment.Text" class="form-control" />
                 <span asp-validation-for="Comment.Text" class="text-danger"></span>
             </div>
-<<<<<<< Updated upstream
-            <div class="form-group">
-                @{
-                var commenterImage = Model.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
-                <input asp-for="Comment.Image" value="@commenterImage.Imglink" class="form-control" readonly />
-                <span asp-validation-for="Comment.Image" class="text-danger"></span>
-                }
 
-            </div>
-=======
-          
->>>>>>> Stashed changes
+       
             <div class="form-group">
                 <input asp-for="Comment.Date" value="@DateTime.Now" class="form-control" readonly type="hidden" />
                 <span asp-validation-for="Comment.Date" class="text-danger"></span>
