@@ -1,18 +1,20 @@
 ﻿@page
-@model PublicProject.Pages.SubCategory.IndexModel
+@model PublicProject.Pages.Messsages.IndexModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+
 @{
     ViewData["Title"] = "Index";
 }
 
 
-@if (SignInManager.IsSignedIn(User))
+
+            @if (SignInManager.IsSignedIn(User))
 {
     var inAdminRole = User.IsInRole("Admin");
     if (inAdminRole == true)
     {
-                <h1>Index</h1>
+                <h2>Index</h2>
 
         <p>
             <a asp-page="Create">Create New</a>
@@ -21,23 +23,35 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.SubCategory[0].Name)
+                        @Html.DisplayNameFor(model => model.Message[0].SenderId)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.SubCategory[0].CategoryId)
+                        @Html.DisplayNameFor(model => model.Message[0].RecieverId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Message[0].Text)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Message[0].Date)
                     </th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.SubCategory)
+                @foreach (var item in Model.Message)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Name)
+                            @Html.DisplayFor(modelItem => item.SenderId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CategoryId)
+                            @Html.DisplayFor(modelItem => item.RecieverId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Text)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
                         </td>
                         <td>
                             <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

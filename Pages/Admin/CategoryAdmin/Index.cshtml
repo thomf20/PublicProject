@@ -1,10 +1,17 @@
 ﻿@page
 @model PublicProject.Pages.Admin.IndexModel
-
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Index";
 }
 
+@if (SignInManager.IsSignedIn(User))
+{
+    var inAdminRole = User.IsInRole("Admin");
+    if (inAdminRole == true)
+    {
+        
 <h1>Index</h1>
 
 <p>
@@ -34,3 +41,14 @@
 }
     </tbody>
 </table>
+    }
+    else
+    {
+          <p>You dont have accsess to this site, please go back to the <a href="~/Index">Main page</a></p>
+    }
+
+}
+else
+{
+      <p>You dont have accsess to this site, please go back to the <a href="~/Index">Main page</a></p>
+}
