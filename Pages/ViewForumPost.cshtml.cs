@@ -32,7 +32,7 @@ namespace PublicProject.Pages
         public Message Message { get; set; } = default!;
 
         [BindProperty]
-        public ReportMessage ReportMessage { get; set; } = default!;
+        public Report Report { get; set; } = default!;
 
 
         public IActionResult OnGet(int id)
@@ -83,7 +83,7 @@ namespace PublicProject.Pages
             //    return Page();
             //}
 
-            _context.ReportMessages.Add(ReportMessage);
+            _context.Reports.Add(Report);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

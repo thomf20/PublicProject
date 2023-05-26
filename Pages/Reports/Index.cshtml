@@ -14,19 +14,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ReportMessage[0].reporterId)
+                @Html.DisplayNameFor(model => model.Report[0].reporterId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReportMessage[0].reportedId)
+                @Html.DisplayNameFor(model => model.Report[0].reportedId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReportMessage[0].Text)
+                @Html.DisplayNameFor(model => model.Report[0].Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Report[0].CommentId)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ReportMessage) {
+@foreach (var item in Model.Report) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.reporterId)
@@ -36,6 +39,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentId)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

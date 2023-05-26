@@ -8,30 +8,36 @@
 <h2>Details</h2>
 
 <div>
-    <h4>ReportMessage</h4>
+    <h4>Report</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ReportMessage.reporterId)
+            @Html.DisplayNameFor(model => model.Report.reporterId)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ReportMessage.reporterId)
+            @Html.DisplayFor(model => model.Report.reporterId)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ReportMessage.reportedId)
+            @Html.DisplayNameFor(model => model.Report.reportedId)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ReportMessage.reportedId)
+            @Html.DisplayFor(model => model.Report.reportedId)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ReportMessage.Text)
+            @Html.DisplayNameFor(model => model.Report.Text)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ReportMessage.Text)
+            @Html.DisplayFor(model => model.Report.Text)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Report.CommentId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Report.CommentId)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.ReportMessage.Id">Edit</a> |
+    <a asp-page="./Edit" asp-route-id="@Model.Report.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

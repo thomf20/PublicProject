@@ -19,11 +19,11 @@ namespace PublicProject.Pages.Reports
             _context = context;
         }
 
-        public IList<ReportMessage> ReportMessage { get;set; }
+        public IList<Report> Report { get;set; }
 
         public async Task OnGetAsync()
         {
-            ReportMessage = await _context.ReportMessages.ToListAsync();
+            Report = await _context.Reports.ToListAsync();
         }
     }
 }

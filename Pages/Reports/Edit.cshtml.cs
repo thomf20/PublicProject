@@ -21,7 +21,7 @@ namespace PublicProject.Pages.Reports
         }
 
         [BindProperty]
-        public ReportMessage ReportMessage { get; set; }
+        public Report Report { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,9 +30,9 @@ namespace PublicProject.Pages.Reports
                 return NotFound();
             }
 
-            ReportMessage = await _context.ReportMessages.FirstOrDefaultAsync(m => m.Id == id);
+            Report = await _context.Reports.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (ReportMessage == null)
+            if (Report == null)
             {
                 return NotFound();
             }
@@ -46,7 +46,7 @@ namespace PublicProject.Pages.Reports
                 return Page();
             }
 
-            _context.Attach(ReportMessage).State = EntityState.Modified;
+            _context.Attach(Report).State = EntityState.Modified;
 
             try
             {
@@ -54,7 +54,7 @@ namespace PublicProject.Pages.Reports
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ReportMessageExists(ReportMessage.Id))
+                if (!ReportExists(Report.Id))
                 {
                     return NotFound();
                 }
@@ -67,9 +67,9 @@ namespace PublicProject.Pages.Reports
             return RedirectToPage("./Index");
         }
 
-        private bool ReportMessageExists(int id)
+        private bool ReportExists(int id)
         {
-            return _context.ReportMessages.Any(e => e.Id == id);
+            return _context.Reports.Any(e => e.Id == id);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace PublicProject.Pages.Reports
         }
 
         [BindProperty]
-        public ReportMessage ReportMessage { get; set; }
+        public Report Report { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace PublicProject.Pages.Reports
                 return NotFound();
             }
 
-            ReportMessage = await _context.ReportMessages.FirstOrDefaultAsync(m => m.Id == id);
+            Report = await _context.Reports.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (ReportMessage == null)
+            if (Report == null)
             {
                 return NotFound();
             }
@@ -45,11 +45,11 @@ namespace PublicProject.Pages.Reports
                 return NotFound();
             }
 
-            ReportMessage = await _context.ReportMessages.FindAsync(id);
+            Report = await _context.Reports.FindAsync(id);
 
-            if (ReportMessage != null)
+            if (Report != null)
             {
-                _context.ReportMessages.Remove(ReportMessage);
+                _context.Reports.Remove(Report);
                 await _context.SaveChangesAsync();
             }
 
