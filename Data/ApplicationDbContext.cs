@@ -17,7 +17,8 @@ namespace PublicProject.Data
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<ReportMessage> ReportMessages { get; set; }
+        //public DbSet<Report> Reports { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Report> Reports { get; set; }
     }
 }

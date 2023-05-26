@@ -25,7 +25,7 @@ namespace PublicProject.Pages.Reports
         }
 
         [BindProperty]
-        public ReportMessage ReportMessage { get; set; }
+        public Report Report { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -35,7 +35,7 @@ namespace PublicProject.Pages.Reports
                 return Page();
             }
 
-            _context.ReportMessages.Add(ReportMessage);
+            _context.Reports.Add(Report);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
