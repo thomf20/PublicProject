@@ -77,9 +77,10 @@
             <img src="~/img/@image.Imglink" >
         </div>
 
+
             <h2 class="comment-content">@sortedcomment.Text</h2>
-            <p class="comment-footer">| @sortedcomment.Author | @sortedcomment.Date  </p>
-            <div class="row">
+        <a class="comment-footer" asp-page="/Sendmessagetouserview" asp-route-id="@sortedcomment.UserId"> @sortedcomment.Author </a> | @sortedcomment.Date
+        <div class="row">
                 <div class="col-md-4">
                 @if (SignInManager.IsSignedIn(User))
                 {
