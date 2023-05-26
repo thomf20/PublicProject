@@ -30,27 +30,31 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/black/styles.css" rel="stylesheet" />
+            <link rel="stylesheet" href="css/Itsy/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/Itsy/print.css" type="text/css" media="print" />
     </head>
 
 
 <a asp-page="/CreateBlog" asp-route-SubCategoryId="@Model.SubCategoryId">Create Blog</a>
 
-@foreach (var blog in Model.Blogs)
-{
-    if (blog.SubcategoryId == Model.SubCategoryId)
+<div class="row">
+    @foreach (var blog in Model.Blogs)
     {
-        <div class="col-md-4">
-            <div class="card m-2">
-                <div class="card-body">
-                    <h5 class="card-title">@blog.Title</h5>
-                    <p class="card-text">@blog.Text</p>
+
+        if (blog.SubcategoryId == Model.SubCategoryId)
+        {
+                <div class="col-md-4">
+                    <div class="card m-2">
+                        <div class="card-body">
+                            <h5 class="card-title">@blog.Title</h5>
+                            <p class="card-text">@blog.Text</p>
+                        </div>
+                        <p class="card-footer">@blog.Date</p>
+                        <div class="text-center">
+                            <a class="btn btn-primary" asp-page="/ViewForumPost" asp-route-id="@blog.Id">View Blog</a>
+                        </div>
+                    </div>
                 </div>
-                <p class="card-footer">@blog.Date</p>
-                <div class="text-center">
-                    <a class="btn btn-primary" asp-page="/ViewForumPost" asp-route-id="@blog.Id">View Blog</a>
-                </div>
-            </div>
-        </div>
+        }
     }
-}
+</div>

@@ -58,6 +58,10 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
+   @{
+            Model.Blogs.Reverse();
+         
+        }
 <body class="home sticky-menu sidebar-off" id="top">
 
 
@@ -82,13 +86,14 @@
     <div class="footer-widgets widget-count-4">
         <div class="wrap">
             <div class="widget footer">
-                <h4>Popular posts</h4>
+                <h4>Latest posts</h4>
                 <ul>
                     @for (int i = 0; i < 3; i++)
                     {
-                        <li>
-                            <a asp-page="/ViewForumPost" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Title</a>
-                        </li>
+                            <li>
+                                <a asp-page="/ViewForumPost" asp-route-id="@Model.Blogs[i].Id">@Model.Blogs[i].Title</a>
+                            </li>
+
                     }
                 </ul>
             </div>
@@ -103,10 +108,68 @@
                 </div>
             </div>
             <div class="widget footer">
-                <h4>Gallery</h4>
-                <div class="textwidget">
-                    <img src="images/gallery.png" alt="">
-                </div>
+                @if (SignInManager.IsSignedIn(User))
+                {
+
+                    var inAdminRole = User.IsInRole("Admin");
+                    if (inAdminRole == true)
+                    {
+                                <h4>Admin Stuff</h4>
+                                <div class="textwidget">
+                                    <ul>
+                                        <li>
+                                            <a href="~/reports">Reports</a>
+                                        </li>
+                                        <li>
+
+                                            <a href="~/admin/categoryadmin">Create Category</a>
+                                        </li>
+                                        <li>
+                                            <a href="~/admin/subcategory">Create Sub-Category</a>
+                                        </li>
+                                        <li>
+                                            <a href="">More admin stuff</a>
+                                        </li>                                                       
+                                    </ul>
+                                </div>
+                    }
+                    else
+                    {
+                                <h4>Made by us</h4>
+                                <div class="textwidget">
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/mohammed-karimi-40b7551a9/">Mohammed</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/thom-flodqvist-025256262/">Thom</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/elias-zanghnaeh-25900824a/">Elias</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                    }
+                }
+                else
+                {
+                        <h4>Made by us</h4>
+                        <div class="textwidget">
+                            <ul>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/mohammed-karimi-40b7551a9/">Mohammed</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/thom-flodqvist-025256262/">Thom</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/elias-zanghnaeh-25900824a/">Elias</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                }
+
             </div>
         </div>
     </div>
