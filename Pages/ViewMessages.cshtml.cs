@@ -11,6 +11,7 @@ namespace PublicProject.Pages
         public List<Models.Blog> Blogs { get; set; }
         public Models.Message Message { get; set; }
         public List<Models.Message> Messages { get; set; }
+        public List<Models.UserProfile> UserProfiles { get; set; }
 
 
         public MessagesModel(Data.ApplicationDbContext dbContext)
@@ -26,6 +27,7 @@ namespace PublicProject.Pages
             Blogs = DBContext.Blogs.ToList();
             Subcategories = DBContext.SubCategories.ToList();
             Categories = DBContext.Categories.ToList();
+            UserProfiles = DBContext.UserProfiles.ToList();
 
 
             DBContext.SaveChanges();
