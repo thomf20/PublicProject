@@ -69,7 +69,7 @@
                         <div class="card-body">
                             <h5 class="card-title">@Model.Blogs[i].Title</h5>
                                 <img src="~/img/@Model.Blogs[i].Image" class="card-image">
-                                <p class="card-text">@IndexModel.LimitLength(Model.Blogs[i].Text, 150)</p>
+                                <p class="card-text">@IndexModel.LimitLength(Model.Blogs[i].Text, 150)...</p>
                         </div>
                         <p class="card-footer">@Model.Blogs[i].Date</p>
                         <div class="text-center">
