@@ -52,7 +52,7 @@
             }
             @if(skribent != null)
             {
-                <h3 class="section-heading text-uppercase">Skriven av @skribent.UserName </h3>
+                <a asp-page="/SendmessageToUserView" asp-route-id="@skribent.UserId"><h3 class="section-heading text-uppercase">Skriven av @skribent.UserName </h3></a>
             }
             
             <h3 class="section-subheading text-muted">@Model.BlogPost.Date</h3>
@@ -79,7 +79,7 @@
 
 
             <h2 class="comment-content">@sortedcomment.Text</h2>
-        <a class="comment-footer" asp-page="/Sendmessagetouserview" asp-route-id="@sortedcomment.UserId"> @sortedcomment.Author </a> | @sortedcomment.Date
+        <a class="comment" asp-page="/Sendmessagetouserview" asp-route-id="@sortedcomment.UserId">@sortedcomment.Author</a> | @sortedcomment.Date
         <div class="row">
                 <div class="col-md-4">
                 @if (SignInManager.IsSignedIn(User))

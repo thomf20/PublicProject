@@ -35,8 +35,8 @@
             <section class="main">
                 <article class="post page">
 
-                    <div class="inner">
-                        <h1>@användare.UserName</h1>
+                    <div class="frontpage-container" text-align="center">
+                        <h1>@användare.UserName's sida</h1>
                         <div class="post-content">
                             <p>
                                 <img class="size-full alignleft rounded" src="~/img/@användare.Imglink" alt="about-clare" width="300" height="300">
@@ -57,7 +57,9 @@
     </div><!-- /wrap -->
     <div class="row">
         <div class="col-md-4">
-            <form method="post">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                 <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Message.Id" />
                 <div class="form-group">
@@ -84,6 +86,8 @@
                     <input type="submit" value="Save" class="btn btn-default" />
                 </div>
             </form>
+            }
+           
         </div>
     </div>
 
