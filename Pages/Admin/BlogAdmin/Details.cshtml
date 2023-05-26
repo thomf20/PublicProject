@@ -1,11 +1,18 @@
 ﻿@page
 @model PublicProject.Pages.BlogAdmin.DetailsModel
-
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var inAdminRole = User.IsInRole("Admin");
+    if (inAdminRole == true)
+    {
+        <h1>Details</h1>
 
 <div>
     <h4>Blog</h4>
@@ -59,3 +66,14 @@
     <a asp-page="./Edit" asp-route-id="@Model.Blog?.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>
+    }
+    else
+    {
+          <p>You dont have accsess to this site, please go back to the <a asp-page="./Index">BackMain page</a></p>
+    }
+
+}
+else
+{
+      <p>You dont have accsess to this site, please go back to the <a asp-page="./Index">BackMain page</a></p>
+}
