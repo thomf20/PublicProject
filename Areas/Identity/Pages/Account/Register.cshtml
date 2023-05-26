@@ -39,11 +39,12 @@
                     <div>
 
                         @try{
-                            <p>
+                            <div>
+                            
                                 <input type="text" id="textToCopy" value="@PublicProject.API.PasswordGeneratorAPI.GetRandomPassword().Result[0].Passwords" readonly>
                                 <button type="button" onclick="copyToClipboard()">Copy</button>
                                 <button id="refreshButton" onclick="refreshPage()">Refresh</button>
-                            </p>
+                            </div>
                         }
                         catch (AggregateException)
                         {
@@ -104,6 +105,22 @@
             // Optionally, provide feedback to the user
             alert("Text copied to clipboard: " + text);
         }
+
+            document.getElementById("generatePasswordBtn").addEventListener("click", function () {
+                var sliderValue = document.getElementById("slider").value;
+                generatePassword(sliderValue);
+            });
+
+        function generatePassword(length) {
+            // Make an API request to your endpoint
+            fetch('/api/password?length=' + length)
+                .then(response => response.json())
+                .then(data => {
+                    var passwordElement = document.getElementById("generatedPassword");
+                    passwordElement.innerText = data.password;
+                });
+        }
     </script>
+
 
 }

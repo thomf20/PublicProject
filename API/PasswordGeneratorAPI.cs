@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
 namespace PublicProject.API
@@ -24,5 +25,7 @@ namespace PublicProject.API
             }
             return RandomGeneratedPassword;
         }
+
+   
     }
 }
