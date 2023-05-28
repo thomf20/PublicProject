@@ -27,6 +27,7 @@ namespace PublicProject.Pages
 
         [BindProperty]
         public Report Report { get; set; } = default!;
+
         static int blogpostid;
 
       
@@ -91,17 +92,6 @@ namespace PublicProject.Pages
             return RedirectToPage("/ViewForumPost", new { id = blogpostid });
         }
 
-        //public async Task<IActionResult> OnPostSendMessageAsync()
-        //{
-        //    //if (!ModelState.IsValid)
-        //    //{
-        //    //    return Page();
-        //    //}
-
-        //    ScopedData.DBContext.Messages.Add(Message);
-        //    await ScopedData.DBContext.SaveChangesAsync();
-
-        //    return RedirectToPage("./Index");
-        //}
+   
     }
 }
