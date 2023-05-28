@@ -10,12 +10,6 @@ namespace PublicProject.Pages
     public class ViewForumPostModel : PageModel
     {
         public Blog BlogPost { get; set; }
-        //public Models.Category Category { get; set; }
-        //public List<Models.SubCategory> Subcategories { get; set; }
-        //public List<Models.Comment> Comments { get; set; }
-        //public List<Models.UserProfile> UserProfiles { get; set; }
-
-        public IUtilities Data { get; set; }
 
         public readonly UtilitiesToBeScoped ScopedData;
         
@@ -33,19 +27,16 @@ namespace PublicProject.Pages
 
         [BindProperty]
         public Report Report { get; set; } = default!;
+        static int blogpostid;
 
+      
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            
-            
+           
 
             BlogPost = await ScopedData.DBContext.Blogs.FindAsync(id);
-            
-            //Comments = await ScopedData.DBContext.Comments.ToListAsync();
-            //UserProfiles = await ScopedData.DBContext.UserProfiles.ToListAsync();
-
-
+           
 
             if (BlogPost.Popularity == null)
             {
@@ -54,6 +45,7 @@ namespace PublicProject.Pages
             
             BlogPost.Popularity++;
 
+            blogpostid = id;
 
             if (BlogPost == null)
             {
@@ -61,10 +53,10 @@ namespace PublicProject.Pages
             }
 
            await ScopedData.DBContext.SaveChangesAsync();
+
+
             return Page();
         }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostSendCommentAsync()
         {
             //if (!ModelState.IsValid || ScopedData.DBContext.Comments == null || Comment == null)
@@ -76,8 +68,13 @@ namespace PublicProject.Pages
             await ScopedData.DBContext.Comments.AddAsync(Comment);
             await ScopedData.DBContext.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+
+
+            return RedirectToPage("/ViewForumPost", new { id = blogpostid });
         }
+
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+
 
         public async Task<IActionResult> OnPostReportAsync()
         {
@@ -89,20 +86,22 @@ namespace PublicProject.Pages
             ScopedData.DBContext.Reports.Add(Report);
             await ScopedData.DBContext.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+
+
+            return RedirectToPage("/ViewForumPost", new { id = blogpostid });
         }
 
-        public async Task<IActionResult> OnPostSendMessageAsync()
-        {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
+        //public async Task<IActionResult> OnPostSendMessageAsync()
+        //{
+        //    //if (!ModelState.IsValid)
+        //    //{
+        //    //    return Page();
+        //    //}
 
-            ScopedData.DBContext.Messages.Add(Message);
-            await ScopedData.DBContext.SaveChangesAsync();
+        //    ScopedData.DBContext.Messages.Add(Message);
+        //    await ScopedData.DBContext.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
-        }
+        //    return RedirectToPage("./Index");
+        //}
     }
 }
