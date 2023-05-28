@@ -1,6 +1,6 @@
 ﻿namespace PublicProject.Models
 {
-    public class Report
+    public class Report 
     {
         public int Id { get; set; }
         public string reporterId { get; set; }

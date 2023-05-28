@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PublicProject.Data;
+using PublicProject.Services;
+
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +18,15 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 //     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+//builder.Services.AddTransient<Utilities>();
+builder.Services.AddScoped<UtilitiesToBeScoped>();
+//builder.Services.AddSingleton<UtilitiesToBeSingleton>();
+//builder.Services.AddTransient<IUtilities, Utilities>();
+
+
+
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(
 options => {
@@ -50,20 +62,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-
-//    var context = services.GetRequiredService<ApplicationDbContext>();
-
-//    context.Database.Migrate();
-
-//    var userMgr = services.GetRequiredService<UserManager<IdentityUser>>();
-//    var roleMgr = services.GetRequiredService<RoleManager<IdentityRole>>();
-
-//    IdentitySeedData.Initialize(context, userMgr, roleMgr).Wait();
-//}
-
 
 app.Run();

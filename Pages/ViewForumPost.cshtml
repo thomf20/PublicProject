@@ -34,6 +34,7 @@
     </div>
 </div>
 
+
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
@@ -48,7 +49,7 @@
     <div class="container">
         <div class="text-center">
             @{
-                var skribent = Model.UserProfiles.FirstOrDefault(x => x.UserId == Model.BlogPost.UserId);
+                var skribent = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == Model.BlogPost.UserId);
             }
             @if(skribent != null)
             {
@@ -61,7 +62,7 @@
 </section>
 <!--Comment section-->
 @{
-    var comments = Model.Comments.Where(x => x.BlogId == Model.BlogPost.Id);
+    var comments = Model.ScopedData.Comments.Where(x => x.BlogId == Model.BlogPost.Id);
 }
 
 
@@ -71,7 +72,7 @@
 {
     <div class="comment">
         @{
-            var image = Model.UserProfiles.FirstOrDefault(x => x.UserId == sortedcomment.UserId);
+            var image = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == sortedcomment.UserId);
         }
         <div class="thumbnail">
             <img src="~/img/@image.Imglink" >
@@ -123,7 +124,7 @@
 
 
 @{
-    int commentId = Model.Comments.Count() + 1;    
+    int commentId = Model.ScopedData.Comments.Count() + 1;    
 }
 
 @if (SignInManager.IsSignedIn(User))
@@ -138,7 +139,7 @@
             </div>
             <div class="form-group">
                 @{
-                    var commenter = Model.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
+                    var commenter = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
                     if(commenter.UserName != null)
                     {
                             <input asp-for="Comment.Author" value="@commenter.UserName" class="form-control" readonly type="hidden"/>

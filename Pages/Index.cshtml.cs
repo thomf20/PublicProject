@@ -8,6 +8,9 @@ namespace PublicProject.Pages
 {
     public class IndexModel : PageModel
     {
+        
+
+
         private readonly Data.ApplicationDbContext _context;
 
         public IndexModel(Data.ApplicationDbContext context)

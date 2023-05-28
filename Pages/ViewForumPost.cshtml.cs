@@ -1,30 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.EntityFrameworkCore;
 using PublicProject.Models;
+using PublicProject.Services;
 
 namespace PublicProject.Pages
 {
     public class ViewForumPostModel : PageModel
     {
-
-        private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
-
         public Blog BlogPost { get; set; }
-        public Models.Category Category { get; set; }
-        public List<Models.SubCategory> Subcategories { get; set; }
-        public List<Models.Comment> Comments { get; set; }
-        public List<Models.UserProfile> UserProfiles { get; set; }
+        //public Models.Category Category { get; set; }
+        //public List<Models.SubCategory> Subcategories { get; set; }
+        //public List<Models.Comment> Comments { get; set; }
+        //public List<Models.UserProfile> UserProfiles { get; set; }
 
+        public IUtilities Data { get; set; }
 
-        private readonly PublicProject.Data.ApplicationDbContext _context;
-        public ViewForumPostModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
-        {
-            DBContext = dbContext;
-            _context = dbContext;
-        }
+        public readonly UtilitiesToBeScoped ScopedData;
         
+        public ViewForumPostModel(UtilitiesToBeScoped utilitiesToBeScoped) // Byt ut "YourDbContext" med namnet på din databaskontext
+        {
+            ScopedData = utilitiesToBeScoped;
+        }
 
+        
         [BindProperty]
         public Comment Comment { get; set; } = default!;
 
@@ -35,12 +35,15 @@ namespace PublicProject.Pages
         public Report Report { get; set; } = default!;
 
 
-        public IActionResult OnGet(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
+            
+            
 
-            BlogPost = DBContext.Blogs.Find(id);
-            Comments = DBContext.Comments.ToList();
-            UserProfiles = DBContext.UserProfiles.ToList();
+            BlogPost = await ScopedData.DBContext.Blogs.FindAsync(id);
+            
+            //Comments = await ScopedData.DBContext.Comments.ToListAsync();
+            //UserProfiles = await ScopedData.DBContext.UserProfiles.ToListAsync();
 
 
 
@@ -57,21 +60,21 @@ namespace PublicProject.Pages
                 return NotFound();
             }
 
-            DBContext.SaveChanges();
+           await ScopedData.DBContext.SaveChangesAsync();
             return Page();
         }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostSendCommentAsync()
         {
-            //if (!ModelState.IsValid || _context.Comments == null || Comment == null)
+            //if (!ModelState.IsValid || ScopedData.DBContext.Comments == null || Comment == null)
             //{
             //    return Page();
             //}
 
 
-            _context.Comments.Add(Comment);
-            await _context.SaveChangesAsync();
+            await ScopedData.DBContext.Comments.AddAsync(Comment);
+            await ScopedData.DBContext.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
@@ -83,8 +86,8 @@ namespace PublicProject.Pages
             //    return Page();
             //}
 
-            _context.Reports.Add(Report);
-            await _context.SaveChangesAsync();
+            ScopedData.DBContext.Reports.Add(Report);
+            await ScopedData.DBContext.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
@@ -96,8 +99,8 @@ namespace PublicProject.Pages
             //    return Page();
             //}
 
-            _context.Messages.Add(Message);
-            await _context.SaveChangesAsync();
+            ScopedData.DBContext.Messages.Add(Message);
+            await ScopedData.DBContext.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
