@@ -4,7 +4,7 @@
 @model PublicProject.Pages.SendmessageToUserViewModel
 @{
     var user = await UserManager.GetUserAsync(User);
-    var användare = Model.UserProfiles.Where(x => x.UserId == Model.userid).FirstOrDefault();
+    var användare = Model.ScopedData.UserProfiles.Where(x => x.UserId == Model.userid).FirstOrDefault();
    
 }
 

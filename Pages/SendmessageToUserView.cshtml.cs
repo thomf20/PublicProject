@@ -2,19 +2,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PublicProject.Models;
+using PublicProject.Services;
 
 namespace PublicProject.Pages
 {
     public class SendmessageToUserViewModel : PageModel
     {
-        private readonly Data.ApplicationDbContext DBContext; // Byt ut "YourDbContext" med namnet på din databaskontext
-
-        public UserProfile UserProfile { get; set; }
-        public List<UserProfile> UserProfiles { get; set; }
-
-        public SendmessageToUserViewModel(Data.ApplicationDbContext dbContext) // Byt ut "YourDbContext" med namnet på din databaskontext
+        public readonly UtilitiesToBeScoped ScopedData;
+        public SendmessageToUserViewModel(UtilitiesToBeScoped utilitiesToBeScoped)
         {
-            DBContext = dbContext;
+            ScopedData = utilitiesToBeScoped;
         }
 
         public string userid { get; set; }
@@ -26,7 +23,7 @@ namespace PublicProject.Pages
         public Report Report { get; set; } = default!;
         public IActionResult OnGet(string id)
         {
-            UserProfiles = DBContext.UserProfiles.ToList();
+          
             userid = id;
             return Page();
         }
@@ -34,8 +31,8 @@ namespace PublicProject.Pages
         {
            
 
-            DBContext.Messages.Add(Message);
-            await DBContext.SaveChangesAsync();
+            ScopedData.DBContext.Messages.Add(Message);
+            await ScopedData.DBContext.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

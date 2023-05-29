@@ -2,29 +2,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PublicProject.Models;
+using PublicProject.Services;
 using System.Security.Claims;
 
 namespace PublicProject.Pages
 {
     public class IndexModel : PageModel
     {
-        
+        public readonly UtilitiesToBeScoped ScopedData;
 
-
-        private readonly Data.ApplicationDbContext _context;
-
-        public IndexModel(Data.ApplicationDbContext context)
+        public IndexModel(UtilitiesToBeScoped utilitiesToBeScoped)
         {
-            _context = context;
+            ScopedData = utilitiesToBeScoped;
         }
-        public List<Models.Category> Categories { get; set; }
-
+     
         [BindProperty]
         public Models.Category Category { get; set; }
-        public List<Blog> Blogs { get; set; }
-
-
-
+        
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
 
@@ -55,52 +49,44 @@ namespace PublicProject.Pages
                     //    System.IO.File.Delete("./wwwroot/img/" + blog.Image);
                     //}
                     //_context.Blog.Remove(blog);
-                    await _context.SaveChangesAsync();
+                    await ScopedData.DBContext.SaveChangesAsync();
 
                     return RedirectToPage("./Index");
                 }
             }
-
-            //Blogs = await _context.Blog.ToListAsync();
-            Blogs = _context.Blogs.ToList();
-
-
-
             return Page();
         }
      
-        public async Task<IActionResult> OnPostAsync()
-        {
-            string fileName = string.Empty;
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    string fileName = string.Empty;
 
-            // Generarar ett relativt unikt fil namn så att det inte finns 100 filer med samma namn.
-            if (UploadedImage != null)
-            {
-                Random rnd = new Random();
-                fileName = rnd.Next(1, 100000).ToString() + UploadedImage.FileName;
-                var file = "./wwwroot/img/" + fileName;
+           
+        //    if (UploadedImage != null)
+        //    {
+        //        Random rnd = new Random();
+        //        fileName = rnd.Next(1, 100000).ToString() + UploadedImage.FileName;
+        //        var file = "./wwwroot/img/" + fileName;
 
-                using (var fileStream = new FileStream(file, FileMode.Create))
-                {
-                    await UploadedImage.CopyToAsync(fileStream);
-                }
-            }
-            else
-            {
-                fileName = UploadedImage + "ingenbildbild.jpg";
-                var file = "./wwwroot/img/" + fileName;
-            }
-            //Blog.Date = DateTime.Now;
-            //Blog.Image = fileName;
-            //Blog.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //        using (var fileStream = new FileStream(file, FileMode.Create))
+        //        {
+        //            await UploadedImage.CopyToAsync(fileStream);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        fileName = UploadedImage + "ingenbildbild.jpg";
+        //        var file = "./wwwroot/img/" + fileName;
+        //    }
+          
 
-            _context.Add(Category);
+        //    _context.Add(Category);
 
-            await _context.SaveChangesAsync();
+        //    await _context.SaveChangesAsync();
 
 
-            return RedirectToPage("./Index");
-        }
+        //    return RedirectToPage("./Index");
+        //}
 
 
 

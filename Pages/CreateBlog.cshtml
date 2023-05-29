@@ -9,7 +9,7 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <h1>Here you can create you on blog post!</h1>
+    <h1>Here you can create your own blog post!</h1>
 
     <div class="row">
         <div class="col-md-4">
@@ -41,7 +41,7 @@
                     <span asp-validation-for="Blog.Popularity" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input asp-for="Blog.SubcategoryId" value="@Model.Subcategory.Id" readonly class="form-control" type="hidden" />
+                    <input asp-for="Blog.SubcategoryId" value="@Model.ScopedData.subCategory.Id" readonly class="form-control" type="hidden" />
                     <span asp-validation-for="Blog.SubcategoryId" class="text-danger"></span>
                 </div>
                 <div class="form-group">

@@ -4,6 +4,7 @@
 @inject UserManager<IdentityUser> UserManager
 @{
     var user = await UserManager.GetUserAsync(User);
+    var sortedcategories = Model.ScopedData.SubCategories.Where(x => x.CategoryId == Model.ScopedData.category.Id);
 }
 
 
@@ -32,13 +33,13 @@
         <h2 class="home-sticky-title">Subkategorier</h2></a>
         <div class="sticky-inner">
             <section>
-                @foreach (var sub in Model.Subcategories)
+
+
+                @foreach (var sub in sortedcategories)
                 {
-                    if (Model.Category.Id == sub.CategoryId)
-                    {
                         <a asp-page="/ViewAllBlogs" asp-route-SubCategoryId="@sub.Id"><h3> @sub.Name </h3> </a>
                     }
-                }
+                
             </section>
         </div>
     </div>

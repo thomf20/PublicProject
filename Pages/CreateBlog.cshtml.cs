@@ -2,46 +2,40 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PublicProject.Models;
+using PublicProject.Services;
 
 namespace PublicProject.Pages
 {
     public class CreateBlogModel : PageModel
     {
-        private readonly Data.ApplicationDbContext DBContext;
-        
-        public Models.Category Category { get; set; }
-        public Models.SubCategory Subcategory { get; set; }
-        
-        public List<Models.Blog> Blogs { get; set; }
-
-        private readonly PublicProject.Data.ApplicationDbContext _context;
+        public readonly UtilitiesToBeScoped ScopedData;
+     
 
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
 
-        public CreateBlogModel(Data.ApplicationDbContext dbContext)
+        public CreateBlogModel(UtilitiesToBeScoped utilitiesToBeScoped)
         {
-            DBContext = dbContext;
-            _context = dbContext;
+            ScopedData = utilitiesToBeScoped;         
         }
         [BindProperty]
         public Blog Blog { get; set; } = default!;
         public IActionResult OnGet(int SubCategoryId)
         {
 
-            Blogs = DBContext.Blogs.ToList();
-            Subcategory = DBContext.SubCategories.Find(SubCategoryId);
-            Category = DBContext.Categories.Find(Subcategory.CategoryId);
+            
+            ScopedData.subCategory = ScopedData.DBContext.SubCategories.Find(SubCategoryId);
+            ScopedData.category = ScopedData.DBContext.Categories.Find(ScopedData.subCategory.CategoryId);
 
 
-            DBContext.SaveChanges();
+            ScopedData.DBContext.SaveChanges();
             return Page();
 
         }
         public async Task<IActionResult> OnPostAsync()
         {
             string fileName = string.Empty;
-            if (!ModelState.IsValid || _context.Blogs == null || Blog == null)
+            if (!ModelState.IsValid || ScopedData.Blogs == null || Blog == null)
             {
                 return Page();
             }
@@ -60,8 +54,8 @@ namespace PublicProject.Pages
             Blog.Image = fileName;
 
 
-            _context.Blogs.Add(Blog);
-            await _context.SaveChangesAsync();
+            ScopedData.DBContext.Blogs.Add(Blog);
+            await ScopedData.DBContext.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

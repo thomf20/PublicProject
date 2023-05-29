@@ -10,7 +10,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
     
-    var profile = Model.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
+    var profile = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
    
     @if (profile != null)
     {

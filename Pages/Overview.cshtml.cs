@@ -2,31 +2,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PublicProject.Models;
+using PublicProject.Services;
 using System.Security.Claims;
 
 namespace PublicProject.Pages
 {
     public class OverviewModel : PageModel
     {
-        private readonly Data.ApplicationDbContext _context;
-        public OverviewModel(Data.ApplicationDbContext context)
+        public readonly UtilitiesToBeScoped ScopedData;
+        public OverviewModel(UtilitiesToBeScoped utilitiesToBeScoped)
         {
-            _context = context;
+            ScopedData = utilitiesToBeScoped;
         }
-
-        public List<Models.UserProfile> UserProfiles;
 
         [BindProperty]
         public Models.UserProfile UserProfile { get; set; }
 
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
-        public async Task<IActionResult> OnGetAsync()  //tar bort en blog
+        public async Task<IActionResult> OnGetAsync() 
         {
-            UserProfiles = await _context.UserProfiles.ToListAsync();
             return Page();
-
-
         }
 
         public async Task<IActionResult> OnPostAsync()  
@@ -44,7 +40,7 @@ namespace PublicProject.Pages
                 }
             }
 
-            UserProfile existingProfile = _context.UserProfiles.FirstOrDefault(p => p.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+            UserProfile existingProfile = ScopedData.DBContext.UserProfiles.FirstOrDefault(p => p.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             if (existingProfile != null)
             {
@@ -62,10 +58,10 @@ namespace PublicProject.Pages
                     UserId = User.FindFirstValue(ClaimTypes.NameIdentifier),
                     UserName = UserProfile.UserName
                 };
-                _context.Add(newProfile);
+                ScopedData.DBContext.Add(newProfile);
             }
 
-            await _context.SaveChangesAsync();
+            await ScopedData.DBContext.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }

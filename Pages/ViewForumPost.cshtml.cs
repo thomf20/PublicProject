@@ -13,7 +13,7 @@ namespace PublicProject.Pages
 
         public readonly UtilitiesToBeScoped ScopedData;
         
-        public ViewForumPostModel(UtilitiesToBeScoped utilitiesToBeScoped) // Byt ut "YourDbContext" med namnet på din databaskontext
+        public ViewForumPostModel(UtilitiesToBeScoped utilitiesToBeScoped) 
         {
             ScopedData = utilitiesToBeScoped;
         }
