@@ -22,10 +22,9 @@ namespace PublicProject.Pages
         {
             
             ScopedData.message = ScopedData.DBContext.Messages.Find(id);
-      
-
-
+     
             ScopedData.DBContext.SaveChanges();
+
             return Page();
 
         }

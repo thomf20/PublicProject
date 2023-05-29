@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -19,25 +20,27 @@ namespace PublicProject.Pages
         [BindProperty]
         public Blog Blog { get; set; } = default!;
 
-        public EditBlogModel(UtilitiesToBeScoped utilitiesToBeScoped, PublicProject.Data.ApplicationDbContext context)
+        public EditBlogModel(UtilitiesToBeScoped utilitiesToBeScoped)
         {
             ScopedData = utilitiesToBeScoped;
-            _context = context;
+            
         }
 
-        private readonly PublicProject.Data.ApplicationDbContext _context;
+       
+       
 
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Blogs == null)
+            if (id == null || ScopedData.DBContext.Blogs == null)
             {
                 return NotFound();
             }
 
-            var blog = await _context.Blogs.FirstOrDefaultAsync(m => m.Id == id);
+            var blog = await ScopedData.DBContext.Blogs.FirstOrDefaultAsync(m => m.Id == id);
+
             if (blog == null)
             {
                 return NotFound();
@@ -65,14 +68,15 @@ namespace PublicProject.Pages
 
             
 
-            var oldblog = _context.Blogs.FirstOrDefault(b => b.Id == Blog.Id);
+            var oldblog = ScopedData.DBContext.Blogs.FirstOrDefault(b => b.Id == Blog.Id);
+            oldblog.Image = fileName;   //så här skulle det stå om man ville ändra bild
             oldblog.Title = Blog.Title;
             oldblog.Text = Blog.Text;
-            oldblog.Image = Blog.Image;
+          
 
             try
             {
-                await _context.SaveChangesAsync();
+                await ScopedData.DBContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -85,11 +89,11 @@ namespace PublicProject.Pages
                     throw;
                 }
             }
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Viewforumpost", new { id = Blog.Id } );
         }
         private bool BlogExists(int id)
         {
-            return (_context.Blogs?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (ScopedData.DBContext.Blogs?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
