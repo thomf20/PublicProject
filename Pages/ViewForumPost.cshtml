@@ -4,7 +4,8 @@
 @inject UserManager<IdentityUser> UserManager
 @{
     var user = await UserManager.GetUserAsync(User);
-    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
+    var hasUsername = false;
+
 }
 
     <html lang="en">
@@ -37,7 +38,16 @@
 @*Om koden inte funkar här så ska koden från rad 37 till 39 ner till rad 58.*@
 @{
     var skribent = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == Model.ScopedData.blog.UserId);
+
+    @*Koden under fixade så att man kunde titta på en blog post utan att vara inloggad*@
+    @if (user != null)
+    {
+        var userProfile = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
+        hasUsername = userProfile != null;
+    }
+    
 }
+
 @if (SignInManager.IsSignedIn(User))
 {
     @if (Model.ScopedData.blog.UserId == user.Id)

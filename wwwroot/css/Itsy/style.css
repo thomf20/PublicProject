@@ -40,6 +40,9 @@
 /* ==========================================================================
     0 Resets & Box Sizing
   ========================================================================== */
+.body {
+    background-color: darkgray;
+}
 .frontpage-container{
     text-align: center;
     align-items: center;

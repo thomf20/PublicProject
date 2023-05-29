@@ -5,7 +5,7 @@
 @{
     ViewData["Title"] = "Home page";
     var user = await UserManager.GetUserAsync(User);
-    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
+   
 
 }
 @{
@@ -34,11 +34,13 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body class="home sticky-menu sidebar-off" id="top">
+<body class="home sticky-menu sidebar-off"id="top">
 
 
     @if (SignInManager.IsSignedIn(User))
     {
+        var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
+
         <a asp-page="/overview" asp-route-id="@user.Id"><h3 class="home-sticky-title"> View User Profile</h3></a>
 
         if (hasUsername?.UserName == null)
