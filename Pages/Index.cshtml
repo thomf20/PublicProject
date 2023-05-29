@@ -5,8 +5,13 @@
 @{
     ViewData["Title"] = "Home page";
     var user = await UserManager.GetUserAsync(User);
-}
+    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
 
+}
+@{
+   
+
+}
 
 
 <html class="home blog no-js" lang="en-US">
@@ -35,6 +40,11 @@
     @if (SignInManager.IsSignedIn(User))
     {
         <a asp-page="/overview" asp-route-id="@user.Id"><h3 class="home-sticky-title"> View User Profile</h3></a>
+
+        if (hasUsername?.UserName == null)
+        {
+            <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att börja blogga!</p>
+        }
     }
 
     <div class="hero" style="background-image: url('images/lead.jpg'); text-align:right;">

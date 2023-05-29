@@ -4,6 +4,7 @@
 @inject UserManager<IdentityUser> UserManager
 @{
     var user = await UserManager.GetUserAsync(User);
+    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
 }
 
     <html lang="en">
@@ -29,25 +30,29 @@
 <div class="blog-content">
     <div class="blog-pop">
         <div class="container">
-            <strong><img class="test" width="30px" height="30px" src="~/img/viewcount.png" /> @Model.BlogPost.Popularity</strong>
+            <strong><img class="test" width="30px" height="30px" src="~/img/viewcount.png" /> @Model.ScopedData.blog.Popularity</strong>
         </div>
     </div>
 </div>
 @*Om koden inte funkar här så ska koden från rad 37 till 39 ner till rad 58.*@
 @{
-    var skribent = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == Model.BlogPost.UserId);
+    var skribent = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == Model.ScopedData.blog.UserId);
 }
-@if (Model.BlogPost.UserId == user.Id)
+@if (SignInManager.IsSignedIn(User))
 {
-    <a asp-page="/EditBlog" asp-route-id="@Model.BlogPost.Id">Edit Blog</a>
+    @if (Model.ScopedData.blog.UserId == user.Id)
+    {
+        <a asp-page="/EditBlog" asp-route-id="@Model.ScopedData.blog.Id">Edit Blog</a>
+    }
 }
+
 
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
-        <div class="masthead-heading text-uppercase">@Model.BlogPost.Title</div>
-        <img class="img-fluid" src="~/img/@Model.BlogPost.Image" />
-        <div class="masthead-subheading"> @Model.BlogPost.Text</div>
+        <div class="masthead-heading text-uppercase">@Model.ScopedData.blog.Title</div>
+        <img class="img-fluid" src="~/img/@Model.ScopedData.blog.Image" />
+        <div class="masthead-subheading"> @Model.ScopedData.blog.Text</div>
     </div>
 </header>
 
@@ -63,13 +68,13 @@
                 <a asp-page="/SendmessageToUserView" asp-route-id="@skribent.UserId"><h3 class="section-heading text-uppercase">Skriven av @skribent.UserName </h3></a>
             }
             
-            <h3 class="section-subheading text-muted">@Model.BlogPost.Date</h3>
+            <h3 class="section-subheading text-muted">@Model.ScopedData.blog.Date</h3>
         </div>
     </div>
 </section>
 <!--Comment section-->
 @{
-    var comments = Model.ScopedData.Comments.Where(x => x.BlogId == Model.BlogPost.Id);
+    var comments = Model.ScopedData.Comments.Where(x => x.BlogId == Model.ScopedData.blog.Id);
 }
 
 
@@ -136,50 +141,59 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <div class="comment-form">
-        <h2>Kommentera foruminlägg</h2>
-        <form method="post" asp-page-handler="SendComment">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input asp-for="Comment.Id" value="@commentId" class="form-control" readonly type="hidden" />
-                <span asp-validation-for="Comment.Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @{
-                    var commenter = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
-                    if(commenter.UserName != null)
-                    {
-                            <input asp-for="Comment.Author" value="@commenter.UserName" class="form-control" readonly type="hidden"/>
+    if(hasUsername != null)
+    {
+        <div class="comment-form">
+            <h2>Kommentera foruminlägg</h2>
+            <form method="post" asp-page-handler="SendComment">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="Comment.Id" value="@commentId" class="form-control" readonly type="hidden" />
+                    <span asp-validation-for="Comment.Id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @{
+                        var commenter = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == user.Id);
+                        if (commenter?.UserName != null)
+                        {
+                            <input asp-for="Comment.Author" value="@commenter.UserName" class="form-control" readonly type="hidden" />
                             <span asp-validation-for="Comment.Author" class="text-danger"></span>
+                        }
                     }
-                  }
-            </div>
-            <div class="form-group">
-                <label asp-for="Comment.Text" class="control-label"></label>
-                <input asp-for="Comment.Text" class="form-control" />
-                <span asp-validation-for="Comment.Text" class="text-danger"></span>
-            </div>
-
-       
-            <div class="form-group">
-                <input asp-for="Comment.Date" value="@DateTime.Now" class="form-control" readonly type="hidden" />
-                <span asp-validation-for="Comment.Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Comment.BlogId " value="@Model.BlogPost.Id" class="form-control" readonly type="hidden" />
-                <span asp-validation-for="Comment.BlogId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Comment.Text" class="control-label"></label>
+                    <input asp-for="Comment.Text" class="form-control" />
+                    <span asp-validation-for="Comment.Text" class="text-danger"></span>
+                </div>
 
 
                 <div class="form-group">
-                    <input asp-for="Comment.UserId" value=@user.Id readonly type="hidden" class="form-control" />
-                    <span asp-validation-for="Comment.UserId" class="text-danger"></span>
+                    <input asp-for="Comment.Date" value="@DateTime.Now" class="form-control" readonly type="hidden" />
+                    <span asp-validation-for="Comment.Date" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-        </form>
-    </div>
+                    <input asp-for="Comment.BlogId " value="@Model.ScopedData.blog.Id" class="form-control" readonly type="hidden" />
+                    <span asp-validation-for="Comment.BlogId" class="text-danger"></span>
+
+
+                    <div class="form-group">
+                        <input asp-for="Comment.UserId" value=@user.Id readonly type="hidden" class="form-control" />
+                        <span asp-validation-for="Comment.UserId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+            </form>
+        </div>
+    }
+    else
+    {
+        <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att börja blogga!</p>
+    }
+    
 }
+
 
 
 

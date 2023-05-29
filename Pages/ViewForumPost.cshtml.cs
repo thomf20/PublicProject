@@ -9,7 +9,6 @@ namespace PublicProject.Pages
 {
     public class ViewForumPostModel : PageModel
     {
-        public Blog BlogPost { get; set; }
 
         public readonly UtilitiesToBeScoped ScopedData;
         
@@ -36,19 +35,19 @@ namespace PublicProject.Pages
         {
            
 
-            BlogPost = await ScopedData.DBContext.Blogs.FindAsync(id);
+            ScopedData.blog = await ScopedData.DBContext.Blogs.FindAsync(id);
            
 
-            if (BlogPost.Popularity == null)
+            if (ScopedData.blog.Popularity == null)
             {
-                BlogPost.Popularity = 0;
+                ScopedData.blog.Popularity = 0;
             }
-            
-            BlogPost.Popularity++;
+
+            ScopedData.blog.Popularity++;
 
             blogpostid = id;
 
-            if (BlogPost == null)
+            if (ScopedData.blog == null)
             {
                 return NotFound();
             }

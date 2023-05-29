@@ -1,0 +1,47 @@
+﻿@page
+@model PublicProject.Pages.ShowAllMyBlogsModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Agency - Start Bootstrap Theme</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="css/Itsy/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/Itsy/print.css" type="text/css" media="print" />
+</head>
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+@{
+    var sortedBlogs = Model.ScopedData.Blogs.Where(b => b.UserId == user.Id);
+}
+<div class="row">
+    @foreach (var blog in sortedBlogs)
+    {
+        <div class="col-md-4">
+            <div class="card m-2">
+                <div class="card-body">
+                    <h5 class="card-title">@blog.Title</h5>
+                    <p class="card-text">@Extensions.Extensions.LimitLength(blog.Text, 200)</p>
+                </div>
+                <p class="card-footer">@blog.Date</p>
+                <div class="text-center">
+                    <a class="btn btn-primary" asp-page="/ViewForumPost" asp-route-id="@blog.Id">View Blog</a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
