@@ -9,7 +9,7 @@ namespace PublicProject.Pages
     public class CreateBlogModel : PageModel
     {
         public readonly UtilitiesToBeScoped ScopedData;
-     
+        static int blogpostid;
 
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
@@ -27,12 +27,13 @@ namespace PublicProject.Pages
             ScopedData.subCategory = ScopedData.DBContext.SubCategories.Find(SubCategoryId);
             ScopedData.category = ScopedData.DBContext.Categories.Find(ScopedData.subCategory.CategoryId);
 
+            
 
             ScopedData.DBContext.SaveChanges();
             return Page();
 
         }
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int SubCategoryId)
         {
             string fileName = string.Empty;
             if (!ModelState.IsValid || ScopedData.Blogs == null || Blog == null)
@@ -52,12 +53,12 @@ namespace PublicProject.Pages
             }
 
             Blog.Image = fileName;
-
+            blogpostid = SubCategoryId;
 
             ScopedData.DBContext.Blogs.Add(Blog);
             await ScopedData.DBContext.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/ViewAllBlogs", new { SubCategoryId = blogpostid });
         }
 
 
