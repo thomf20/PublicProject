@@ -151,7 +151,8 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    if(hasUsername != null)
+    @*Finns ett bugg här, jag kan se kommentarfältet även fast mitt konto inte har ett användar namn*@
+    if(hasUsername != true)
     {
         <div class="comment-form">
             <h2>Kommentera foruminlägg</h2>
@@ -197,7 +198,7 @@
             </form>
         </div>
     }
-    else
+    else if(hasUsername == false)
     {
         <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att börja blogga!</p>
     }
