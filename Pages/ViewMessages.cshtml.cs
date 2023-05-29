@@ -1,36 +1,31 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PublicProject.Services;
 
 namespace PublicProject.Pages
 {
     public class MessagesModel : PageModel
     {
-        private readonly Data.ApplicationDbContext DBContext;
-        public List<Models.Category> Categories { get; set; }
-        public List<Models.SubCategory> Subcategories { get; set; }
-        public List<Models.Blog> Blogs { get; set; }
-        public Models.Message Message { get; set; }
-        public List<Models.Message> Messages { get; set; }
-        public List<Models.UserProfile> UserProfiles { get; set; }
 
 
-        public MessagesModel(Data.ApplicationDbContext dbContext)
+        public readonly UtilitiesToBeScoped ScopedData;
+
+        public MessagesModel(UtilitiesToBeScoped utilitiesToBeScoped)
         {
-            DBContext = dbContext;
+            ScopedData = utilitiesToBeScoped;
         }
+
+
 
 
         public IActionResult OnGet(int id)
         {
-            Messages = DBContext.Messages.ToList();
-            Message = DBContext.Messages.Find(id);
-            Blogs = DBContext.Blogs.ToList();
-            Subcategories = DBContext.SubCategories.ToList();
-            Categories = DBContext.Categories.ToList();
-            UserProfiles = DBContext.UserProfiles.ToList();
+            
+            ScopedData.message = ScopedData.DBContext.Messages.Find(id);
+      
 
 
-            DBContext.SaveChanges();
+            ScopedData.DBContext.SaveChanges();
             return Page();
 
         }

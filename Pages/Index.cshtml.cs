@@ -16,11 +16,11 @@ namespace PublicProject.Pages
             ScopedData = utilitiesToBeScoped;
         }
      
-        [BindProperty]
-        public Models.Category Category { get; set; }
+        //[BindProperty]
+        //public Models.Category Category { get; set; }
         
-        [BindProperty]
-        public IFormFile UploadedImage { get; set; }
+        //[BindProperty]
+        //public IFormFile UploadedImage { get; set; }
 
         public static string LimitLength(string source, int maxLength)
         {
@@ -49,9 +49,9 @@ namespace PublicProject.Pages
                     //    System.IO.File.Delete("./wwwroot/img/" + blog.Image);
                     //}
                     //_context.Blog.Remove(blog);
-                    await ScopedData.DBContext.SaveChangesAsync();
+                    //await ScopedData.DBContext.SaveChangesAsync();
 
-                    return RedirectToPage("./Index");
+                    //return RedirectToPage("./Index");
                 }
             }
             return Page();

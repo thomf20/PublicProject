@@ -4,36 +4,26 @@ using PublicProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PublicProject.Models;
+using PublicProject.Services;
+
 namespace PublicProject.Pages
 {
     public class Topicbrowser  : PageModel
     {
 
 
-        
-        private readonly Data.ApplicationDbContext DBContext;
+        public readonly UtilitiesToBeScoped ScopedData;
 
-
-        public List<Models.Category> Categories { get; set; }
-        public List<Models.SubCategory> Subcategories { get; set; }
-        public List<Models.Blog> Blogs { get; set; }
-
-
-        public Topicbrowser(Data.ApplicationDbContext dbContext) 
+        public Topicbrowser(UtilitiesToBeScoped utilitiesToBeScoped)
         {
-            DBContext = dbContext;
+            ScopedData = utilitiesToBeScoped;
         }
 
-
+        
         public IActionResult OnGet()
         {
 
-            Blogs = DBContext.Blogs.ToList();
-            Subcategories = DBContext.SubCategories.ToList();
-            Categories = DBContext.Categories.ToList();
-
-
-            DBContext.SaveChanges();
+          
             return Page();
 
         }

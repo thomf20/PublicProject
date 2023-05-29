@@ -7,14 +7,9 @@
 
     var user = await UserManager.GetUserAsync(User);
 
-    var collection = new List<Models.Blog>();
-
-    var filtereddata = collection.Where(b => b.Id == Model.BlogPost.SubcategoryId);
-
-
+    var sortedblogs = Model.ScopedData.Blogs.Where(x => x.SubcategoryId == Model.SubCategoryId);
 }
-@{
-}
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,12 +32,10 @@
 
 <a asp-page="/CreateBlog" asp-route-SubCategoryId="@Model.SubCategoryId">Create Blog</a>
 
-<div class="row">
-    @foreach (var blog in Model.Blogs)
-    {
 
-        if (blog.SubcategoryId == Model.SubCategoryId)
-        {
+<div class="row">
+    @foreach (var blog in sortedblogs)
+    {
                 <div class="col-md-4">
                     <div class="card m-2">
                         <div class="card-body">
@@ -55,6 +48,5 @@
                         </div>
                     </div>
                 </div>
-        }
     }
 </div>

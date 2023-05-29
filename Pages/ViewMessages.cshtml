@@ -6,7 +6,7 @@
     ViewData["Title"] = "Messages";
     var user = await UserManager.GetUserAsync(User);
 
-    var sortedMessages = Model.Messages.Where(x => x.RecieverId == user.Id);
+    var sortedMessages = Model.ScopedData.Messages.Where(x => x.RecieverId == user.Id);
 }
 
 <head>
@@ -37,7 +37,7 @@
 <ul>
 @foreach( var message in sortedMessages)
 {
-        var profile = @Model.UserProfiles.FirstOrDefault(s => s.UserId == message.SenderId);
+        var profile = @Model.ScopedData.UserProfiles.FirstOrDefault(s => s.UserId == message.SenderId);
         <div class="comment">
 
         <div class="thumbnail">
