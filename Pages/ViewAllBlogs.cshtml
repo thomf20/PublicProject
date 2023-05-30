@@ -6,8 +6,8 @@
 @{
 
     var user = await UserManager.GetUserAsync(User);
-    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
     var sortedblogs = Model.ScopedData.Blogs.Where(x => x.SubcategoryId == Model.SubCategoryId);
+
 }
 
 <html lang="en">
@@ -29,15 +29,20 @@
     <link rel="stylesheet" href="css/Itsy/print.css" type="text/css" media="print" />
     </head>
 
-@if (hasUsername != null){
-    <a asp-page="/CreateBlog" asp-route-SubCategoryId="@Model.SubCategoryId">Create Blog</a>
-}
-else
+
+
+    @if (SignInManager.IsSignedIn(User))
 {
-    <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att få tillgång till att börja blogga!</p>
+    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
+    @if (hasUsername != null)
+    {
+        <a asp-page="/CreateBlog" asp-route-SubCategoryId="@Model.SubCategoryId">Create Blog</a>
+    }
+    else
+    {
+        <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att få tillgång till att börja blogga!</p>
+    }
 }
-
-
 
 <div class="row">
     @foreach (var blog in sortedblogs)

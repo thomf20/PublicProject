@@ -58,7 +58,7 @@ namespace PublicProject.Pages
             ScopedData.DBContext.Blogs.Add(Blog);
             await ScopedData.DBContext.SaveChangesAsync();
 
-            return RedirectToPage("/Viewforumpost", new { id = ScopedData.Blogs.Count + 2 });
+            return RedirectToPage("/Viewforumpost", new { id = Blog.Id });
         }
 
 

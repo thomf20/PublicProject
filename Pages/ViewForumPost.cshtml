@@ -4,7 +4,6 @@
 @inject UserManager<IdentityUser> UserManager
 @{
     var user = await UserManager.GetUserAsync(User);
-    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
 }
 
     <html lang="en">
@@ -105,6 +104,8 @@
                 <div class="col-md-4">
                 @if (SignInManager.IsSignedIn(User))
                 {
+                    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
+
                     if (hasUsername != null)
                     {
                         <form method="post" asp-page-handler="Report">
@@ -157,6 +158,8 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
+    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
+
     @*Finns ett bugg här, jag kan se kommentarfältet även fast mitt konto inte har ett användar namn*@
     if(hasUsername != null)
     {
