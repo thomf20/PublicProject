@@ -4,8 +4,7 @@
 @inject UserManager<IdentityUser> UserManager
 @{
     var user = await UserManager.GetUserAsync(User);
-    var hasUsername = false;
-
+    var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
 }
 
     <html lang="en">
@@ -43,7 +42,6 @@
     @if (user != null)
     {
         var userProfile = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
-        hasUsername = userProfile != null;
     }
     
 }
@@ -107,7 +105,9 @@
                 <div class="col-md-4">
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <form method="post" asp-page-handler="Report">
+                    if (hasUsername != null)
+                    {
+                        <form method="post" asp-page-handler="Report">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <input asp-for="Report.reporterId" value="@user.Id" readonly class="form-control" type="hidden" />
@@ -138,6 +138,12 @@
                             </div>
                         </div>
                     </form>
+                    }
+                    else
+                    {
+                        <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att få tillgång till alla funktioner!</p>
+                    }
+                    
                 }
                 </div>
             </div>
@@ -152,7 +158,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
     @*Finns ett bugg här, jag kan se kommentarfältet även fast mitt konto inte har ett användar namn*@
-    if(hasUsername != true)
+    if(hasUsername != null)
     {
         <div class="comment-form">
             <h2>Kommentera foruminlägg</h2>
@@ -198,9 +204,9 @@
             </form>
         </div>
     }
-    else if(hasUsername == false)
+    else
     {
-        <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att börja blogga!</p>
+        <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att kommentera bloggar!</p>
     }
     
 }
