@@ -14,7 +14,7 @@ namespace PublicProject.API
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44304");
+                client.BaseAddress = new Uri("https://snackismetapi.azurewebsites.net/api/password");
 
                 HttpResponseMessage response = await client.GetAsync("/api/Password");
                 if (response.IsSuccessStatusCode)
