@@ -19,8 +19,7 @@
             </div>
           
             <div class="form-group">
-                <label asp-for="Blog.Date" class="control-label"></label>
-                <input asp-for="Blog.Date" class="form-control" readonly />
+                <input asp-for="Blog.Date" class="form-control" readonly type="hidden"/>
                 <span asp-validation-for="Blog.Date" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -37,7 +36,7 @@
             </div>
         
             <div class="form-group">
-                <input type="file" class="form-control" name="UploadedImage">
+                <input asp-for="Blog.Image" value="@Model.Blog.Image" type="file" class="form-control" name="UploadedImage">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

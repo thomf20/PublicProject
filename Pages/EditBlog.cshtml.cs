@@ -48,9 +48,11 @@ namespace PublicProject.Pages
             Blog = blog;
             return Page();
         }
+
         public async Task<IActionResult> OnPostAsync()
         {
             string fileName = string.Empty;
+            var oldblog = ScopedData.DBContext.Blogs.FirstOrDefault(b => b.Id == Blog.Id);
             if (!ModelState.IsValid || ScopedData.Blogs == null || Blog == null)
             {
                 return Page();
@@ -64,16 +66,15 @@ namespace PublicProject.Pages
                 {
                     await UploadedImage.CopyToAsync(fileStream);
                 }
+                oldblog.Image = fileName;   //så här skulle det stå om man ville ändra bild
+               
             }
-
-            
-
-            var oldblog = ScopedData.DBContext.Blogs.FirstOrDefault(b => b.Id == Blog.Id);
-            oldblog.Image = fileName;   //så här skulle det stå om man ville ändra bild
-            oldblog.Title = Blog.Title;
-            oldblog.Text = Blog.Text;
-          
-
+            else
+            {
+                oldblog.Image = Blog.Image;
+            }
+                oldblog.Title = Blog.Title;
+                oldblog.Text = Blog.Text;
             try
             {
                 await ScopedData.DBContext.SaveChangesAsync();
