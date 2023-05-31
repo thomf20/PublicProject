@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -26,9 +27,6 @@ namespace PublicProject.Pages
             
         }
 
-       
-       
-
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
 
@@ -51,10 +49,7 @@ namespace PublicProject.Pages
         public async Task<IActionResult> OnPostAsync()
         {
             string fileName = string.Empty;
-            if (!ModelState.IsValid || ScopedData.Blogs == null || Blog == null)
-            {
-                return Page();
-            }
+        
             if (UploadedImage != null)
             {
                 Random rnd = new();
@@ -65,35 +60,21 @@ namespace PublicProject.Pages
                     await UploadedImage.CopyToAsync(fileStream);
                 }
             }
+            else
+            {
+                fileName = "ingenbildbild.jpg";
+            }
 
-            
-
+        
             var oldblog = ScopedData.DBContext.Blogs.FirstOrDefault(b => b.Id == Blog.Id);
-            oldblog.Image = fileName;   //så här skulle det stå om man ville ändra bild
+            oldblog.Image = fileName;   
             oldblog.Title = Blog.Title;
             oldblog.Text = Blog.Text;
           
-
-            try
-            {
-                await ScopedData.DBContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BlogExists(Blog.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await ScopedData.DBContext.SaveChangesAsync();
+            
             return RedirectToPage("./Viewforumpost", new { id = Blog.Id } );
         }
-        private bool BlogExists(int id)
-        {
-            return (ScopedData.DBContext.Blogs?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+       
     }
 }
