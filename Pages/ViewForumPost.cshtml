@@ -42,7 +42,6 @@
     {
         var userProfile = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
     }
-    
 }
 
 @if (SignInManager.IsSignedIn(User))
@@ -67,14 +66,10 @@
 <section class="page-section" id="about">
     <div class="container">
         <div class="text-center">
-         @*   @{
-                var skribent = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == Model.BlogPost.UserId);
-            }*@
             @if(skribent != null)
             {
                 <a asp-page="/SendmessageToUserView" asp-route-id="@skribent.UserId"><h3 class="section-heading text-uppercase">Skriven av @skribent.UserName </h3></a>
             }
-            
             <h3 class="section-subheading text-muted">@Model.ScopedData.blog.Date</h3>
         </div>
     </div>
@@ -96,8 +91,6 @@
         <div class="thumbnail">
             <img src="~/img/@image.Imglink" >
         </div>
-
-
             <h2 class="comment-content">@sortedcomment.Text</h2>
         <a class="comment" asp-page="/Sendmessagetouserview" asp-route-id="@sortedcomment.UserId">@sortedcomment.Author</a> | @sortedcomment.Date
         <div class="row">
@@ -105,7 +98,6 @@
                 @if (SignInManager.IsSignedIn(User))
                 {
                     var hasUsername = Model.ScopedData.UserProfiles.FirstOrDefault(n => n.UserId == user.Id);
-
                     if (hasUsername != null)
                     {
                         <form method="post" asp-page-handler="Report">
@@ -121,12 +113,9 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-
-                                  
                                     <label asp-for="Report.Text" class="control-label">Anledning</label>
                                     <input asp-for="Report.Text" class="form-control" />
                                     <span asp-validation-for="Report.Text" class="text-danger"></span>
-
                                 </div>
                             <div class="form-group">
                                 <input asp-for="Report.CommentId" value="@sortedcomment.Id" type="hidden" readonly class="form-control" />
@@ -144,7 +133,6 @@
                     {
                         <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att få tillgång till alla funktioner!</p>
                     }
-                    
                 }
                 </div>
             </div>
@@ -186,8 +174,6 @@
                     <input asp-for="Comment.Text" class="form-control" />
                     <span asp-validation-for="Comment.Text" class="text-danger"></span>
                 </div>
-
-
                 <div class="form-group">
                     <input asp-for="Comment.Date" value="@DateTime.Now" class="form-control" readonly type="hidden" />
                     <span asp-validation-for="Comment.Date" class="text-danger"></span>
@@ -195,8 +181,6 @@
                 <div class="form-group">
                     <input asp-for="Comment.BlogId " value="@Model.ScopedData.blog.Id" class="form-control" readonly type="hidden" />
                     <span asp-validation-for="Comment.BlogId" class="text-danger"></span>
-
-
                     <div class="form-group">
                         <input asp-for="Comment.UserId" value=@user.Id readonly type="hidden" class="form-control" />
                         <span asp-validation-for="Comment.UserId" class="text-danger"></span>
@@ -211,7 +195,6 @@
     {
         <p style="color: red">Var vänlig och gå över till <a href="~/overview">UserProfile</a> för att registrera ett användarnamn för att kommentera bloggar!</p>
     }
-    
 }
 
 

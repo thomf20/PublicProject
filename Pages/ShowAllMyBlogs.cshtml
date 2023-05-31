@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="css/Itsy/style.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="css/Itsy/print.css" type="text/css" media="print" />
 </head>
-
 @{
     var user = await UserManager.GetUserAsync(User);
 }
@@ -33,7 +32,7 @@
             <div class="card m-2">
                 <div class="card-body">
                     <h5 class="card-title">@blog.Title</h5>
-                    <p class="card-text">@Extensions.Extensions.LimitLength(blog.Text, 200)</p>
+                    <p class="card-text">@Extensions.Extensions.LimitLength(blog.Text, 200)...</p>
                 </div>
                 <p class="card-footer">@blog.Date</p>
                 <div class="text-center">
@@ -42,6 +41,5 @@
             </div>
         </div>
     }
-
 </div>
 

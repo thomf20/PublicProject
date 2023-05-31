@@ -17,13 +17,9 @@ namespace PublicProject.Pages
 
         [BindProperty(SupportsGet =true)]
         public int SubCategoryId { get; set; }
-
       
         public IActionResult OnGet()
         {
-
-
-
             var x = SubCategoryId;
 
             return Page();

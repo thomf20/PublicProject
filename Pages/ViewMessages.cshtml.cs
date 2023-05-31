@@ -6,8 +6,6 @@ namespace PublicProject.Pages
 {
     public class MessagesModel : PageModel
     {
-
-
         public readonly UtilitiesToBeScoped ScopedData;
 
         public MessagesModel(UtilitiesToBeScoped utilitiesToBeScoped)
@@ -15,18 +13,13 @@ namespace PublicProject.Pages
             ScopedData = utilitiesToBeScoped;
         }
 
-
-
-
         public IActionResult OnGet(int id)
         {
-            
             ScopedData.message = ScopedData.DBContext.Messages.Find(id);
      
             ScopedData.DBContext.SaveChanges();
 
             return Page();
-
         }
        
     }

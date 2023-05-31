@@ -47,7 +47,6 @@ namespace PublicProject.Pages
                 // Update the existing profile if found
                 existingProfile.Imglink = fileName;
                 existingProfile.UserName = UserProfile.UserName;
-
             }
             else
             {

@@ -31,10 +31,8 @@
 
     <div class="wrap full-wrap">
         <div class="main-wrap">
-
             <section class="main">
                 <article class="post page">
-
                     <div class="frontpage-container" text-align="center">
                         <h1>@användare.UserName's sida</h1>
                         <div class="post-content">
@@ -45,14 +43,11 @@
 
                         </div>
                     </div>
-
                 </article>
                 <div class="border"></div>
-
             </section>
 
         </div><!-- /main-wrap -->
-
 
     </div><!-- /wrap -->
     <div class="row">
@@ -63,12 +58,10 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Message.Id" />
                 <div class="form-group">
-                   
                     <input asp-for="Message.SenderId" value="@user.Id" class="form-control" type="hidden" />
                     <span asp-validation-for="Message.SenderId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                 
                     <input asp-for="Message.RecieverId" value="@användare.UserId" type="hidden" readonly class="form-control"  />
                     <span asp-validation-for="Message.RecieverId" class="text-danger"></span>
                 </div>
@@ -78,7 +71,6 @@
                     <span asp-validation-for="Message.Text" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-
                     <input asp-for="Message.Date" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly type="hidden" class="form-control" />
                     <span asp-validation-for="Message.Date" class="text-danger"></span>
                 </div>
@@ -90,9 +82,6 @@
            
         </div>
     </div>
-
- 
-
 
     <script>var ie9 = false;</script>
     <!--[if lte IE 9 ]>

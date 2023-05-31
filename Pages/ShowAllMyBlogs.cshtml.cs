@@ -11,7 +11,6 @@ namespace PublicProject.Pages
         {
             ScopedData = utilitiesToBeScoped;
         }
-
         public void OnGet()
         {
         }

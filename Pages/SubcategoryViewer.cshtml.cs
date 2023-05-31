@@ -16,15 +16,12 @@ namespace PublicProject.Pages
         {
             ScopedData = utilitiesToBeScoped;
         }
-        
 
         public IActionResult OnGet(int id)
-        {           
-
+        {
             ScopedData.category = ScopedData.DBContext.Categories.Find(id);
             ScopedData.DBContext.SaveChanges();
             return Page();
-
         }
     }
 }

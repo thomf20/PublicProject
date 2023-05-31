@@ -5,7 +5,6 @@
 @{
     ViewData["Title"] = "Messages";
     var user = await UserManager.GetUserAsync(User);
-
     var sortedMessages = Model.ScopedData.Messages.Where(x => x.RecieverId == user.Id);
 }
 
@@ -31,9 +30,7 @@
 </head>
 
 <body>
-
 <h2 class="home-sticky-title">Inbox</h2>
-
 <ul>
 @foreach( var message in sortedMessages)
 {
@@ -43,15 +40,9 @@
         <div class="thumbnail">
             <img src="~/img/@profile.Imglink" >
         </div>
-
-
             <h2 class="comment-content">Meddelande: @message.Text </h2>
             <a class="comment-footer" asp-page="/Sendmessagetouserview" asp-route-id="@profile.UserId"> @profile.UserName </a> | Datum: @message.Date
         </div>
-
-    
-@*        var profile = @Model.UserProfiles.FirstOrDefault(s => s.UserId == message.SenderId);
-        <p>Meddelande: @message.Text | Datum: @message.Date | Användare: @profile.UserName </p>*@
 }
 </ul>
 

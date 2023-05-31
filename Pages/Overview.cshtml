@@ -14,8 +14,6 @@
    
     @if (profile != null)
     {
-
-    
         <head>
             <title>Itsy | A cutesy little template by FreeHTML5.co</title>
 
@@ -35,38 +33,25 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
         </head>
+
         <body class="home sticky-menu sidebar-off" id="top">
-
-
-
             <div class="wrap full-wrap">
                 <div class="main-wrap">
-
                     <section class="main">
                         <article class="post page">
-
                             <div class="inner">
                                 <h1>@profile.UserName</h1>
                                 <div class="post-content">
                                     <p>
                                         <img class="size-full alignleft rounded" src="~/img/@profile.Imglink" alt="about-clare" width="300" height="300">
-                                        
                                     </p>
-                                   
                                 </div>
                             </div>
-
                         </article>
                         <div class="border"></div>
-
                     </section>
-
                 </div><!-- /main-wrap -->
-
-
             </div><!-- /wrap -->
-
-
             <div id="topsearch">
                 <div class="table">
                     <div class="table-cell">
@@ -80,8 +65,6 @@
                 </div>
                 <a href="#topsearch" class="search-trigger"><i class="fa fa-times"></i></a>
             </div>
-
-
             <script>var ie9 = false;</script>
             <!--[if lte IE 9 ]>
             <script> var ie9 = true; </script>
@@ -89,11 +72,11 @@
             <script src="js/global-plugins.min.js"></script>
             <script src="js/main.js"></script>
         </body>
-
     }
-
     <a asp-page="/ViewMessages" asp-route-id="@user.Id">View messages</a>
+
     <a> | </a>
+
     <a asp-page="/ShowAllMyBlogs" asp-route-id="@user.Id">Show all my blogs</a>
 
     <form method="post" enctype="multipart/form-data">

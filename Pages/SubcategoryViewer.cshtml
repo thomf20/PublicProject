@@ -33,13 +33,10 @@
         <h2 class="home-sticky-title">Subkategorier</h2></a>
         <div class="sticky-inner">
             <section>
-
-
                 @foreach (var sub in sortedcategories)
                 {
                         <a asp-page="/ViewAllBlogs" asp-route-SubCategoryId="@sub.Id"><h3> @sub.Name </h3> </a>
-                    }
-                
+                }
             </section>
         </div>
     </div>

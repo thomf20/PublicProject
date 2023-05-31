@@ -29,7 +29,7 @@
 
                     <label asp-for="Blog.Date" class="control-label"></label>
 
-                    <input asp-for="Blog.Date" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly class="form-control" />  @*vet ej varför detta inte funkar*@
+                    <input asp-for="Blog.Date" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" readonly class="form-control" /> 
                     <span asp-validation-for="Blog.Date" class="text-danger"></span>
                 </div>
                 <div class="form-group">

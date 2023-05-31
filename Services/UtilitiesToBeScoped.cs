@@ -6,9 +6,7 @@ namespace PublicProject.Services
 {
     public class UtilitiesToBeScoped : Utilities
     {
-
         private readonly Data.ApplicationDbContext DBContext;
-
         public UtilitiesToBeScoped(ApplicationDbContext dbContext) : base(dbContext)
         {
             DBContext = dbContext;

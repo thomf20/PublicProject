@@ -13,7 +13,6 @@ namespace PublicProject.Pages
         {
             ScopedData = utilitiesToBeScoped;
         }
-
         public string userid { get; set; }
 
         [BindProperty]
@@ -36,6 +35,5 @@ namespace PublicProject.Pages
 
             return RedirectToPage("./Index");
         }
-
     }
 }

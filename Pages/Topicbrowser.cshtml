@@ -1,35 +1,4 @@
-﻿@*@page
-@model PublicProject.Pages.IndexModel
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
-@{
-
-    
-}
-
-@if (Model.Blogs != null)
-{
-    <div class="row">
-        @foreach (var b in Model.Blogs)
-        {
-                <div class="col-md-4">
-                    <div class="card m-2">
-                        <img class="card-img-top" src="~/img/@b.Image">
-                        <div class="card-body">
-                            <h5 class="card-title">@b.Header</h5>
-                            <p class="card-text">@b.Text.LimitLength(200)...</p>
-                        </div>
-                        <p class="card-footer">@b.Date</p>
-                        <div class="text-center">
-                            <a class="btn btn-primary" asp-page="/ViewBlog" asp-route-id="@b.Id">View Blog</a>
-                        </div>
-                    </div>
-                </div>
-        }
-    </div>
-}*@
-
-@page
+﻿@page
 @model PublicProject.Pages.Topicbrowser
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
@@ -61,9 +30,8 @@
    @{
             Model.ScopedData.Blogs.Reverse();
          
-        }
+    }
 <body class="home sticky-menu sidebar-off" id="top">
-
 
     @if (SignInManager.IsSignedIn(User))
     {
@@ -77,7 +45,6 @@
             <section>
                 @foreach( var category in Model.ScopedData.Categories)
                 {
-
                     <a asp-page="/SubCategoryViewer" asp-route-id="@category.Id"><h3> @category.Name </h3></a>
                 }
             </section>
@@ -93,7 +60,6 @@
                             <li>
                                 <a asp-page="/ViewForumPost" asp-route-id="@Model.ScopedData.Blogs[i].Id">@Model.ScopedData.Blogs[i].Title</a>
                             </li>
-
                     }
                 </ul>
             </div>
@@ -110,7 +76,6 @@
             <div class="widget footer">
                 @if (SignInManager.IsSignedIn(User))
                 {
-
                     var inAdminRole = User.IsInRole("Admin");
                     if (inAdminRole == true)
                     {
@@ -169,7 +134,6 @@
                         </div>
 
                 }
-
             </div>
         </div>
     </div>

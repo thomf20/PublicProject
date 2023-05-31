@@ -16,7 +16,6 @@ namespace PublicProject.Pages
         {
             ScopedData = utilitiesToBeScoped;
         }
-
         
         [BindProperty]
         public Comment Comment { get; set; } = default!;
@@ -29,14 +28,9 @@ namespace PublicProject.Pages
 
         static int blogpostid;
 
-      
-
         public async Task<IActionResult> OnGetAsync(int id)
         {
-           
-
             ScopedData.blog = await ScopedData.DBContext.Blogs.FindAsync(id);
-           
 
             if (ScopedData.blog.Popularity == null)
             {
@@ -54,21 +48,12 @@ namespace PublicProject.Pages
 
            await ScopedData.DBContext.SaveChangesAsync();
 
-
             return Page();
         }
         public async Task<IActionResult> OnPostSendCommentAsync()
         {
-            //if (!ModelState.IsValid || ScopedData.DBContext.Comments == null || Comment == null)
-            //{
-            //    return Page();
-            //}
-
-
             await ScopedData.DBContext.Comments.AddAsync(Comment);
             await ScopedData.DBContext.SaveChangesAsync();
-
-
 
             return RedirectToPage("/ViewForumPost", new { id = blogpostid });
         }
@@ -85,8 +70,6 @@ namespace PublicProject.Pages
 
             ScopedData.DBContext.Reports.Add(Report);
             await ScopedData.DBContext.SaveChangesAsync();
-
-
 
             return RedirectToPage("/ViewForumPost", new { id = blogpostid });
         }

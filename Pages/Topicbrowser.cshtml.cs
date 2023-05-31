@@ -11,22 +11,16 @@ namespace PublicProject.Pages
     public class Topicbrowser  : PageModel
     {
 
-
         public readonly UtilitiesToBeScoped ScopedData;
 
         public Topicbrowser(UtilitiesToBeScoped utilitiesToBeScoped)
         {
             ScopedData = utilitiesToBeScoped;
         }
-
         
         public IActionResult OnGet()
         {
-
-          
             return Page();
-
         }
-    
     }
 }
