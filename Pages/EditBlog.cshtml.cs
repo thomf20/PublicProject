@@ -48,6 +48,7 @@ namespace PublicProject.Pages
         }
         public async Task<IActionResult> OnPostAsync()
         {
+            var oldblog = ScopedData.DBContext.Blogs.FirstOrDefault(b => b.Id == Blog.Id);
             string fileName = string.Empty;
         
             if (UploadedImage != null)
@@ -62,11 +63,16 @@ namespace PublicProject.Pages
             }
             else
             {
-                fileName = "ingenbildbild.jpg";
+                fileName = Blog.Image;
+
+                if(fileName== null)
+                {
+                    fileName = "ingenbildbild.jpg";
+                }
             }
 
         
-            var oldblog = ScopedData.DBContext.Blogs.FirstOrDefault(b => b.Id == Blog.Id);
+           
             oldblog.Image = fileName;   
             oldblog.Title = Blog.Title;
             oldblog.Text = Blog.Text;

@@ -10,6 +10,8 @@ namespace PublicProject.Pages
     {
         public readonly UtilitiesToBeScoped ScopedData;
         static int blogpostid;
+       
+        public int subcategoryid { get; set; }
 
         [BindProperty]
         public IFormFile UploadedImage { get; set; }
@@ -23,24 +25,15 @@ namespace PublicProject.Pages
         public IActionResult OnGet(int SubCategoryId)
         {
 
-            
-            ScopedData.subCategory = ScopedData.DBContext.SubCategories.Find(SubCategoryId);
-            ScopedData.category = ScopedData.DBContext.Categories.Find(ScopedData.subCategory.CategoryId);
-
-            
-
-            ScopedData.DBContext.SaveChanges();
+            subcategoryid = SubCategoryId;
+ 
             return Page();
 
         }
         public async Task<IActionResult> OnPostAsync(int SubCategoryId)
         {
             string fileName = string.Empty;
-            if (!ModelState.IsValid || ScopedData.Blogs == null || Blog == null)
-            {
-                return Page();
-            }
-
+           
             if (UploadedImage != null)
             {
                 Random rnd = new();
@@ -51,7 +44,10 @@ namespace PublicProject.Pages
                     await UploadedImage.CopyToAsync(fileStream);
                 }
             }
-
+            else
+            {
+                fileName = "ingenbildbild.jpg";
+            }
             Blog.Image = fileName;
             blogpostid = SubCategoryId;
 
