@@ -6,6 +6,8 @@
     ViewData["Title"] = "Skicka meddelande";
     var user = await UserManager.GetUserAsync(User);
     var användare = Model.ScopedData.UserProfiles.Where(x => x.UserId == Model.userid).FirstOrDefault();
+    var userblogs = Model.ScopedData.Blogs.Where(x => x.UserId == Model.userid);
+    var användarnamn = Model.ScopedData.UserProfiles.FirstOrDefault(x => x.UserId == Model.userid);
 }
 
 <head>
@@ -48,6 +50,12 @@
         </div><!-- /main-wrap -->
 
     </div><!-- /wrap -->
+
+
+
+
+    <a asp-page="/ShowAllMyBlogs" asp-route-id="@användare.Id">Se inlägg som tillhör @användarnamn.UserName </a>
+
     <div class="row">
         <div class="col-md-4">
             @if (SignInManager.IsSignedIn(User))
