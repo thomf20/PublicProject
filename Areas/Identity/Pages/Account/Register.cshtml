@@ -4,7 +4,10 @@
     ViewData["Title"] = "Registrering";
 }
 
-<h1>@ViewData["Title"]</h1>
+
+
+<body class="home sticky-menu sidebar-off" id="top">
+    <h1 class="home-sticky-title">@ViewData["Title"]</h1>
 <div class="row">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
@@ -119,6 +122,18 @@
                 });
         }
     </script>
-
-
 }
+
+    <footer class="footer">
+        <div class="footer-wrap">
+            <div id="footer-text">
+                &copy; 2023 - Snackis - <a asp-area="" asp-page="/Privacy">Integritet</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>var ie9 = false;</script>
+    <script src="js/global-plugins.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
