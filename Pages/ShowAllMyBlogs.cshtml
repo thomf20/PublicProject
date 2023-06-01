@@ -23,28 +23,38 @@
     <link rel="stylesheet" href="css/Itsy/print.css" type="text/css" media="print" />
 </head>
 @{
-    var user = await UserManager.GetUserAsync(User);
+    var user = await UserManager.GetUserAsync(User);  
 }
 @{
-    var sortedBlogs = Model.ScopedData.Blogs.Where(b => b.UserId == user.Id);
+    
 }
-<div class="row">
-    @foreach (var blog in sortedBlogs)
-    {
-        <div class="col-md-4">
-            <div class="card m-2">
-                <div class="card-body">
-                    <h5 class="card-title">@blog.Title</h5>
-                    <p class="card-text">@Extensions.Extensions.LimitLength(blog.Text, 200)...</p>
-                </div>
-                <p class="card-footer">@blog.Date</p>
-                <div class="text-center">
-                    <a class="btn btn-primary" asp-page="/ViewForumPost" asp-route-id="@blog.Id">Se inlägg</a>
+@if (SignInManager.IsSignedIn(User))
+{
+    var sortedBlogs = Model.ScopedData.Blogs.Where(b => b.UserId == user.Id);
+
+    <div class="row">
+        @foreach (var blog in sortedBlogs)
+        {
+            <div class="col-md-4">
+                <div class="card m-2">
+                    <div class="card-body">
+                        <h5 class="card-title">@blog.Title</h5>
+                        <p class="card-text">@Extensions.Extensions.LimitLength(blog.Text, 200)...</p>
+                    </div>
+                    <p class="card-footer">@blog.Date</p>
+                    <div class="text-center">
+                        <a class="btn btn-primary" asp-page="/ViewForumPost" asp-route-id="@blog.Id">Se inlägg</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+}
+else
+{
+    <h2 style="color:red">För att få tillgång till denna funktion måste du <a href="~/Identity/Account/Login" style="color:blue">Logga in</a></h2>
+}
+
 
 <body>
     <footer class="footer">
