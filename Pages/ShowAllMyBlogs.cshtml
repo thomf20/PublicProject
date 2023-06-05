@@ -30,10 +30,10 @@
 }
 @if (SignInManager.IsSignedIn(User))
 {
-    var sortedBlogs = Model.ScopedData.Blogs.Where(b => b.UserId == user.Id);
+    var sortedBlogsDifferentUser = Model.Blogs;
 
     <div class="row">
-        @foreach (var blog in sortedBlogs)
+        @foreach (var blog in sortedBlogsDifferentUser)
         {
             <div class="col-md-4">
                 <div class="card m-2">
@@ -49,6 +49,7 @@
             </div>
         }
     </div>
+
 }
 else
 {
