@@ -25,19 +25,25 @@ namespace PublicProject.Pages
             return Page();
         }
 
+
+        static string fileName = string.Empty;
         public async Task<IActionResult> OnPostAsync()  
         {
-            string fileName = string.Empty;
+            //string fileName = string.Empty; 
 
             if (UploadedImage != null)
             {
                 Random rnd = new();
-                fileName = rnd.Next(0, 100000).ToString() + UploadedImage.FileName;
+                fileName = UploadedImage.FileName;
                 var file = "./wwwroot/img/" + fileName;
                 using (var fileStream = new FileStream(file, FileMode.Create))
                 {
                     await UploadedImage.CopyToAsync(fileStream);
                 }
+            }
+            else
+            {
+                fileName = "defaultuserpng.jpg";
             }
 
             UserProfile existingProfile = ScopedData.DBContext.UserProfiles.FirstOrDefault(p => p.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier));
