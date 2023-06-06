@@ -50,7 +50,7 @@
                         <div class="card-body">
                             <h5 class="card-title">@blog.Title</h5>
                           <img src="~/img/@blog.Image" class="card-image">
-                            <p class="card-text">@blog.Text</p>                       
+                            <p class="card-text">@Extensions.Extensions.LimitLength(blog.Text, 150)...</p>                       
                         </div>
                         <p class="card-footer">@blog.Date</p>
                         <div class="text-center">

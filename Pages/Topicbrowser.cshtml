@@ -53,15 +53,20 @@
     <div class="footer-widgets widget-count-4">
         <div class="wrap">
             <div class="widget footer">
-                <h4>Senaste inläggen</h4>
+                <h4>Populäraste inläggen</h4>
                 <ul>
+                    @{
+                        Model.ScopedData.Blogs.Reverse();
+                        var mostPopular = Model.ScopedData.Blogs.OrderByDescending(x => x.Popularity).ToList();
+                    }
                     @for (int i = 0; i < 3; i++)
                     {
-                            <li>
-                                <a asp-page="/ViewForumPost" asp-route-id="@Model.ScopedData.Blogs[i].Id">@Model.ScopedData.Blogs[i].Title</a>
-                            </li>
+
+                        <li>
+                            <a asp-page="/ViewForumPost" asp-route-id="@mostPopular[i].Id">@mostPopular[i].Title</a>
+                        </li>
                     }
-                </ul>
+                    </ul>
             </div>
             <div class="mt-about-you-widget">
                 <div class="widget footer">
@@ -83,7 +88,7 @@
                                 <div class="textwidget">
                                     <ul>
                                         <li>
-                                            <a href="~/reports">Rapporterade inlägg</a>
+                                            <a href="~/admin/reports">Rapporterade inlägg</a>
                                         </li>
                                         <li>
 
